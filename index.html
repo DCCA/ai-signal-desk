@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="AI Signal Desk is a practical AI digest for concepts, products, repos, and workflows worth understanding."
+    />
+    <title>AI Signal Desk — Practical AI updates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="AI Signal Desk home">
+        <span class="brand-mark">◆</span>
+        <span>AI Signal Desk</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#concepts">Concepts</a>
+        <a href="#products">Products</a>
+        <a href="#repos">Repos</a>
+        <a href="#workflows">Workflows</a>
+        <a href="#weekly">Weekly</a>
+      </nav>
+      <a class="header-cta" href="#newsletter">Join the brief</a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Signal over hype</p>
+        <h1>Stay current on AI without drowning in hype.</h1>
+        <p class="hero-copy">
+          A practical digest for people who want to understand the AI
+          concepts, products, repos, and workflows worth learning, trying,
+          or watching.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#weekly">Read the weekly brief</a>
+          <a class="button secondary" href="#digest">Explore today’s signal</a>
+        </div>
+        <div class="signal-strip" aria-label="Editorial promise">
+          <span>What changed?</span>
+          <span>Why it matters</span>
+          <span>What to try next</span>
+        </div>
+      </section>
+
+      <section class="section intro-grid" aria-label="Content pillars">
+        <article class="card compact" id="concepts">
+          <span class="pill blue">Concepts</span>
+          <h2>Learn the ideas</h2>
+          <p>Plain-English explainers for agent loops, evals, MCP, RAG, and context engineering.</p>
+        </article>
+        <article class="card compact" id="products">
+          <span class="pill pink">Products</span>
+          <h2>Judge the tools</h2>
+          <p>Breakdowns of AI products by use case, strengths, weaknesses, and who should try them.</p>
+        </article>
+        <article class="card compact" id="repos">
+          <span class="pill red">Repos</span>
+          <h2>Watch the projects</h2>
+          <p>Curated open-source projects with maturity, setup friction, and practical value.</p>
+        </article>
+        <article class="card compact" id="workflows">
+          <span class="pill dark">Workflows</span>
+          <h2>Copy the recipes</h2>
+          <p>Repeatable AI workflows for learning, building, reviewing, and automating personal systems.</p>
+        </article>
+      </section>
+
+      <section class="section split" id="weekly">
+        <div>
+          <p class="eyebrow">Weekly format</p>
+          <h2>Five useful updates. Three things to try. One concept to learn.</h2>
+        </div>
+        <div class="weekly-card card">
+          <ol>
+            <li><strong>5 things worth knowing</strong><span>Short, curated, practical.</span></li>
+            <li><strong>3 tools or repos to try</strong><span>Only if there is a concrete use case.</span></li>
+            <li><strong>1 concept to learn</strong><span>Explained with examples.</span></li>
+            <li><strong>1 thing to ignore</strong><span>Hype filter included.</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="digest">
+        <div class="section-heading">
+          <p class="eyebrow">Seeded MVP</p>
+          <h2>Today’s signal cards</h2>
+          <p>Each card gives readers a simple action: learn, try, watch, or ignore.</p>
+        </div>
+        <div class="filters" aria-label="Digest filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="concept">Concepts</button>
+          <button class="filter" data-filter="product">Products</button>
+          <button class="filter" data-filter="repo">Repos</button>
+          <button class="filter" data-filter="workflow">Workflows</button>
+        </div>
+        <div class="digest-grid" data-digest-grid>
+          <noscript>Enable JavaScript to render digest cards.</noscript>
+        </div>
+      </section>
+
+      <section class="section newsletter card" id="newsletter">
+        <div>
+          <p class="eyebrow">Early access</p>
+          <h2>Join the practical AI brief.</h2>
+          <p>
+            A weekly digest for people who want to understand what matters and
+            what to do next — not just what launched.
+          </p>
+        </div>
+        <form class="signup" aria-label="Newsletter signup demo">
+          <label for="email">Email</label>
+          <div class="signup-row">
+            <input id="email" type="email" placeholder="you@example.com" />
+            <button type="button">Notify me</button>
+          </div>
+          <small>Demo form for MVP positioning. Connect a newsletter provider later.</small>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>AI Signal Desk</span>
+      <span>Practical AI updates for builders and curious operators.</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
