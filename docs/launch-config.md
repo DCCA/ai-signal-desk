@@ -7,19 +7,21 @@ AI Signal Desk is staying free while testing demand.
 Recommended setup:
 
 - Hosting: Cloudflare Pages free tier if the repo stays private, or GitHub Pages if the repo becomes public.
-- Waitlist capture: Tally free.
+- Waitlist capture: email link now; Tally free when the beta needs structured intake.
 - Analytics: Cloudflare Web Analytics.
 - Email sending: manual beta email until the product proves enough pull for a newsletter provider.
 
 ## Waitlist URL
 
-Current placeholder:
+Current free beta capture path:
 
 ```text
-https://tally.so/r/replace-with-ai-signal-desk-waitlist
+mailto:dcca.hermes@gmail.com?subject=Join%20AI%20Signal%20Desk%20beta
 ```
 
-Before public sharing, create a free Tally form and replace this placeholder in:
+This keeps testing free and does not require a new external form account.
+
+Optional upgrade after initial pull: create a free Tally form and replace the `mailto:` link in:
 
 ```text
 index.html

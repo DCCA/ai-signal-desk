@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ai-signal-desk.pages.dev/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ai-signal-desk.pages.dev/about.html</loc>
-  </url>
-  <url>
-    <loc>https://ai-signal-desk.pages.dev/privacy.html</loc>
-  </url>
-  <url>
-    <loc>https://ai-signal-desk.pages.dev/contact.html</loc>
-  </url>
+  <url><loc>https://ai-signal-desk.pages.dev/index.html</loc></url>
+  <url><loc>https://ai-signal-desk.pages.dev/about.html</loc></url>
+  <url><loc>https://ai-signal-desk.pages.dev/privacy.html</loc></url>
+  <url><loc>https://ai-signal-desk.pages.dev/contact.html</loc></url>
+  <url><loc>https://ai-signal-desk.pages.dev/weekly.html</loc></url>
+  <url><loc>https://ai-signal-desk.pages.dev/posts/agent-loops.html</loc></url>
+  <url><loc>https://ai-signal-desk.pages.dev/posts/context-engineering.html</loc></url>
+  <url><loc>https://ai-signal-desk.pages.dev/posts/lightweight-eval-harnesses.html</loc></url>
 </urlset>

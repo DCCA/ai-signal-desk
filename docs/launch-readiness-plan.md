@@ -13,12 +13,13 @@ Verified on 2026-06-15:
 - Static MVP exists: homepage, brand page, logo exploration, seeded digest cards
 - Deterministic check passes: `python3 scripts/check_site.py`
 - Repo is private
-- GitHub Pages is not enabled
-- Signup form is demo-only
+- Free beta capture path uses a prefilled email link to `dcca.hermes@gmail.com`
+- Launch trust pages exist: `about.html`, `privacy.html`, `contact.html`
+- Issue 001 exists at `weekly.html`
+- Three launch sample posts exist under `posts/`
+- Published signal cards include source links and confidence labels
+- Hermes editorial workflow docs exist for draft-to-human-review publishing
 - No public deployment URL yet
-- No launch-grade sample posts yet
-- No `about`, `privacy`, or `contact` pages yet
-- No repeatable Hermes workflow for turning digests/newsletters into publishable signal cards yet
 
 ## Launch thesis
 

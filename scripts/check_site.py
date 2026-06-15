@@ -13,6 +13,7 @@ REQUIRED_FILES = [
     "about.html",
     "privacy.html",
     "contact.html",
+    "weekly.html",
     "brand.html",
     "logo-exploration.html",
     "styles.css",
@@ -22,6 +23,13 @@ REQUIRED_FILES = [
     "docs/brand-foundation.md",
     "docs/launch-readiness-plan.md",
     "docs/launch-config.md",
+    "docs/editorial-workflow.md",
+    "docs/signal-card-schema.md",
+    "docs/launch-checklist.md",
+    "content/drafts/.gitkeep",
+    "posts/agent-loops.html",
+    "posts/context-engineering.html",
+    "posts/lightweight-eval-harnesses.html",
     "DESIGN.md",
     "robots.txt",
     "sitemap.xml",
@@ -82,6 +90,7 @@ def assert_homepage_contract() -> None:
         assert marker in html, f"Homepage missing launch metadata marker: {marker}"
     for marker in REQUIRED_WAITLIST_MARKERS:
         assert marker in html, f"Homepage missing waitlist marker: {marker}"
+    assert "replace-with-ai-signal-desk-waitlist" not in html, "Homepage should not ship with placeholder waitlist URL"
     assert "Newsletter signup demo" not in html, "Homepage should not contain demo-only signup form copy"
     for marker in REQUIRED_IDENTITY_MARKERS:
         assert marker in html, f"Homepage missing unique identity marker: {marker}"
@@ -129,10 +138,72 @@ def assert_content_contract() -> None:
     assert REQUIRED_CONTENT_CATEGORIES <= categories, (
         f"Missing categories: {REQUIRED_CONTENT_CATEGORIES - categories}"
     )
+    linked_posts = 0
     for item in items:
-        for key in ["title", "category", "summary", "why_it_matters", "try_this", "status"]:
+        for key in [
+            "title",
+            "category",
+            "summary",
+            "why_it_matters",
+            "try_this",
+            "status",
+            "confidence",
+            "source_url",
+            "source_label",
+        ]:
             assert item.get(key), f"Digest item missing {key}: {item}"
         assert item["status"] in {"learn", "try", "watch", "ignore"}, item
+        assert item["confidence"] in {"high", "medium", "low"}, item
+        assert item["source_url"].startswith(("https://", "mailto:")), item
+        if item.get("post_url"):
+            linked_posts += 1
+            assert (ROOT / item["post_url"]).exists(), f"Digest post_url does not exist: {item['post_url']}"
+    assert linked_posts >= 3, "At least 3 homepage cards should link to launch sample posts"
+
+
+def assert_sample_posts_contract() -> None:
+    index = read("index.html")
+    for path, markers in {
+        "posts/agent-loops.html": ["Agent loops", "What changed", "Why it matters", "Try this", "Sources"],
+        "posts/context-engineering.html": ["Context engineering", "What changed", "Why it matters", "Try this", "Sources"],
+        "posts/lightweight-eval-harnesses.html": ["Lightweight eval harnesses", "What changed", "Why it matters", "Try this", "Sources"],
+    }.items():
+        page = read(path)
+        assert 'href="../styles.css"' in page, f"Post missing shared stylesheet: {path}"
+        assert 'src="../assets/brand-mark.svg"' in page, f"Post missing brand mark: {path}"
+        for marker in markers:
+            assert marker in page, f"Post {path} missing marker: {marker}"
+        assert path in index or path in read("content/digest.json"), f"Post not linked from launch content: {path}"
+
+
+def assert_weekly_issue_contract() -> None:
+    weekly = read("weekly.html")
+    for marker in [
+        "Issue 001",
+        "Five useful updates",
+        "Three things to try",
+        "One concept to learn",
+        "One thing to ignore",
+        "Agent loops",
+        "Context engineering",
+        "Lightweight eval harnesses",
+        "Sources reviewed",
+    ]:
+        assert marker in weekly, f"weekly.html missing marker: {marker}"
+    assert 'href="posts/agent-loops.html"' in weekly, "weekly.html should link sample post"
+    assert 'href="styles.css"' in weekly, "weekly.html should use shared stylesheet"
+
+
+def assert_editorial_workflow_contract() -> None:
+    workflow = read("docs/editorial-workflow.md")
+    schema = read("docs/signal-card-schema.md")
+    checklist = read("docs/launch-checklist.md")
+    for marker in ["AI Daily Digest", "dcca.hermes@gmail.com", "human review", "draft", "publish"]:
+        assert marker.lower() in workflow.lower(), f"Editorial workflow missing marker: {marker}"
+    for marker in ["source_url", "confidence", "status", "human_reviewed", "published"]:
+        assert marker in schema, f"Signal card schema missing marker: {marker}"
+    for marker in ["Mobile", "Signup", "Issue 001", "sample posts", "Tally"]:
+        assert marker.lower() in checklist.lower(), f"Launch checklist missing marker: {marker}"
 
 
 def assert_css_quality_bar() -> None:
@@ -203,6 +274,9 @@ def main() -> None:
     assert_launch_trust_pages()
     assert_launch_config_contract()
     assert_content_contract()
+    assert_sample_posts_contract()
+    assert_weekly_issue_contract()
+    assert_editorial_workflow_contract()
     assert_css_quality_bar()
     assert_product_brief_contract()
     assert_brand_contract()
