@@ -10,10 +10,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = [
     "index.html",
+    "brand.html",
     "styles.css",
     "app.js",
     "content/digest.json",
     "docs/product-brief.md",
+    "docs/brand-foundation.md",
+    "DESIGN.md",
+    "assets/brand-mark.svg",
     "README.md",
 ]
 
@@ -83,12 +87,31 @@ def assert_product_brief_contract() -> None:
     assert "not generic ai news" in brief.lower(), "Brief should protect differentiated positioning"
 
 
+def assert_brand_contract() -> None:
+    brand = read("docs/brand-foundation.md")
+    for phrase in [
+        "AI signal, not AI noise",
+        "calm intelligence desk",
+        "learn, try, watch, or ignore",
+        "Signal score",
+        "Hype score",
+    ]:
+        assert phrase in brand, f"Brand foundation missing phrase: {phrase}"
+    design = read("DESIGN.md")
+    for token in ["#080A0F", "#58E6FF", "IBM Plex Mono", "signal-card"]:
+        assert token in design, f"DESIGN.md missing brand token: {token}"
+    brand_page = read("brand.html")
+    for marker in ["Brand System", "Visual system", "Component language"]:
+        assert marker in brand_page, f"Brand page missing marker: {marker}"
+
+
 def main() -> None:
     assert_required_files()
     assert_homepage_contract()
     assert_content_contract()
     assert_css_quality_bar()
     assert_product_brief_contract()
+    assert_brand_contract()
     print("OK: AI Signal Desk static MVP passes scaffold checks")
 
 

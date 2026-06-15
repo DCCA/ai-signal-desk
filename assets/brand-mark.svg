@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AI Signal Desk mark</title>
+  <desc id="desc">A circular radar mark with the ASD monogram and signal sweep.</desc>
+  <rect width="512" height="512" rx="112" fill="#080A0F"/>
+  <circle cx="256" cy="256" r="170" stroke="#58E6FF" stroke-opacity="0.28" stroke-width="2"/>
+  <circle cx="256" cy="256" r="112" stroke="#58E6FF" stroke-opacity="0.22" stroke-width="2"/>
+  <circle cx="256" cy="256" r="54" stroke="#58E6FF" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M256 256L394 156C413 201 412 252 392 296L256 256Z" fill="url(#sweep)"/>
+  <path d="M128 256H384" stroke="#2A3342" stroke-width="2" stroke-linecap="round"/>
+  <path d="M256 128V384" stroke="#2A3342" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="337" cy="190" r="8" fill="#F6C85F"/>
+  <circle cx="184" cy="302" r="8" fill="#78F0B2"/>
+  <circle cx="301" cy="327" r="8" fill="#9B87FF"/>
+  <rect x="151" y="222" width="210" height="68" rx="18" fill="#111722" stroke="#58E6FF" stroke-opacity="0.45"/>
+  <text x="256" y="267" text-anchor="middle" fill="#F4F1E8" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="42" font-weight="700" letter-spacing="4">ASD</text>
+  <defs>
+    <linearGradient id="sweep" x1="256" y1="256" x2="411" y2="159" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58E6FF" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#58E6FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

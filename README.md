@@ -16,11 +16,15 @@ It is designed to become a public website/newsletter where each AI update answer
 ## MVP contents
 
 - `index.html` — static landing page and digest UI
-- `styles.css` — Vercel-inspired minimal visual system
+- `brand.html` — brand-system preview page
+- `styles.css` — dark editorial Signal Desk visual system
 - `app.js` — loads and filters digest cards
 - `content/digest.json` — seeded MVP content
 - `docs/product-brief.md` — product direction and editorial rules
-- `scripts/check_site.py` — deterministic scaffold/site checks
+- `docs/brand-foundation.md` — positioning, voice, taxonomy, tagline, and copy rules
+- `DESIGN.md` — formal design-token/spec file for future agents and UI work
+- `assets/brand-mark.svg` — first SVG brand mark
+- `scripts/check_site.py` — deterministic scaffold/site/brand checks
 
 ## Run locally
 
