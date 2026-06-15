@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_FILES = [
     "index.html",
     "brand.html",
+    "logo-exploration.html",
     "styles.css",
     "app.js",
     "content/digest.json",
@@ -18,6 +19,12 @@ REQUIRED_FILES = [
     "docs/brand-foundation.md",
     "DESIGN.md",
     "assets/brand-mark.svg",
+    "assets/logo-radar-monogram.svg",
+    "assets/logo-aperture.svg",
+    "assets/logo-terminal-signal.svg",
+    "assets/logo-classified-stamp.svg",
+    "assets/logo-signal-grid.svg",
+    "assets/logo-minimal-asd.svg",
     "README.md",
 ]
 
@@ -105,6 +112,32 @@ def assert_brand_contract() -> None:
         assert marker in brand_page, f"Brand page missing marker: {marker}"
 
 
+def assert_logo_exploration_contract() -> None:
+    logo_page = read("logo-exploration.html")
+    for marker in [
+        "Logo exploration / v0.1",
+        "Radar monogram",
+        "Signal aperture",
+        "Terminal signal",
+        "Classified stamp",
+        "Signal grid",
+        "Minimal ASD square",
+        "Start with Option A",
+    ]:
+        assert marker in logo_page, f"Logo exploration missing marker: {marker}"
+    for path in [
+        "assets/logo-radar-monogram.svg",
+        "assets/logo-aperture.svg",
+        "assets/logo-terminal-signal.svg",
+        "assets/logo-classified-stamp.svg",
+        "assets/logo-signal-grid.svg",
+        "assets/logo-minimal-asd.svg",
+    ]:
+        svg = read(path)
+        assert "<svg" in svg and "</svg>" in svg, f"Invalid SVG wrapper: {path}"
+        assert "#080A0F" in svg, f"Logo should use brand ink background: {path}"
+
+
 def main() -> None:
     assert_required_files()
     assert_homepage_contract()
@@ -112,6 +145,7 @@ def main() -> None:
     assert_css_quality_bar()
     assert_product_brief_contract()
     assert_brand_contract()
+    assert_logo_exploration_contract()
     print("OK: AI Signal Desk static MVP passes scaffold checks")
 
 

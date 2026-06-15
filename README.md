@@ -17,6 +17,7 @@ It is designed to become a public website/newsletter where each AI update answer
 
 - `index.html` — static landing page and digest UI
 - `brand.html` — brand-system preview page
+- `logo-exploration.html` — comparison board for six SVG logo directions
 - `styles.css` — dark editorial Signal Desk visual system
 - `app.js` — loads and filters digest cards
 - `content/digest.json` — seeded MVP content
@@ -24,6 +25,7 @@ It is designed to become a public website/newsletter where each AI update answer
 - `docs/brand-foundation.md` — positioning, voice, taxonomy, tagline, and copy rules
 - `DESIGN.md` — formal design-token/spec file for future agents and UI work
 - `assets/brand-mark.svg` — first SVG brand mark
+- `assets/logo-*.svg` — logo exploration variants
 - `scripts/check_site.py` — deterministic scaffold/site/brand checks
 
 ## Run locally

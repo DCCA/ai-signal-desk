@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Signal Desk — Logo Exploration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .logo-board { max-width: 1220px; margin: 0 auto; padding: 92px 24px; }
+    .logo-hero { display:grid; grid-template-columns: 1fr .8fr; gap: 40px; align-items:center; margin-bottom: 48px; }
+    .logo-hero h1 { font-size: clamp(54px, 8vw, 104px); }
+    .logo-stage { border:1px solid var(--line); border-radius:32px; background:linear-gradient(180deg,rgba(21,29,42,.94),rgba(8,10,15,.96)); padding:32px; box-shadow:var(--card-shadow); }
+    .logo-stage img { width:100%; max-width: 340px; display:block; margin:0 auto; }
+    .variant-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
+    .logo-variant { background:linear-gradient(180deg,rgba(21,29,42,.92),rgba(13,17,24,.92)); border:1px solid var(--line); border-radius:24px; padding:22px; box-shadow:var(--card-shadow); }
+    .logo-variant img { width:132px; height:132px; display:block; margin: 4px auto 20px; }
+    .logo-variant h2 { margin:0 0 8px; font-size:22px; letter-spacing:-.04em; }
+    .logo-variant p { color:var(--muted); line-height:1.55; min-height:75px; }
+    .usage-row { display:grid; grid-template-columns: 44px 1fr 86px; gap:12px; align-items:center; border-top:1px solid var(--line); padding-top:14px; margin-top:14px; }
+    .usage-row img { width:36px; height:36px; margin:0; }
+    .mini-lockup { font-weight:800; letter-spacing:-.04em; }
+    .fav-test { display:flex; gap:6px; align-items:center; justify-content:flex-end; }
+    .fav-test img { width:18px; height:18px; margin:0; }
+    .recommendation { margin-top: 44px; }
+    .light-test { background:#F4F1E8; color:#080A0F; border-radius:18px; padding:18px; }
+    .light-test img { width:72px; height:72px; }
+    @media (max-width: 980px) { .logo-hero, .variant-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">ASD</span><span>AI Signal Desk</span></a>
+    <nav><a href="brand.html">Brand</a><a href="logo-exploration.html">Logos</a><a href="index.html">Site</a></nav>
+    <a class="header-cta" href="assets/logo-radar-monogram.svg">Open SVG</a>
+  </header>
+  <main class="logo-board">
+    <section class="logo-hero">
+      <div>
+        <p class="eyebrow">Logo exploration / v0.1</p>
+        <h1>Six ways to mark the signal desk.</h1>
+        <p class="hero-copy">The goal is a logo that works as a favicon, publication mark, and product lockup without falling into generic AI symbolism.</p>
+      </div>
+      <div class="logo-stage"><img src="assets/logo-radar-monogram.svg" alt="Radar monogram logo option" /></div>
+    </section>
+    <section class="variant-grid">
+      <article class="logo-variant"><img src="assets/logo-radar-monogram.svg" alt="Radar monogram"/><span class="pill concept">Option A</span><h2>Radar monogram</h2><p>Most direct fit: ASD inside a scanner. Strong for favicon and product identity.</p><div class="usage-row"><img src="assets/logo-radar-monogram.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-radar-monogram.svg" alt=""/><img src="assets/logo-radar-monogram.svg" alt=""/></span></div></article>
+      <article class="logo-variant"><img src="assets/logo-aperture.svg" alt="Aperture mark"/><span class="pill product">Option B</span><h2>Signal aperture</h2><p>Most premium and abstract. Good if the brand should mature beyond the ASD letters.</p><div class="usage-row"><img src="assets/logo-aperture.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-aperture.svg" alt=""/><img src="assets/logo-aperture.svg" alt=""/></span></div></article>
+      <article class="logo-variant"><img src="assets/logo-terminal-signal.svg" alt="Terminal signal"/><span class="pill workflow">Option C</span><h2>Terminal signal</h2><p>Most developer/operator coded. Strong if the product leans into tools and workflows.</p><div class="usage-row"><img src="assets/logo-terminal-signal.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-terminal-signal.svg" alt=""/><img src="assets/logo-terminal-signal.svg" alt=""/></span></div></article>
+      <article class="logo-variant"><img src="assets/logo-classified-stamp.svg" alt="Classified stamp"/><span class="pill repo">Option D</span><h2>Classified stamp</h2><p>Most editorial. Useful for issue covers, but weaker as a tiny app icon.</p><div class="usage-row"><img src="assets/logo-classified-stamp.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-classified-stamp.svg" alt=""/><img src="assets/logo-classified-stamp.svg" alt=""/></span></div></article>
+      <article class="logo-variant"><img src="assets/logo-signal-grid.svg" alt="Signal grid"/><span class="pill concept">Option E</span><h2>Signal grid</h2><p>Most ownable metaphor: many dots, one useful signal. Clear at small sizes.</p><div class="usage-row"><img src="assets/logo-signal-grid.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-signal-grid.svg" alt=""/><img src="assets/logo-signal-grid.svg" alt=""/></span></div></article>
+      <article class="logo-variant"><img src="assets/logo-minimal-asd.svg" alt="Minimal ASD"/><span class="pill product">Option F</span><h2>Minimal ASD square</h2><p>Simplest and most flexible. Less distinctive, but easiest to use everywhere.</p><div class="usage-row"><img src="assets/logo-minimal-asd.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-minimal-asd.svg" alt=""/><img src="assets/logo-minimal-asd.svg" alt=""/></span></div></article>
+    </section>
+    <section class="recommendation weekly-panel">
+      <div><p class="eyebrow">Recommendation</p><h2>Start with Option A, borrow simplicity from Option E.</h2><p>Use the radar monogram as the near-term mark because it connects fastest to “signal desk.” Then simplify the geometry toward the signal-grid option if it feels too busy at favicon size.</p></div>
+      <div class="light-test"><img src="assets/logo-radar-monogram.svg" alt="Radar monogram on light background"/><h3>Light-background check</h3><p>Dark container survives on light surfaces, so the mark can work in social previews, docs, and embeds.</p></div>
+    </section>
+  </main>
+</body>
+</html>
