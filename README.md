@@ -24,7 +24,8 @@ It is designed to become a public website/newsletter where each AI update answer
 - `docs/product-brief.md` — product direction and editorial rules
 - `docs/brand-foundation.md` — positioning, voice, taxonomy, tagline, and copy rules
 - `DESIGN.md` — formal design-token/spec file for future agents and UI work
-- `assets/brand-mark.svg` — first SVG brand mark
+- `assets/brand-mark.svg` — selected Option F minimal ASD brand mark
+- `favicon.svg` — site favicon using the selected Option F mark
 - `assets/logo-*.svg` — logo exploration variants
 - `scripts/check_site.py` — deterministic scaffold/site/brand checks
 

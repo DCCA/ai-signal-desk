@@ -19,6 +19,7 @@ REQUIRED_FILES = [
     "docs/brand-foundation.md",
     "DESIGN.md",
     "assets/brand-mark.svg",
+    "favicon.svg",
     "assets/logo-radar-monogram.svg",
     "assets/logo-aperture.svg",
     "assets/logo-terminal-signal.svg",
@@ -110,6 +111,10 @@ def assert_brand_contract() -> None:
     brand_page = read("brand.html")
     for marker in ["Brand System", "Visual system", "Component language"]:
         assert marker in brand_page, f"Brand page missing marker: {marker}"
+    for page_path in ["index.html", "brand.html", "logo-exploration.html"]:
+        page = read(page_path)
+        assert 'href="favicon.svg"' in page, f"Page missing favicon link: {page_path}"
+        assert 'src="assets/brand-mark.svg"' in page, f"Page missing selected brand mark: {page_path}"
 
 
 def assert_logo_exploration_contract() -> None:
@@ -122,7 +127,7 @@ def assert_logo_exploration_contract() -> None:
         "Classified stamp",
         "Signal grid",
         "Minimal ASD square",
-        "Start with Option A",
+        "Keep Option F",
     ]:
         assert marker in logo_page, f"Logo exploration missing marker: {marker}"
     for path in [
