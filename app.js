@@ -13,6 +13,24 @@ function scoreFor(item, key, fallback) {
   return item[key] || fallback;
 }
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function escapeAttr(value) {
+  return escapeHtml(value).replaceAll('`', '&#96;');
+}
+
+function cardTitle(item) {
+  const title = escapeHtml(item.title);
+  return item.post_url ? `<a href="${escapeAttr(item.post_url)}">${title}</a>` : title;
+}
+
 function renderCards(filter = 'all') {
   const visible = filter === 'all' ? items : items.filter((item) => item.category === filter);
   grid.innerHTML = visible
@@ -20,17 +38,18 @@ function renderCards(filter = 'all') {
       (item, index) => `
         <article class="digest-card">
           <div class="meta">
-            <span class="pill ${labelClass[item.category] || 'concept'}">${String(index + 1).padStart(2, '0')} / ${item.category}</span>
-            <span class="status">${item.status}</span>
+            <span class="pill ${labelClass[item.category] || 'concept'}">${String(index + 1).padStart(2, '0')} / ${escapeHtml(item.category)}</span>
+            <span class="status">${escapeHtml(item.status)}</span>
           </div>
-          <h3>${item.title}</h3>
-          <p>${item.summary}</p>
+          <h3>${cardTitle(item)}</h3>
+          <p>${escapeHtml(item.summary)}</p>
           <div class="scoreboard" aria-label="Signal and hype scores">
             <span>Signal <strong>${scoreFor(item, 'signal_score', 80)}</strong></span>
             <span>Hype <strong>${scoreFor(item, 'hype_score', 25)}</strong></span>
           </div>
-          <p><strong>Why it matters:</strong> ${item.why_it_matters}</p>
-          <p class="try-this"><strong>Try this:</strong> ${item.try_this}</p>
+          <p><strong>Why it matters:</strong> ${escapeHtml(item.why_it_matters)}</p>
+          <p class="source-line"><strong>Source:</strong> <a href="${escapeAttr(item.source_url)}">${escapeHtml(item.source_label)}</a> · confidence: ${escapeHtml(item.confidence)}</p>
+          <p class="try-this"><strong>Try this:</strong> ${escapeHtml(item.try_this)}</p>
         </article>
       `
     )
