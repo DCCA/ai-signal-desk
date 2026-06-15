@@ -1,15 +1,19 @@
 {
   "publication": "AI Signal Desk",
   "tagline": "AI signal, not AI noise.",
-  "updated": "2026-06-14",
+  "updated": "2026-06-15",
   "items": [
     {
       "title": "Agent loops",
       "category": "concept",
       "summary": "The basic pattern behind autonomous agents: observe context, choose an action, use tools, inspect results, and iterate toward a goal.",
-      "why_it_matters": "Understanding the loop helps readers judge what agent products can actually do and where they fail.",
+      "why_it_matters": "Understanding the loop helps readers judge what agent products can actually do, where they fail, and where review gates belong.",
       "try_this": "Map one repetitive workflow into: input, tools, success criteria, review step.",
       "status": "learn",
+      "confidence": "high",
+      "source_label": "Anthropic — Building effective agents",
+      "source_url": "https://www.anthropic.com/research/building-effective-agents",
+      "post_url": "posts/agent-loops.html",
       "signal_score": 92,
       "hype_score": 18
     },
@@ -20,6 +24,10 @@
       "why_it_matters": "Most useful AI systems improve more from better context than from switching models.",
       "try_this": "Write a one-page operating brief for a recurring task and reuse it as a prompt template.",
       "status": "learn",
+      "confidence": "high",
+      "source_label": "LangChain — Context Engineering",
+      "source_url": "https://www.langchain.com/blog/context-engineering-for-agents",
+      "post_url": "posts/context-engineering.html",
       "signal_score": 88,
       "hype_score": 22
     },
@@ -30,6 +38,9 @@
       "why_it_matters": "As agent workflows become parallel, operators need visibility into which agents are blocked, running, or done.",
       "try_this": "Create one workspace with an agent pane, test pane, git status pane, and dev server pane.",
       "status": "try",
+      "confidence": "low",
+      "source_label": "Reader/product suggestion queue",
+      "source_url": "mailto:signals@aisignaldesk.example",
       "signal_score": 81,
       "hype_score": 29
     },
@@ -40,6 +51,9 @@
       "why_it_matters": "It turns passive AI chat into a persistent personal knowledge and execution system.",
       "try_this": "Capture one article into a note with summary, next actions, tags, and source link.",
       "status": "try",
+      "confidence": "medium",
+      "source_label": "Internal Hermes workflow note",
+      "source_url": "mailto:signals@aisignaldesk.example",
       "signal_score": 86,
       "hype_score": 14
     },
@@ -50,6 +64,10 @@
       "why_it_matters": "AI products need repeatable quality gates before they can be trusted in recurring workflows.",
       "try_this": "Create three sample inputs and assert the exact output sections your workflow must produce.",
       "status": "watch",
+      "confidence": "medium",
+      "source_label": "Founder Collective — Eval-Driven Development",
+      "source_url": "https://foundercollective.com/blog/eval-driven-development",
+      "post_url": "posts/lightweight-eval-harnesses.html",
       "signal_score": 90,
       "hype_score": 16
     },
@@ -60,6 +78,9 @@
       "why_it_matters": "MCP can turn AI agents from chat interfaces into operators across real systems.",
       "try_this": "List one data source or internal tool you would want an agent to query safely.",
       "status": "watch",
+      "confidence": "high",
+      "source_label": "Model Context Protocol",
+      "source_url": "https://modelcontextprotocol.io/",
       "signal_score": 84,
       "hype_score": 40
     }

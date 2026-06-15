@@ -5,7 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="AI Signal Desk is a weekly field brief for concepts, products, repos, and workflows worth understanding."
+      content="AI Signal Desk is a free weekly field brief that filters the AI firehose into practical concepts, products, repos, and workflows worth learning, trying, watching, or ignoring."
+    />
+    <link rel="canonical" href="https://ai-signal-desk.pages.dev/" />
+    <meta property="og:title" content="AI Signal Desk — AI signal, not AI noise" />
+    <meta
+      property="og:description"
+      content="A free weekly field brief for practical AI operators: what changed, why it matters, and what to try next."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ai-signal-desk.pages.dev/" />
+    <meta property="og:image" content="https://ai-signal-desk.pages.dev/assets/brand-mark.svg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="AI Signal Desk — AI signal, not AI noise" />
+    <meta
+      name="twitter:description"
+      content="Practical AI signal reports for builders and curious operators."
     />
     <title>AI Signal Desk — AI signal, not AI noise</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -30,9 +45,10 @@
         <a href="#repos">Repos</a>
         <a href="#workflows">Workflows</a>
         <a href="#weekly">Weekly</a>
+        <a href="about.html">About</a>
         <a href="brand.html">Brand</a>
       </nav>
-      <a class="header-cta" href="#newsletter">Get the field brief</a>
+      <a class="header-cta" href="#newsletter">Join the free beta</a>
     </header>
 
     <main id="top">
@@ -46,9 +62,10 @@
             trying, or watching.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#digest">Scan today’s signals</a>
-            <a class="button secondary" href="#weekly">See the brief format</a>
+            <a class="button primary" href="#newsletter">Join the free beta</a>
+            <a class="button secondary" href="#digest">Scan today’s signals</a>
           </div>
+          <p class="trust-note">One practical brief per week. No launch spam. Unsubscribe anytime.</p>
         </div>
 
         <aside class="signal-console" aria-label="AI Signal Desk console preview">
@@ -129,6 +146,7 @@
           <li><strong>1 concept to learn</strong><span>Explained with examples and adjacent tools.</span></li>
           <li><strong>1 thing to ignore</strong><span>The hype filter is part of the product.</span></li>
         </ol>
+        <a class="button secondary" href="weekly.html">Read Issue 001</a>
       </section>
 
       <section class="section" id="digest">
@@ -158,13 +176,12 @@
             and what to do next — not just what launched.
           </p>
         </div>
-        <form class="signup" aria-label="Newsletter signup demo">
-          <label for="email">Email</label>
+        <form class="signup" aria-label="Free beta waitlist" data-waitlist-link="mailto:signals@aisignaldesk.example?subject=Join%20AI%20Signal%20Desk%20beta">
+          <p class="signup-label">Free beta waitlist</p>
           <div class="signup-row">
-            <input id="email" type="email" placeholder="you@example.com" />
-            <button type="button">Request access</button>
+            <a class="button primary" href="mailto:signals@aisignaldesk.example?subject=Join%20AI%20Signal%20Desk%20beta&body=Please%20add%20me%20to%20the%20AI%20Signal%20Desk%20free%20beta.%0A%0AI'm%20interested%20in:%20">Join the free beta</a>
           </div>
-          <small>Demo form for MVP positioning. Connect a newsletter provider later.</small>
+          <small id="signup-note">One practical brief per week. Free while testing. Uses email capture now; switch to the Tally option in `docs/launch-config.md` after beta demand is proven.</small>
         </form>
       </section>
     </main>
@@ -172,6 +189,9 @@
     <footer class="footer">
       <span>AI Signal Desk</span>
       <span>Signal reports for the AI firehose.</span>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
     </footer>
 
     <script src="app.js"></script>
