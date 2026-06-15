@@ -61,7 +61,7 @@
       <section class="hero field-brief">
         <div class="hero-copy-block">
           <p class="eyebrow">Issue 001 / Field Brief</p>
-          <h1>AI signal, not AI noise.</h1>
+          <h1 data-tagline>AI signal, not AI noise.</h1>
           <p class="hero-copy">
             A weekly field brief for builders and curious operators tracking
             the AI concepts, products, repos, and workflows worth learning,
@@ -158,13 +158,14 @@
           <p class="eyebrow">Signal reports</p>
           <h2>Today’s classified signal cards</h2>
           <p>Each card says what it is, why it matters, and whether to learn, try, watch, or ignore.</p>
+          <p class="updated" data-updated hidden></p>
         </div>
         <div class="filters" aria-label="Digest filters">
-          <button class="filter active" data-filter="all">All</button>
-          <button class="filter" data-filter="concept">Concepts</button>
-          <button class="filter" data-filter="product">Products</button>
-          <button class="filter" data-filter="repo">Repos</button>
-          <button class="filter" data-filter="workflow">Workflows</button>
+          <button class="filter active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" data-filter="concept" aria-pressed="false">Concepts</button>
+          <button class="filter" data-filter="product" aria-pressed="false">Products</button>
+          <button class="filter" data-filter="repo" aria-pressed="false">Repos</button>
+          <button class="filter" data-filter="workflow" aria-pressed="false">Workflows</button>
         </div>
         <div class="digest-grid" data-digest-grid>
           <noscript>Enable JavaScript to render digest cards.</noscript>

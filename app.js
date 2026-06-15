@@ -56,11 +56,24 @@ function renderCards(filter = 'all') {
     .join('');
 }
 
+function applyMeta(data) {
+  const tagline = document.querySelector('[data-tagline]');
+  if (tagline && data.tagline) {
+    tagline.textContent = data.tagline;
+  }
+  const updated = document.querySelector('[data-updated]');
+  if (updated && data.updated) {
+    updated.textContent = `Updated ${data.updated}`;
+    updated.hidden = false;
+  }
+}
+
 async function loadDigest() {
   try {
     const response = await fetch('content/digest.json');
     const data = await response.json();
     items = data.items || [];
+    applyMeta(data);
     renderCards();
   } catch (error) {
     grid.innerHTML = '<p class="digest-card">Could not load digest cards locally. Run a static server from the repo root.</p>';
@@ -69,8 +82,12 @@ async function loadDigest() {
 
 filters.forEach((button) => {
   button.addEventListener('click', () => {
-    filters.forEach((candidate) => candidate.classList.remove('active'));
+    filters.forEach((candidate) => {
+      candidate.classList.remove('active');
+      candidate.setAttribute('aria-pressed', 'false');
+    });
     button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
     renderCards(button.dataset.filter);
   });
 });

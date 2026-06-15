@@ -317,6 +317,14 @@ meter { width: 56%; height: 10px; accent-color: var(--cyan); }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
+.updated {
+  margin-top: 10px;
+  color: var(--muted, #8a93a6);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
 .digest-card { padding: 22px; }
 .digest-card .meta { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
 .digest-card .status {
