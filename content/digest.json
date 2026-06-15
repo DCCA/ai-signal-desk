@@ -62,6 +62,16 @@
       "status": "watch",
       "signal_score": 84,
       "hype_score": 40
+    },
+    {
+      "title": "AGI countdown takes",
+      "category": "concept",
+      "summary": "Viral threads claiming a specific date for human-level AI, usually extrapolating one benchmark jump into a civilizational timeline.",
+      "why_it_matters": "Timeline theater drives clicks but rarely changes what a builder should do this week; it crowds out concrete, testable signal.",
+      "try_this": "When you see a countdown claim, ask what decision it would change for you. If none, skip it.",
+      "status": "ignore",
+      "signal_score": 28,
+      "hype_score": 94
     }
   ]
 }
