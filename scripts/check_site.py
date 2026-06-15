@@ -10,6 +10,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = [
     "index.html",
+    "about.html",
+    "privacy.html",
+    "contact.html",
     "brand.html",
     "logo-exploration.html",
     "styles.css",
@@ -17,7 +20,11 @@ REQUIRED_FILES = [
     "content/digest.json",
     "docs/product-brief.md",
     "docs/brand-foundation.md",
+    "docs/launch-readiness-plan.md",
+    "docs/launch-config.md",
     "DESIGN.md",
+    "robots.txt",
+    "sitemap.xml",
     "assets/brand-mark.svg",
     "favicon.svg",
     "assets/logo-radar-monogram.svg",
@@ -34,6 +41,20 @@ REQUIRED_CONTENT_CATEGORIES = {"concept", "product", "repo", "workflow"}
 REQUIRED_HERO_PHRASES = [
     "AI signal, not AI noise",
     "weekly field brief",
+]
+REQUIRED_META_MARKERS = [
+    'property="og:title"',
+    'property="og:description"',
+    'property="og:type"',
+    'property="og:image"',
+    'name="twitter:card"',
+    'rel="canonical"',
+]
+REQUIRED_TRUST_LINKS = ["about.html", "privacy.html", "contact.html"]
+REQUIRED_WAITLIST_MARKERS = [
+    "Join the free beta",
+    "data-waitlist-link",
+    "One practical brief per week",
 ]
 
 REQUIRED_IDENTITY_MARKERS = [
@@ -57,14 +78,47 @@ def assert_homepage_contract() -> None:
     html = read("index.html")
     for phrase in REQUIRED_HERO_PHRASES:
         assert phrase in html, f"Homepage missing hero phrase: {phrase}"
+    for marker in REQUIRED_META_MARKERS:
+        assert marker in html, f"Homepage missing launch metadata marker: {marker}"
+    for marker in REQUIRED_WAITLIST_MARKERS:
+        assert marker in html, f"Homepage missing waitlist marker: {marker}"
+    assert "Newsletter signup demo" not in html, "Homepage should not contain demo-only signup form copy"
     for marker in REQUIRED_IDENTITY_MARKERS:
         assert marker in html, f"Homepage missing unique identity marker: {marker}"
     for target in REQUIRED_NAV_TARGETS:
         assert f'href="{target}"' in html, f"Navigation missing target {target}"
+    for target in REQUIRED_TRUST_LINKS:
+        assert f'href="{target}"' in html, f"Homepage missing trust link {target}"
     for section in ["concepts", "products", "repos", "workflows", "weekly"]:
         assert f'id="{section}"' in html, f"Homepage missing #{section} section"
     assert "digest-grid" in html, "Homepage should render digest cards"
     assert "newsletter" in html.lower(), "Homepage should include a newsletter/conversion section"
+
+
+def assert_launch_trust_pages() -> None:
+    page_requirements = {
+        "about.html": ["Editorial standard", "What gets ignored", "human review"],
+        "privacy.html": ["email address", "unsubscribe", "no selling"],
+        "contact.html": ["Contact", "dcca.hermes@gmail.com", "signals"],
+    }
+    for page_path, markers in page_requirements.items():
+        page = read(page_path)
+        assert 'href="styles.css"' in page, f"Trust page missing stylesheet: {page_path}"
+        assert 'src="assets/brand-mark.svg"' in page, f"Trust page missing brand mark: {page_path}"
+        for marker in markers:
+            assert marker.lower() in page.lower(), f"{page_path} missing marker: {marker}"
+
+
+def assert_launch_config_contract() -> None:
+    config = read("docs/launch-config.md")
+    for marker in ["Free beta", "Tally", "Cloudflare Pages", "Waitlist URL"]:
+        assert marker in config, f"Launch config missing marker: {marker}"
+    robots = read("robots.txt")
+    assert "User-agent: *" in robots, "robots.txt missing user-agent rule"
+    assert "Sitemap:" in robots, "robots.txt should point to sitemap"
+    sitemap = read("sitemap.xml")
+    for page in ["index.html", "about.html", "privacy.html", "contact.html"]:
+        assert page in sitemap, f"sitemap.xml missing page: {page}"
 
 
 def assert_content_contract() -> None:
@@ -146,6 +200,8 @@ def assert_logo_exploration_contract() -> None:
 def main() -> None:
     assert_required_files()
     assert_homepage_contract()
+    assert_launch_trust_pages()
+    assert_launch_config_contract()
     assert_content_contract()
     assert_css_quality_bar()
     assert_product_brief_contract()
