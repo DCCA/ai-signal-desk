@@ -9,30 +9,49 @@ const labelClass = {
   workflow: 'workflow',
 };
 
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[char]));
+}
+
 function scoreFor(item, key, fallback) {
   return item[key] || fallback;
 }
 
 function renderCards(filter = 'all') {
   const visible = filter === 'all' ? items : items.filter((item) => item.category === filter);
+  if (!visible.length) {
+    grid.innerHTML = '<p class="digest-card">No signals in this category yet.</p>';
+    return;
+  }
   grid.innerHTML = visible
     .map(
-      (item, index) => `
+      (item) => {
+        // Number from the item's position in the full list so the index stays
+        // stable when filters change.
+        const number = items.indexOf(item) + 1;
+        return `
         <article class="digest-card">
           <div class="meta">
-            <span class="pill ${labelClass[item.category] || 'concept'}">${String(index + 1).padStart(2, '0')} / ${item.category}</span>
-            <span class="status">${item.status}</span>
+            <span class="pill ${labelClass[item.category] || 'concept'}">${String(number).padStart(2, '0')} / ${escapeHtml(item.category)}</span>
+            <span class="status">${escapeHtml(item.status)}</span>
           </div>
-          <h3>${item.title}</h3>
-          <p>${item.summary}</p>
+          <h3>${escapeHtml(item.title)}</h3>
+          <p>${escapeHtml(item.summary)}</p>
           <div class="scoreboard" aria-label="Signal and hype scores">
-            <span>Signal <strong>${scoreFor(item, 'signal_score', 80)}</strong></span>
-            <span>Hype <strong>${scoreFor(item, 'hype_score', 25)}</strong></span>
+            <span>Signal <strong>${escapeHtml(scoreFor(item, 'signal_score', 80))}</strong></span>
+            <span>Hype <strong>${escapeHtml(scoreFor(item, 'hype_score', 25))}</strong></span>
           </div>
-          <p><strong>Why it matters:</strong> ${item.why_it_matters}</p>
-          <p class="try-this"><strong>Try this:</strong> ${item.try_this}</p>
+          <p><strong>Why it matters:</strong> ${escapeHtml(item.why_it_matters)}</p>
+          <p class="try-this"><strong>Try this:</strong> ${escapeHtml(item.try_this)}</p>
         </article>
-      `
+      `;
+      }
     )
     .join('');
 }
