@@ -20,8 +20,15 @@ REQUIRED_FILES = [
 REQUIRED_NAV_TARGETS = ["#concepts", "#products", "#repos", "#workflows", "#weekly"]
 REQUIRED_CONTENT_CATEGORIES = {"concept", "product", "repo", "workflow"}
 REQUIRED_HERO_PHRASES = [
-    "Stay current on AI without drowning in hype",
-    "concepts, products, repos, and workflows",
+    "AI signal, not AI noise",
+    "weekly field brief",
+]
+
+REQUIRED_IDENTITY_MARKERS = [
+    "signal-console",
+    "radar-panel",
+    "hype-filter",
+    "field-brief",
 ]
 
 
@@ -38,6 +45,8 @@ def assert_homepage_contract() -> None:
     html = read("index.html")
     for phrase in REQUIRED_HERO_PHRASES:
         assert phrase in html, f"Homepage missing hero phrase: {phrase}"
+    for marker in REQUIRED_IDENTITY_MARKERS:
+        assert marker in html, f"Homepage missing unique identity marker: {marker}"
     for target in REQUIRED_NAV_TARGETS:
         assert f'href="{target}"' in html, f"Navigation missing target {target}"
     for section in ["concepts", "products", "repos", "workflows", "weekly"]:
@@ -64,7 +73,7 @@ def assert_css_quality_bar() -> None:
     css = read("styles.css")
     for token in ["--ink", "--muted", "--card-shadow", "font-family", "@media"]:
         assert token in css, f"CSS missing expected design token/pattern: {token}"
-    assert len(re.findall(r"\.card", css)) >= 1, "CSS should define card styling"
+    assert len(re.findall(r"\.(digest-card|pillar-card|signal-console)", css)) >= 3, "CSS should define distinct signal-desk card styling"
 
 
 def assert_product_brief_contract() -> None:

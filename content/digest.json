@@ -1,6 +1,6 @@
 {
   "publication": "AI Signal Desk",
-  "tagline": "Practical AI updates for people who want signal over hype.",
+  "tagline": "AI signal, not AI noise.",
   "updated": "2026-06-14",
   "items": [
     {
@@ -9,7 +9,9 @@
       "summary": "The basic pattern behind autonomous agents: observe context, choose an action, use tools, inspect results, and iterate toward a goal.",
       "why_it_matters": "Understanding the loop helps readers judge what agent products can actually do and where they fail.",
       "try_this": "Map one repetitive workflow into: input, tools, success criteria, review step.",
-      "status": "learn"
+      "status": "learn",
+      "signal_score": 92,
+      "hype_score": 18
     },
     {
       "title": "Context engineering",
@@ -17,7 +19,9 @@
       "summary": "Designing the right instructions, memory, examples, and tool outputs around an AI model so it behaves reliably.",
       "why_it_matters": "Most useful AI systems improve more from better context than from switching models.",
       "try_this": "Write a one-page operating brief for a recurring task and reuse it as a prompt template.",
-      "status": "learn"
+      "status": "learn",
+      "signal_score": 88,
+      "hype_score": 22
     },
     {
       "title": "Herdr",
@@ -25,7 +29,9 @@
       "summary": "An agent-aware terminal multiplexer for running multiple AI coding agents, shells, and long-running jobs in one workspace.",
       "why_it_matters": "As agent workflows become parallel, operators need visibility into which agents are blocked, running, or done.",
       "try_this": "Create one workspace with an agent pane, test pane, git status pane, and dev server pane.",
-      "status": "try"
+      "status": "try",
+      "signal_score": 81,
+      "hype_score": 29
     },
     {
       "title": "Hermes + Obsidian personal OS",
@@ -33,7 +39,9 @@
       "summary": "A workflow where Telegram captures links/tasks, Hermes processes them, and Obsidian stores durable notes and project records.",
       "why_it_matters": "It turns passive AI chat into a persistent personal knowledge and execution system.",
       "try_this": "Capture one article into a note with summary, next actions, tags, and source link.",
-      "status": "try"
+      "status": "try",
+      "signal_score": 86,
+      "hype_score": 14
     },
     {
       "title": "Lightweight eval harnesses",
@@ -41,7 +49,9 @@
       "summary": "Small deterministic test suites that validate AI workflows using fixtures and artifact checks instead of vibe checks.",
       "why_it_matters": "AI products need repeatable quality gates before they can be trusted in recurring workflows.",
       "try_this": "Create three sample inputs and assert the exact output sections your workflow must produce.",
-      "status": "watch"
+      "status": "watch",
+      "signal_score": 90,
+      "hype_score": 16
     },
     {
       "title": "MCP servers",
@@ -49,7 +59,9 @@
       "summary": "A standard pattern for exposing tools and data sources to AI agents through structured interfaces.",
       "why_it_matters": "MCP can turn AI agents from chat interfaces into operators across real systems.",
       "try_this": "List one data source or internal tool you would want an agent to query safely.",
-      "status": "watch"
+      "status": "watch",
+      "signal_score": 84,
+      "hype_score": 40
     }
   ]
 }

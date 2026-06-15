@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="AI Signal Desk is a practical AI digest for concepts, products, repos, and workflows worth understanding."
+      content="AI Signal Desk is a weekly field brief for concepts, products, repos, and workflows worth understanding."
     />
-    <title>AI Signal Desk — Practical AI updates</title>
+    <title>AI Signal Desk — AI signal, not AI noise</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="scanline" aria-hidden="true"></div>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="AI Signal Desk home">
-        <span class="brand-mark">◆</span>
+        <span class="brand-mark">ASD</span>
         <span>AI Signal Desk</span>
       </a>
       <nav aria-label="Primary navigation">
@@ -29,72 +30,110 @@
         <a href="#workflows">Workflows</a>
         <a href="#weekly">Weekly</a>
       </nav>
-      <a class="header-cta" href="#newsletter">Join the brief</a>
+      <a class="header-cta" href="#newsletter">Get the field brief</a>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <p class="eyebrow">Signal over hype</p>
-        <h1>Stay current on AI without drowning in hype.</h1>
-        <p class="hero-copy">
-          A practical digest for people who want to understand the AI
-          concepts, products, repos, and workflows worth learning, trying,
-          or watching.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#weekly">Read the weekly brief</a>
-          <a class="button secondary" href="#digest">Explore today’s signal</a>
+      <section class="hero field-brief">
+        <div class="hero-copy-block">
+          <p class="eyebrow">Issue 001 / Field Brief</p>
+          <h1>AI signal, not AI noise.</h1>
+          <p class="hero-copy">
+            A weekly field brief for builders and curious operators tracking
+            the AI concepts, products, repos, and workflows worth learning,
+            trying, or watching.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#digest">Scan today’s signals</a>
+            <a class="button secondary" href="#weekly">See the brief format</a>
+          </div>
         </div>
-        <div class="signal-strip" aria-label="Editorial promise">
-          <span>What changed?</span>
-          <span>Why it matters</span>
-          <span>What to try next</span>
+
+        <aside class="signal-console" aria-label="AI Signal Desk console preview">
+          <div class="console-topbar">
+            <span></span><span></span><span></span>
+            <strong>/weekly-brief</strong>
+          </div>
+          <div class="console-feed">
+            <p><span>&gt;</span> scanning concepts, products, repos, workflows...</p>
+            <p><span>&gt;</span> 6 signals found / 2 worth trying / 1 hype item filtered</p>
+            <p><span>&gt;</span> status: publishable after human review</p>
+          </div>
+          <div class="hype-filter" aria-label="Signal versus hype meter">
+            <div><span>Signal</span><meter min="0" max="100" value="86">86%</meter></div>
+            <div><span>Hype</span><meter min="0" max="100" value="24">24%</meter></div>
+            <div><span>Action</span><strong>TRY / WATCH</strong></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="radar-section section">
+        <div class="radar-panel" aria-label="AI signal radar visualization">
+          <div class="radar-ring ring-one"></div>
+          <div class="radar-ring ring-two"></div>
+          <div class="radar-ring ring-three"></div>
+          <div class="radar-sweep"></div>
+          <span class="dot concept-dot">Concept</span>
+          <span class="dot product-dot">Product</span>
+          <span class="dot repo-dot">Repo</span>
+          <span class="dot workflow-dot">Workflow</span>
+        </div>
+        <div class="radar-copy">
+          <p class="eyebrow">Editorial operating system</p>
+          <h2>Every update is classified by usefulness, not volume.</h2>
+          <p>
+            Each signal gets a category, a practical explanation, and a next
+            action. The product is less newsletter, more calm intelligence desk
+            for the AI firehose.
+          </p>
         </div>
       </section>
 
       <section class="section intro-grid" aria-label="Content pillars">
-        <article class="card compact" id="concepts">
-          <span class="pill blue">Concepts</span>
+        <article class="pillar-card" id="concepts">
+          <span class="index">01</span>
+          <span class="pill concept">Concept</span>
           <h2>Learn the ideas</h2>
-          <p>Plain-English explainers for agent loops, evals, MCP, RAG, and context engineering.</p>
+          <p>Agent loops, evals, MCP, RAG, and context engineering explained without jargon fog.</p>
         </article>
-        <article class="card compact" id="products">
-          <span class="pill pink">Products</span>
+        <article class="pillar-card" id="products">
+          <span class="index">02</span>
+          <span class="pill product">Product</span>
           <h2>Judge the tools</h2>
-          <p>Breakdowns of AI products by use case, strengths, weaknesses, and who should try them.</p>
+          <p>Practical tool breakdowns by use case, constraints, strengths, and failure modes.</p>
         </article>
-        <article class="card compact" id="repos">
-          <span class="pill red">Repos</span>
+        <article class="pillar-card" id="repos">
+          <span class="index">03</span>
+          <span class="pill repo">Repo</span>
           <h2>Watch the projects</h2>
-          <p>Curated open-source projects with maturity, setup friction, and practical value.</p>
+          <p>Open-source projects rated by maturity, setup friction, and why they matter.</p>
         </article>
-        <article class="card compact" id="workflows">
-          <span class="pill dark">Workflows</span>
+        <article class="pillar-card" id="workflows">
+          <span class="index">04</span>
+          <span class="pill workflow">Workflow</span>
           <h2>Copy the recipes</h2>
-          <p>Repeatable AI workflows for learning, building, reviewing, and automating personal systems.</p>
+          <p>Repeatable AI workflows for learning, building, reviewing, and personal systems.</p>
         </article>
       </section>
 
-      <section class="section split" id="weekly">
+      <section class="section weekly-panel" id="weekly">
         <div>
-          <p class="eyebrow">Weekly format</p>
-          <h2>Five useful updates. Three things to try. One concept to learn.</h2>
+          <p class="eyebrow">Weekly field brief</p>
+          <h2>Five useful updates. Three things to try. One concept to learn. One thing to ignore.</h2>
         </div>
-        <div class="weekly-card card">
-          <ol>
-            <li><strong>5 things worth knowing</strong><span>Short, curated, practical.</span></li>
-            <li><strong>3 tools or repos to try</strong><span>Only if there is a concrete use case.</span></li>
-            <li><strong>1 concept to learn</strong><span>Explained with examples.</span></li>
-            <li><strong>1 thing to ignore</strong><span>Hype filter included.</span></li>
-          </ol>
-        </div>
+        <ol class="brief-list">
+          <li><strong>5 things worth knowing</strong><span>Curated for practical relevance, not trend velocity.</span></li>
+          <li><strong>3 tools or repos to try</strong><span>Only when there is a concrete use case.</span></li>
+          <li><strong>1 concept to learn</strong><span>Explained with examples and adjacent tools.</span></li>
+          <li><strong>1 thing to ignore</strong><span>The hype filter is part of the product.</span></li>
+        </ol>
       </section>
 
       <section class="section" id="digest">
         <div class="section-heading">
-          <p class="eyebrow">Seeded MVP</p>
-          <h2>Today’s signal cards</h2>
-          <p>Each card gives readers a simple action: learn, try, watch, or ignore.</p>
+          <p class="eyebrow">Signal reports</p>
+          <h2>Today’s classified signal cards</h2>
+          <p>Each card says what it is, why it matters, and whether to learn, try, watch, or ignore.</p>
         </div>
         <div class="filters" aria-label="Digest filters">
           <button class="filter active" data-filter="all">All</button>
@@ -108,20 +147,20 @@
         </div>
       </section>
 
-      <section class="section newsletter card" id="newsletter">
+      <section class="section newsletter" id="newsletter">
         <div>
-          <p class="eyebrow">Early access</p>
-          <h2>Join the practical AI brief.</h2>
+          <p class="eyebrow">Briefing access</p>
+          <h2>Get the weekly field brief.</h2>
           <p>
-            A weekly digest for people who want to understand what matters and
-            what to do next — not just what launched.
+            Practical AI updates for people who want to understand what matters
+            and what to do next — not just what launched.
           </p>
         </div>
         <form class="signup" aria-label="Newsletter signup demo">
           <label for="email">Email</label>
           <div class="signup-row">
             <input id="email" type="email" placeholder="you@example.com" />
-            <button type="button">Notify me</button>
+            <button type="button">Request access</button>
           </div>
           <small>Demo form for MVP positioning. Connect a newsletter provider later.</small>
         </form>
@@ -130,7 +169,7 @@
 
     <footer class="footer">
       <span>AI Signal Desk</span>
-      <span>Practical AI updates for builders and curious operators.</span>
+      <span>Signal reports for the AI firehose.</span>
     </footer>
 
     <script src="app.js"></script>
