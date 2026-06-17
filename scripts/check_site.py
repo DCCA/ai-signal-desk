@@ -256,7 +256,7 @@ def assert_seo_contract() -> None:
 def assert_digest_filter_contract() -> None:
     html = read("index.html")
     # Every filter button must expose its pressed state to assistive tech.
-    buttons = re.findall(r'<button class="filter[^"]*"[^>]*>', html)
+    buttons = re.findall(r'<button class="filter[^\"]*"[^>]*>', html)
     assert buttons, "Homepage must render digest filter buttons"
     for button in buttons:
         assert "aria-pressed" in button, f"Filter button missing aria-pressed: {button}"
@@ -283,6 +283,28 @@ def assert_internal_anchors() -> None:
         targets = set(re.findall(r'href="#([\w-]+)"', html))
         broken = sorted(target for target in targets if target not in ids)
         assert not broken, f"{page} has in-page links with no matching id: {broken}"
+
+
+def assert_taste_skill_quality_bar() -> None:
+    """Guard against the most visible AI-slop patterns on rendered pages."""
+    html = read("index.html")
+    css = read("styles.css")
+    app = read("app.js")
+    content = read("content/digest.json")
+    html_pages = [path for path in ROOT.rglob("*.html")]
+    for forbidden in ["—", "–"]:
+        offenders = [str(path.relative_to(ROOT)) for path in html_pages if forbidden in path.read_text(encoding="utf-8")]
+        assert not offenders, f"HTML pages should not ship visible dash tell {forbidden}: {offenders}"
+        assert forbidden not in content, f"Digest content should not render visible dash tell: {forbidden}"
+    assert " · " not in app, "Rendered digest cards should not use middle-dot separator as a default"
+    inter_pages = [str(path.relative_to(ROOT)) for path in html_pages if "family=Inter" in path.read_text(encoding="utf-8")]
+    assert not inter_pages, f"HTML pages should not default to Inter after Taste Skill pass: {inter_pages}"
+    assert "font-family: Inter" not in css, "CSS should not default to Inter after Taste Skill pass"
+    hero_top_padding = re.search(r"\.hero\s*\{[^}]*padding-top:\s*(\d+)px", css, re.S)
+    assert hero_top_padding, "CSS should define explicit hero top padding"
+    assert int(hero_top_padding.group(1)) <= 96, "Hero top padding should stay within Taste Skill viewport cap"
+    assert "trust-note" not in html, "Hero should not include extra tagline/trust note below CTAs"
+
 
 
 def assert_product_brief_contract() -> None:
@@ -355,6 +377,7 @@ def main() -> None:
     assert_digest_filter_contract()
     assert_render_safety()
     assert_internal_anchors()
+    assert_taste_skill_quality_bar()
     assert_product_brief_contract()
     assert_brand_contract()
     assert_logo_exploration_contract()
