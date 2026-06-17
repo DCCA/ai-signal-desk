@@ -29,7 +29,7 @@ function cardTitle(item) {
 
 function sourceLine(item) {
   if (!item.source_url) return '';
-  return `<p class="source-line"><strong>Source:</strong> <a href="${escapeAttr(item.source_url)}">${escapeHtml(item.source_label)}</a> · confidence: ${escapeHtml(item.confidence)}</p>`;
+  return `<p class="source-line"><strong>Source:</strong> <a href="${escapeAttr(item.source_url)}">${escapeHtml(item.source_label)}</a> - confidence: ${escapeHtml(item.confidence)}</p>`;
 }
 
 function scoreFor(item, key, fallback) {
