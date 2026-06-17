@@ -16,6 +16,11 @@ It is designed to become a public website/newsletter where each AI update answer
 ## MVP contents
 
 - `index.html` — static landing page and digest UI
+- `about.html` — editorial standard and trust page
+- `privacy.html` — free beta email/privacy expectations
+- `contact.html` — contact route for signals and feedback
+- `weekly.html` — Issue 001 weekly field brief
+- `posts/` — launch sample signal reports
 - `brand.html` — brand-system preview page
 - `logo-exploration.html` — comparison board for six SVG logo directions
 - `styles.css` — dark editorial Signal Desk visual system
@@ -23,6 +28,12 @@ It is designed to become a public website/newsletter where each AI update answer
 - `content/digest.json` — seeded MVP content
 - `docs/product-brief.md` — product direction and editorial rules
 - `docs/brand-foundation.md` — positioning, voice, taxonomy, tagline, and copy rules
+- `docs/launch-readiness-plan.md` — free beta launch plan, validation path, and launch checklist
+- `docs/launch-config.md` — free hosting, waitlist, and beta validation configuration notes
+- `docs/editorial-workflow.md` — Hermes-assisted draft-to-publish workflow
+- `docs/signal-card-schema.md` — required fields for draft and published signal cards
+- `docs/launch-checklist.md` — beta sharing checklist
+- `robots.txt` / `sitemap.xml` — launch metadata for crawlers and sharing checks
 - `DESIGN.md` — formal design-token/spec file for future agents and UI work
 - `assets/brand-mark.svg` — selected Option F minimal ASD brand mark
 - `favicon.svg` — site favicon using the selected Option F mark
