@@ -9,10 +9,6 @@ const labelClass = {
   workflow: 'workflow',
 };
 
-function scoreFor(item, key, fallback) {
-  return item[key] || fallback;
-}
-
 function escapeHtml(value) {
   return String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -31,29 +27,57 @@ function cardTitle(item) {
   return item.post_url ? `<a href="${escapeAttr(item.post_url)}">${title}</a>` : title;
 }
 
+function sourceLine(item) {
+  if (!item.source_url) return '';
+  return `<p class="source-line"><strong>Source:</strong> <a href="${escapeAttr(item.source_url)}">${escapeHtml(item.source_label)}</a> · confidence: ${escapeHtml(item.confidence)}</p>`;
+}
+
+function scoreFor(item, key, fallback) {
+  return item[key] || fallback;
+}
+
 function renderCards(filter = 'all') {
   const visible = filter === 'all' ? items : items.filter((item) => item.category === filter);
+  if (!visible.length) {
+    grid.innerHTML = '<p class="digest-card">No signals in this category yet.</p>';
+    return;
+  }
   grid.innerHTML = visible
-    .map(
-      (item, index) => `
+    .map((item) => {
+      // Number from the item's position in the full list so the index stays
+      // stable when filters change.
+      const number = items.indexOf(item) + 1;
+      return `
         <article class="digest-card">
           <div class="meta">
-            <span class="pill ${labelClass[item.category] || 'concept'}">${String(index + 1).padStart(2, '0')} / ${escapeHtml(item.category)}</span>
+            <span class="pill ${labelClass[item.category] || 'concept'}">${String(number).padStart(2, '0')} / ${escapeHtml(item.category)}</span>
             <span class="status">${escapeHtml(item.status)}</span>
           </div>
           <h3>${cardTitle(item)}</h3>
           <p>${escapeHtml(item.summary)}</p>
           <div class="scoreboard" aria-label="Signal and hype scores">
-            <span>Signal <strong>${scoreFor(item, 'signal_score', 80)}</strong></span>
-            <span>Hype <strong>${scoreFor(item, 'hype_score', 25)}</strong></span>
+            <span>Signal <strong>${escapeHtml(scoreFor(item, 'signal_score', 80))}</strong></span>
+            <span>Hype <strong>${escapeHtml(scoreFor(item, 'hype_score', 25))}</strong></span>
           </div>
           <p><strong>Why it matters:</strong> ${escapeHtml(item.why_it_matters)}</p>
-          <p class="source-line"><strong>Source:</strong> <a href="${escapeAttr(item.source_url)}">${escapeHtml(item.source_label)}</a> · confidence: ${escapeHtml(item.confidence)}</p>
+          ${sourceLine(item)}
           <p class="try-this"><strong>Try this:</strong> ${escapeHtml(item.try_this)}</p>
         </article>
-      `
-    )
+      `;
+    })
     .join('');
+}
+
+function applyMeta(data) {
+  const tagline = document.querySelector('[data-tagline]');
+  if (tagline && data.tagline) {
+    tagline.textContent = data.tagline;
+  }
+  const updated = document.querySelector('[data-updated]');
+  if (updated && data.updated) {
+    updated.textContent = `Updated ${data.updated}`;
+    updated.hidden = false;
+  }
 }
 
 async function loadDigest() {
@@ -61,6 +85,7 @@ async function loadDigest() {
     const response = await fetch('content/digest.json');
     const data = await response.json();
     items = data.items || [];
+    applyMeta(data);
     renderCards();
   } catch (error) {
     grid.innerHTML = '<p class="digest-card">Could not load digest cards locally. Run a static server from the repo root.</p>';
@@ -69,8 +94,12 @@ async function loadDigest() {
 
 filters.forEach((button) => {
   button.addEventListener('click', () => {
-    filters.forEach((candidate) => candidate.classList.remove('active'));
+    filters.forEach((candidate) => {
+      candidate.classList.remove('active');
+      candidate.setAttribute('aria-pressed', 'false');
+    });
     button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
     renderCards(button.dataset.filter);
   });
 });

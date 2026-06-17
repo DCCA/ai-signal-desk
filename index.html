@@ -7,22 +7,29 @@
       name="description"
       content="AI Signal Desk is a free weekly field brief that filters the AI firehose into practical concepts, products, repos, and workflows worth learning, trying, watching, or ignoring."
     />
+    <title>AI Signal Desk — AI signal, not AI noise</title>
     <link rel="canonical" href="https://ai-signal-desk.pages.dev/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AI Signal Desk" />
     <meta property="og:title" content="AI Signal Desk — AI signal, not AI noise" />
     <meta
       property="og:description"
       content="A free weekly field brief for practical AI operators: what changed, why it matters, and what to try next."
     />
-    <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ai-signal-desk.pages.dev/" />
     <meta property="og:image" content="https://ai-signal-desk.pages.dev/assets/brand-mark.svg" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="AI Signal Desk — AI signal, not AI noise" />
     <meta
       name="twitter:description"
       content="Practical AI signal reports for builders and curious operators."
     />
-    <title>AI Signal Desk — AI signal, not AI noise</title>
+    <meta name="twitter:image" content="https://ai-signal-desk.pages.dev/assets/brand-mark.svg" />
+
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,6 +40,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#top">Skip to content</a>
     <div class="scanline" aria-hidden="true"></div>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="AI Signal Desk home">
@@ -51,11 +59,11 @@
       <a class="header-cta" href="#newsletter">Join the free beta</a>
     </header>
 
-    <main id="top">
+    <main id="top" tabindex="-1">
       <section class="hero field-brief">
         <div class="hero-copy-block">
           <p class="eyebrow">Issue 001 / Field Brief</p>
-          <h1>AI signal, not AI noise.</h1>
+          <h1 data-tagline>AI signal, not AI noise.</h1>
           <p class="hero-copy">
             A weekly field brief for builders and curious operators tracking
             the AI concepts, products, repos, and workflows worth learning,
@@ -154,13 +162,14 @@
           <p class="eyebrow">Signal reports</p>
           <h2>Today’s classified signal cards</h2>
           <p>Each card says what it is, why it matters, and whether to learn, try, watch, or ignore.</p>
+          <p class="updated" data-updated hidden></p>
         </div>
         <div class="filters" aria-label="Digest filters">
-          <button class="filter active" data-filter="all">All</button>
-          <button class="filter" data-filter="concept">Concepts</button>
-          <button class="filter" data-filter="product">Products</button>
-          <button class="filter" data-filter="repo">Repos</button>
-          <button class="filter" data-filter="workflow">Workflows</button>
+          <button class="filter active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" data-filter="concept" aria-pressed="false">Concepts</button>
+          <button class="filter" data-filter="product" aria-pressed="false">Products</button>
+          <button class="filter" data-filter="repo" aria-pressed="false">Repos</button>
+          <button class="filter" data-filter="workflow" aria-pressed="false">Workflows</button>
         </div>
         <div class="digest-grid" data-digest-grid>
           <noscript>Enable JavaScript to render digest cards.</noscript>
