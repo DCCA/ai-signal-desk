@@ -213,6 +213,78 @@ def assert_css_quality_bar() -> None:
     assert len(re.findall(r"\.(digest-card|pillar-card|signal-console)", css)) >= 3, "CSS should define distinct signal-desk card styling"
 
 
+HTML_PAGES = ["index.html", "brand.html", "logo-exploration.html"]
+
+
+def assert_accessibility_contract() -> None:
+    css = read("styles.css")
+    assert ":focus-visible" in css, "CSS must define a visible keyboard focus style"
+    assert ".skip-link" in css, "CSS must style a skip-to-content link"
+    assert "prefers-reduced-motion" in css, "CSS must respect reduced-motion users"
+    # Navigation must stay reachable on mobile, never fully hidden.
+    assert "nav { display: none; }" not in css, "Mobile nav must not be hidden entirely"
+
+    for page in HTML_PAGES:
+        html = read(page)
+        assert 'lang="en"' in html, f"{page} must declare a document language"
+        assert 'class="skip-link"' in html, f"{page} missing skip-to-content link"
+        assert "<main" in html, f"{page} missing a <main> landmark"
+        # Skip link target must resolve to a focusable main landmark.
+        match = re.search(r'class="skip-link" href="#([\w-]+)"', html)
+        assert match, f"{page} skip link must point to an in-page target"
+        target = match.group(1)
+        assert re.search(rf'<main[^>]*id="{target}"', html), (
+            f"{page} skip link target #{target} must be the <main> landmark"
+        )
+        assert re.search(r'<main[^>]*tabindex="-1"', html), (
+            f"{page} <main> must be focusable for skip-link navigation"
+        )
+
+
+def assert_seo_contract() -> None:
+    html = read("index.html")
+    for tag in [
+        'rel="canonical"',
+        'property="og:title"',
+        'property="og:description"',
+        'property="og:image"',
+        'name="twitter:card"',
+    ]:
+        assert tag in html, f"index.html missing social/SEO tag: {tag}"
+
+
+def assert_digest_filter_contract() -> None:
+    html = read("index.html")
+    # Every filter button must expose its pressed state to assistive tech.
+    buttons = re.findall(r'<button class="filter[^"]*"[^>]*>', html)
+    assert buttons, "Homepage must render digest filter buttons"
+    for button in buttons:
+        assert "aria-pressed" in button, f"Filter button missing aria-pressed: {button}"
+
+
+def assert_render_safety() -> None:
+    app = read("app.js")
+    assert "function escapeHtml" in app, "app.js must define an HTML escaper"
+    # Untrusted digest fields must be escaped, never interpolated raw, so that
+    # automated content ingestion cannot inject markup.
+    for field in ["title", "summary", "why_it_matters", "try_this", "category", "status"]:
+        assert f"${{item.{field}}}" not in app, (
+            f"app.js interpolates item.{field} without escaping"
+        )
+        assert f"escapeHtml(item.{field})" in app or f"escapeHtml(scoreFor" in app, (
+            f"app.js must escape item.{field}"
+        )
+
+
+def assert_internal_anchors() -> None:
+    for page in HTML_PAGES:
+        html = read(page)
+        ids = set(re.findall(r'id="([\w-]+)"', html))
+        targets = set(re.findall(r'href="#([\w-]+)"', html))
+        broken = sorted(target for target in targets if target not in ids)
+        assert not broken, f"{page} has in-page links with no matching id: {broken}"
+
+
 def assert_product_brief_contract() -> None:
     brief = read("docs/product-brief.md")
     for heading in ["## Target reader", "## Product promise", "## MVP scope", "## Editorial rules"]:
@@ -278,6 +350,11 @@ def main() -> None:
     assert_weekly_issue_contract()
     assert_editorial_workflow_contract()
     assert_css_quality_bar()
+    assert_accessibility_contract()
+    assert_seo_contract()
+    assert_digest_filter_contract()
+    assert_render_safety()
+    assert_internal_anchors()
     assert_product_brief_contract()
     assert_brand_contract()
     assert_logo_exploration_contract()
