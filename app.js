@@ -26,7 +26,10 @@ function escapeAttr(value) {
 // other scheme (javascript:, data:, vbscript:, ...) is rejected so that
 // automated or ingested digest content cannot inject an active-content link.
 function safeUrl(value) {
-  const url = String(value ?? '').trim();
+  // Strip control characters first: browsers remove tab/newline/CR from URLs
+  // before resolving the scheme, so "java\nscript:" would otherwise slip past
+  // the scheme checks below and execute as javascript:.
+  const url = String(value ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim();
   if (/^(https?:|mailto:)/i.test(url)) return url;
   if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return '';
   return url;
