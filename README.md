@@ -66,6 +66,46 @@ Expected output:
 OK: AI Signal Desk static MVP passes scaffold checks
 ```
 
+## Deploy (GitHub Pages)
+
+The site deploys to GitHub Pages from `main` via `.github/workflows/deploy-pages.yml`.
+It runs `scripts/check_site.py`, then uploads the repo root and publishes it.
+The site is plain static HTML/CSS/JS (a `.nojekyll` file disables Jekyll
+processing), and the custom domain is set in `CNAME`.
+
+### First-time setup
+
+1. **Settings -> Pages -> Build and deployment -> Source: GitHub Actions.**
+2. Push to `main` (or run the workflow manually from the Actions tab) to deploy.
+
+### Custom domain, DNS, and HTTPS
+
+The primary domain is `aisignaldesk.ai` (in `CNAME`). `aisignaldesk.com` is a
+redirect configured at the registrar/DNS (GitHub Pages serves only the single
+`CNAME` domain).
+
+1. **DNS for `aisignaldesk.ai`** (apex): add four A records to GitHub Pages:
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   (or an `ALIAS`/`ANAME` to `dcca.github.io`). Add a `www` CNAME to
+   `dcca.github.io` if you want `www` too.
+2. In **Settings -> Pages**, set the custom domain to `aisignaldesk.ai` and,
+   once the certificate provisions, enable **Enforce HTTPS**.
+3. Point `aisignaldesk.com` at `aisignaldesk.ai` with a registrar/DNS redirect.
+
+### Security notes
+
+- **Verify the domain** to prevent takeover: Settings -> Pages -> "Verify domain"
+  (or org-level domain verification). A verified domain cannot be claimed on any
+  other GitHub account, which protects against dangling-DNS / subdomain takeover.
+  If you ever stop using Pages, remove the DNS records first.
+- **Always enable Enforce HTTPS** once the Let's Encrypt certificate is issued.
+- **Protect the registrar account** (2FA + registrar/transfer lock). The
+  registrar is the most common hijack vector, not GitHub.
+- Workflow actions are **pinned to commit SHAs** (with version comments) for
+  supply-chain safety. When bumping a version, update both the SHA and comment.
+- The deploy publishes the **entire repo root**, so do not commit anything that
+  should not be web-accessible.
+
 ## Next steps
 
 1. Convert existing AI Daily Digest entries into three long-form sample posts.

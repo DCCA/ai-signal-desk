@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-signal-desk.pages.dev/sitemap.xml
+Sitemap: https://aisignaldesk.ai/sitemap.xml

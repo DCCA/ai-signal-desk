@@ -22,14 +22,29 @@ function escapeAttr(value) {
   return escapeHtml(value).replaceAll('`', '&#96;');
 }
 
+// Only allow http(s)/mailto absolute URLs or same-origin relative paths. Any
+// other scheme (javascript:, data:, vbscript:, ...) is rejected so that
+// automated or ingested digest content cannot inject an active-content link.
+function safeUrl(value) {
+  // Strip control characters first: browsers remove tab/newline/CR from URLs
+  // before resolving the scheme, so "java\nscript:" would otherwise slip past
+  // the scheme checks below and execute as javascript:.
+  const url = String(value ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim();
+  if (/^(https?:|mailto:)/i.test(url)) return url;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return '';
+  return url;
+}
+
 function cardTitle(item) {
   const title = escapeHtml(item.title);
-  return item.post_url ? `<a href="${escapeAttr(item.post_url)}">${title}</a>` : title;
+  const href = safeUrl(item.post_url);
+  return href ? `<a href="${escapeAttr(href)}">${title}</a>` : title;
 }
 
 function sourceLine(item) {
-  if (!item.source_url) return '';
-  return `<p class="source-line"><strong>Source:</strong> <a href="${escapeAttr(item.source_url)}">${escapeHtml(item.source_label)}</a> - confidence: ${escapeHtml(item.confidence)}</p>`;
+  const href = safeUrl(item.source_url);
+  if (!href) return '';
+  return `<p class="source-line"><strong>Source:</strong> <a href="${escapeAttr(href)}">${escapeHtml(item.source_label)}</a> - confidence: ${escapeHtml(item.confidence)}</p>`;
 }
 
 function scoreFor(item, key, fallback) {
