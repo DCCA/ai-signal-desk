@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      name="description"
+      content="The Daylight Desk brand system for AI Signal Desk: a light and dark editorial system with signal and field-brief DNA, shown as live components, color tokens, and type."
+    />
+    <title>Brand System &mdash; AI Signal Desk</title>
+    <link rel="canonical" href="https://aisignaldesk.ai/brand.html" />
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="preview.css" />
+    <script src="theme.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============ SHARED HEADER ============ -->
+    <header class="site-header">
+      <div class="header-row">
+        <a class="brand" href="index.html" aria-label="AI Signal Desk home">
+          <span class="brand-mark" aria-hidden="true">SD</span>
+          AI Signal Desk
+        </a>
+        <nav class="site-nav no-scrollbar" aria-label="Primary">
+          <a href="index.html?filter=concept">Concepts</a>
+          <a href="index.html?filter=product">Products</a>
+          <a href="index.html?filter=repo">Repos</a>
+          <a href="index.html?filter=workflow">Workflows</a>
+          <a href="weekly.html">Weekly</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+            <span data-theme-icon aria-hidden="true">&#9790;</span>
+            <span data-theme-label>Dark</span>
+          </button>
+          <a class="btn-accent" href="#newsletter">Subscribe free</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- ============ HERO ============ -->
+      <section class="preview-hero">
+        <p class="kicker">Brand System</p>
+        <h1>Visual system</h1>
+        <p class="preview-lead">
+          Daylight Desk is the light and dark editorial system for AI Signal Desk.
+          It keeps the signal and field-brief DNA, classified and scored, with a
+          calm operations-desk feel that themes correctly in both light and dark.
+        </p>
+      </section>
+
+      <div class="preview-wrap">
+        <!-- ============ COMPONENT LANGUAGE ============ -->
+        <section class="preview-section" aria-labelledby="components-h">
+          <div class="preview-head">
+            <p class="kicker">Component language</p>
+            <h2 id="components-h">Live components</h2>
+            <p>Rendered with the real production classes, not screenshots.</p>
+          </div>
+
+          <!-- Sample signal card -->
+          <article class="signal-card demo-card">
+            <div class="card-top">
+              <span class="cat-tag cat-repo"><span class="dot dot-repo"></span>Repo</span>
+              <span class="verdict verdict-watch">Watch</span>
+            </div>
+            <div>
+              <h3 class="card-title">Example classified signal</h3>
+              <p class="card-summary">
+                A signal card always explains what it is, why it matters, and what
+                to do next, then scores signal against hype.
+              </p>
+            </div>
+            <div class="bars bars-lg">
+              <div class="bar-row">
+                <span class="bar-label">Signal</span>
+                <span class="bar-track"><span class="bar-fill bar-fill-signal bar-w-84"></span></span>
+                <span class="bar-val">84</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Hype</span>
+                <span class="bar-track"><span class="bar-fill bar-fill-hype bar-w-31"></span></span>
+                <span class="bar-val">31</span>
+              </div>
+            </div>
+            <div class="card-try">
+              <p><b>Try this:</b> Save one concrete next step for the reader.</p>
+              <span class="card-cta">Read full signal</span>
+            </div>
+          </article>
+
+          <!-- Category tags -->
+          <div class="preview-head">
+            <h2 id="cats-h">Category tags</h2>
+          </div>
+          <div class="demo-row">
+            <span class="cat-tag cat-concept"><span class="dot dot-concept"></span>Concept</span>
+            <span class="cat-tag cat-product"><span class="dot dot-product"></span>Product</span>
+            <span class="cat-tag cat-repo"><span class="dot dot-repo"></span>Repo</span>
+            <span class="cat-tag cat-workflow"><span class="dot dot-workflow"></span>Workflow</span>
+          </div>
+
+          <!-- Verdict pills -->
+          <div class="preview-head">
+            <h2>Verdict pills</h2>
+          </div>
+          <div class="demo-row">
+            <span class="verdict verdict-learn">Learn</span>
+            <span class="verdict verdict-try">Try</span>
+            <span class="verdict verdict-watch">Watch</span>
+            <span class="verdict verdict-ignore">Ignore</span>
+          </div>
+
+          <!-- Filter chips -->
+          <div class="preview-head">
+            <h2>Filter chips</h2>
+          </div>
+          <div class="demo-row">
+            <span class="chips">
+              <button class="chip is-active" type="button" aria-pressed="true">All 18</button>
+              <button class="chip" type="button">Concepts</button>
+              <button class="chip" type="button">Products</button>
+              <button class="chip" type="button">Repos</button>
+            </span>
+          </div>
+
+          <!-- Accent button -->
+          <div class="preview-head">
+            <h2>Accent button</h2>
+          </div>
+          <div class="demo-row">
+            <a class="btn-accent" href="#newsletter">Subscribe free</a>
+          </div>
+        </section>
+
+        <!-- ============ COLOR TOKENS ============ -->
+        <section class="preview-section" aria-labelledby="color-h">
+          <div class="preview-head">
+            <p class="kicker">Color tokens</p>
+            <h2 id="color-h">Palette</h2>
+            <p>Each swatch reads from a CSS custom property, so the palette swaps with the theme.</p>
+          </div>
+          <div class="swatch-grid">
+            <div class="swatch-item">
+              <span class="swatch-chip sw-accent"></span>
+              <div class="swatch-meta"><span class="swatch-name">Accent</span><span class="swatch-token">--accent</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-surface"></span>
+              <div class="swatch-meta"><span class="swatch-name">Surface</span><span class="swatch-token">--surface</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-ink"></span>
+              <div class="swatch-meta"><span class="swatch-name">Ink</span><span class="swatch-token">--ink</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-line"></span>
+              <div class="swatch-meta"><span class="swatch-name">Line</span><span class="swatch-token">--line</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-concept"></span>
+              <div class="swatch-meta"><span class="swatch-name">Concept</span><span class="swatch-token">--c-concept</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-product"></span>
+              <div class="swatch-meta"><span class="swatch-name">Product</span><span class="swatch-token">--c-product</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-repo"></span>
+              <div class="swatch-meta"><span class="swatch-name">Repo</span><span class="swatch-token">--c-repo</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-workflow"></span>
+              <div class="swatch-meta"><span class="swatch-name">Workflow</span><span class="swatch-token">--c-workflow</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-signal"></span>
+              <div class="swatch-meta"><span class="swatch-name">Signal</span><span class="swatch-token">--signal</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-hype"></span>
+              <div class="swatch-meta"><span class="swatch-name">Hype</span><span class="swatch-token">--hype</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ TYPOGRAPHY ============ -->
+        <section class="preview-section" aria-labelledby="type-h">
+          <div class="preview-head">
+            <p class="kicker">Typography</p>
+            <h2 id="type-h">Type system</h2>
+            <p>Space Grotesk for display and UI, IBM Plex Mono for labels, metadata, and scores.</p>
+          </div>
+          <div class="type-grid">
+            <div class="type-card">
+              <p class="type-eyebrow">Space Grotesk / Display</p>
+              <p class="type-display">AI signal, not AI noise.</p>
+              <p class="type-display-sub">Headlines are large, tightly tracked, and fluid.</p>
+            </div>
+            <div class="type-card">
+              <p class="type-eyebrow">IBM Plex Mono / Labels</p>
+              <p class="type-mono">SIGNAL 84 / HYPE 31</p>
+              <ul class="type-mono-list">
+                <li>Concept</li>
+                <li>Classified</li>
+                <li>Updated 2026-06-20</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ============ SHARED NEWSLETTER ============ -->
+    <section class="news" id="newsletter" aria-label="Newsletter signup">
+      <div class="news-panel">
+        <div>
+          <h2>Get the field brief every week.</h2>
+          <p>
+            Five useful updates, three things to try, one concept to learn, one
+            thing to ignore. For people who want to know what matters and what to
+            do next.
+          </p>
+        </div>
+        <div>
+          <form
+            class="news-field"
+            data-waitlist-link="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief"
+            action="mailto:signals@aisignaldesk.example"
+            method="post"
+            enctype="text/plain"
+          >
+            <input type="email" placeholder="you@company.com" aria-label="Email address" />
+            <a
+              class="btn-accent"
+              href="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief&body=Please%20add%20me%20to%20the%20weekly%20field%20brief."
+              >Join free</a
+            >
+          </form>
+          <div class="news-trust">
+            <span>Free weekly</span><span>&middot;</span><span>No spam</span><span>&middot;</span><span>Unsubscribe anytime</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHARED FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="footer-row">
+        <span>AI Signal Desk</span>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

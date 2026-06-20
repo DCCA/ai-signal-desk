@@ -20,8 +20,13 @@ PAGES = [
     "about.html", "privacy.html", "contact.html",
 ]
 
-REQUIRED_FILES = PAGES + [
-    "styles.css", "theme.js", "app.js", "signal.js", "weekly.js",
+# Internal preview pages (not in the primary nav / sitemap) held to the same
+# shared-shell and security standards as the main pages.
+PREVIEW_PAGES = ["brand.html", "logo-exploration.html"]
+ALL_PAGES = PAGES + PREVIEW_PAGES
+
+REQUIRED_FILES = PAGES + PREVIEW_PAGES + [
+    "styles.css", "preview.css", "theme.js", "app.js", "signal.js", "weekly.js",
     "content/digest.json",
     "favicon.svg", "assets/brand-mark.svg",
     "robots.txt", "sitemap.xml", "CNAME", ".nojekyll",
@@ -36,7 +41,7 @@ STATUSES = {"learn", "try", "watch", "ignore"}
 CONFIDENCES = {"low", "medium", "high"}
 
 # Files that must no longer be referenced anywhere (old design, removed).
-REMOVED_REFS = ["posts/", "brand.html", "logo-exploration", "logo-aperture", "logo-radar"]
+REMOVED_REFS = ["posts/"]
 
 
 def read(path: str) -> str:
@@ -50,7 +55,7 @@ def assert_required_files() -> None:
 
 def assert_shared_page_contract() -> None:
     """Every page shares the same head/header/footer + a11y landmarks."""
-    for page in PAGES:
+    for page in ALL_PAGES:
         html = read(page)
         assert 'lang="en"' in html, f"{page}: missing lang"
         assert 'class="skip-link" href="#main"' in html, f"{page}: missing skip link"
@@ -74,7 +79,7 @@ def assert_shared_page_contract() -> None:
 
 def assert_security_invariants() -> None:
     """The hardening that lets the strict CSP stay strict."""
-    for page in PAGES:
+    for page in ALL_PAGES:
         html = read(page)
         # No inline style attributes (style-src 'self' has no 'unsafe-inline').
         assert 'style="' not in html, f"{page}: inline style attribute breaks the strict CSP"
@@ -91,7 +96,7 @@ def assert_security_invariants() -> None:
         assert "'unsafe-inline'" not in html, f"{page}: CSP must not allow 'unsafe-inline'"
         assert "'unsafe-eval'" not in html, f"{page}: CSP must not allow 'unsafe-eval'"
     # No external links opening a new tab without noopener.
-    for page in PAGES + ["signal.js"]:
+    for page in ALL_PAGES + ["signal.js"]:
         text = read(page)
         for m in re.finditer(r'target="_blank"', text):
             window = text[max(0, m.start() - 200): m.end() + 200]
@@ -99,10 +104,25 @@ def assert_security_invariants() -> None:
 
 
 def assert_no_removed_refs() -> None:
-    for page in PAGES:
+    for page in ALL_PAGES:
         html = read(page)
         for ref in REMOVED_REFS:
             assert ref not in html, f"{page}: still references removed asset '{ref}'"
+
+
+def assert_preview_pages() -> None:
+    brand = read("brand.html")
+    for marker in ["Brand System", "Visual system", "Component language"]:
+        assert marker in brand, f"brand.html missing marker: {marker}"
+    logos = read("logo-exploration.html")
+    for marker in ["Logo exploration", "Radar monogram", "Signal aperture",
+                   "Terminal signal", "Classified stamp", "Signal grid",
+                   "Minimal ASD square", "Keep Option F"]:
+        assert marker in logos, f"logo-exploration.html missing marker: {marker}"
+    # The logo board references the restored SVG assets.
+    for svg in ["assets/logo-radar-monogram.svg", "assets/logo-minimal-asd.svg"]:
+        assert svg in logos, f"logo-exploration.html missing {svg}"
+        assert (ROOT / svg).exists(), f"missing asset {svg}"
 
 
 def assert_design_system() -> None:
@@ -236,6 +256,7 @@ def main() -> None:
     assert_shared_page_contract()
     assert_security_invariants()
     assert_no_removed_refs()
+    assert_preview_pages()
     assert_design_system()
     assert_home_contract()
     assert_other_views()
