@@ -13,32 +13,36 @@ It is designed to become a public website/newsletter where each AI update answer
 - What should I do next?
 - Should I learn, try, watch, or ignore it?
 
-## MVP contents
+## Design
 
-- `index.html` — static landing page and digest UI
-- `about.html` — editorial standard and trust page
-- `privacy.html` — free beta email/privacy expectations
+The site uses the **"Daylight Desk"** design system: a light/dark editorial
+theme driven by a CSS custom-property token set. See `DESIGN.md` for the full
+token reference. It is a multi-page static site (no build step) with a shared
+header/footer/newsletter and a digest rendered from `content/digest.json`.
+
+## Site contents
+
+- `index.html` — home: hero, "this week at a glance", wayfinding, and the
+  classified signal-card grid (filter chips + segmented sort + live search)
+- `signal.html` — article / signal deep-dive (`signal.html?i=N`, rendered from
+  the digest; deep-linkable, with related signals)
+- `weekly.html` — the weekly field brief, grouped by verdict (learn/try/watch/ignore)
+- `about.html` — method (classify / score / action) and principles
+- `privacy.html` — email/privacy expectations
 - `contact.html` — contact route for signals and feedback
-- `weekly.html` — Issue 001 weekly field brief
-- `posts/` — launch sample signal reports
-- `brand.html` — brand-system preview page
-- `logo-exploration.html` — comparison board for six SVG logo directions
-- `styles.css` — dark editorial Signal Desk visual system
-- `app.js` — loads and filters digest cards
-- `content/digest.json` — seeded MVP content
-- `docs/product-brief.md` — product direction and editorial rules
-- `docs/brand-foundation.md` — positioning, voice, taxonomy, tagline, and copy rules
-- `docs/launch-readiness-plan.md` — free beta launch plan, validation path, and launch checklist
-- `docs/launch-config.md` — free hosting, waitlist, and beta validation configuration notes
-- `docs/editorial-workflow.md` — Hermes-assisted draft-to-publish workflow
-- `docs/signal-card-schema.md` — required fields for draft and published signal cards
-- `docs/launch-checklist.md` — beta sharing checklist
-- `robots.txt` / `sitemap.xml` — launch metadata for crawlers and sharing checks
-- `DESIGN.md` — formal design-token/spec file for future agents and UI work
-- `assets/brand-mark.svg` — selected Option F minimal ASD brand mark
-- `favicon.svg` — site favicon using the selected Option F mark
-- `assets/logo-*.svg` — logo exploration variants
-- `scripts/check_site.py` — deterministic scaffold/site/brand checks
+- `styles.css` — the Daylight Desk token system + all component styles
+- `theme.js` — theme bootstrap (localStorage + `prefers-color-scheme`) and toggle
+- `app.js` — home digest rendering, filtering, sorting, search (DOM API, no innerHTML)
+- `signal.js` / `weekly.js` — article and weekly rendering from the digest
+- `content/digest.json` — `{ publication, tagline, updated, items: Signal[] }`
+- `docs/*.md` — product brief, brand foundation, editorial workflow, launch notes
+- `robots.txt` / `sitemap.xml` — crawler metadata
+- `DESIGN.md` — design-token/spec reference
+- `assets/brand-mark.svg` / `favicon.svg` — brand mark and favicon
+- `scripts/check_site.py` — deterministic site + security checks (run in CI)
+
+> The card index (`01`, `02`, …) is each item's stable 1-based position in the
+> full unfiltered digest; it does not change when you filter or sort.
 
 ## Run locally
 
@@ -63,7 +67,7 @@ python3 scripts/check_site.py
 Expected output:
 
 ```text
-OK: AI Signal Desk static MVP passes scaffold checks
+OK: AI Signal Desk (Daylight Desk) passes site + security checks
 ```
 
 ## Deploy (GitHub Pages)

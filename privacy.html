@@ -5,67 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="description" content="Privacy notes for the AI Signal Desk free beta waitlist and newsletter testing." />
+    <meta
+      name="description"
+      content="Privacy notes for the AI Signal Desk free beta waitlist and newsletter testing."
+    />
     <title>Privacy - AI Signal Desk</title>
+    <link rel="canonical" href="https://aisignaldesk.ai/privacy.html" />
+
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
+    <script src="theme.js"></script>
   </head>
   <body>
-    <div class="scanline" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============ SHARED HEADER ============ -->
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="AI Signal Desk home">
-        <img class="brand-mark" src="assets/brand-mark.svg" alt="" />
-        <span>AI Signal Desk</span>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="index.html#digest">Signals</a>
-        <a href="about.html">About</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <a class="header-cta" href="index.html#newsletter">Join the free beta</a>
+      <div class="header-row">
+        <a class="brand" href="index.html" aria-label="AI Signal Desk home">
+          <span class="brand-mark" aria-hidden="true">SD</span>
+          AI Signal Desk
+        </a>
+        <nav class="site-nav no-scrollbar" aria-label="Primary">
+          <a href="index.html?filter=concept">Concepts</a>
+          <a href="index.html?filter=product">Products</a>
+          <a href="index.html?filter=repo">Repos</a>
+          <a href="index.html?filter=workflow">Workflows</a>
+          <a href="weekly.html">Weekly</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+            <span data-theme-icon aria-hidden="true">☾</span>
+            <span data-theme-label>Dark</span>
+          </button>
+          <a class="btn-accent" href="#newsletter">Subscribe free</a>
+        </div>
+      </div>
     </header>
 
-    <main class="content-page">
-      <p class="eyebrow">Privacy</p>
+    <main id="main" tabindex="-1" class="doc">
+      <p class="kicker">Privacy</p>
       <h1>Simple privacy for a free testing-stage brief.</h1>
-      <section class="content-panel">
-        <h2>What is collected</h2>
-        <p>
-          If you join the free beta, AI Signal Desk may collect your email address
-          and any optional answers you submit about your role, interests, or AI
-          topics you want filtered.
-        </p>
+      <p class="doc-lead">
+        AI Signal Desk is in a free beta. This page explains, in plain terms,
+        what is collected, how it is used, and the promises that come with it.
+      </p>
 
-        <h2>How it is used</h2>
-        <ul>
-          <li>To send beta updates or sample weekly briefs.</li>
-          <li>To understand what kinds of AI signals readers want more of.</li>
-          <li>To improve the editorial format before choosing paid tooling.</li>
-        </ul>
+      <h2>What is collected</h2>
+      <p>
+        If you join the free beta, AI Signal Desk may collect your email address
+        and any optional answers you submit about your role, interests, or the AI
+        topics you want filtered.
+      </p>
 
-        <h2>No selling</h2>
-        <p>
-          AI Signal Desk will not sell your email address or beta feedback. The
-          beta is for testing whether the field brief is useful.
-        </p>
+      <h2>How it is used</h2>
+      <ul>
+        <li>To send beta updates or sample weekly briefs.</li>
+        <li>To understand what kinds of AI signals readers want more of.</li>
+        <li>To improve the editorial format before choosing paid tooling.</li>
+      </ul>
 
-        <h2>Unsubscribe</h2>
-        <p>
-          You can unsubscribe or ask to be removed at any time by using the reply
-          path in a beta email or contacting the address on the contact page.
-        </p>
-      </section>
+      <h2>No selling</h2>
+      <p>
+        AI Signal Desk will not sell your email address or beta feedback. The
+        beta exists to test whether the field brief is useful, nothing more.
+      </p>
+
+      <h2>Unsubscribe</h2>
+      <p>
+        You can unsubscribe or ask to be removed at any time by using the reply
+        path in a beta email, or by contacting the address on the contact page.
+      </p>
     </main>
 
-    <footer class="footer">
-      <span>AI Signal Desk</span>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+    <!-- ============ SHARED NEWSLETTER ============ -->
+    <section class="news" id="newsletter" aria-label="Newsletter signup">
+      <div class="news-panel">
+        <div>
+          <h2>Get the field brief every week.</h2>
+          <p>
+            Five useful updates, three things to try, one concept to learn, one
+            thing to ignore. For people who want to know what matters and what to
+            do next.
+          </p>
+        </div>
+        <div>
+          <form
+            class="news-field"
+            data-waitlist-link="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief"
+            action="mailto:signals@aisignaldesk.example"
+            method="post"
+            enctype="text/plain"
+          >
+            <input type="email" placeholder="you@company.com" aria-label="Email address" />
+            <a
+              class="btn-accent"
+              href="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief&body=Please%20add%20me%20to%20the%20weekly%20field%20brief."
+              >Join free</a
+            >
+          </form>
+          <div class="news-trust">
+            <span>Free weekly</span><span>&middot;</span><span>No spam</span><span>&middot;</span><span>Unsubscribe anytime</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHARED FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="footer-row">
+        <span>AI Signal Desk</span>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
