@@ -75,6 +75,12 @@ def assert_shared_page_contract() -> None:
             assert f'href="{target}"' in html, f"{page}: footer missing {target}"
         # Theme toggle present and wired.
         assert "data-theme-toggle" in html, f"{page}: missing theme toggle button"
+    # Every public (sitemap-listed) page carries social/SEO cards.
+    for page in PAGES:
+        html = read(page)
+        assert 'rel="canonical"' in html, f"{page}: missing canonical"
+        assert 'property="og:title"' in html, f"{page}: missing Open Graph tags"
+        assert 'name="twitter:card"' in html, f"{page}: missing Twitter card tags"
 
 
 def assert_security_invariants() -> None:

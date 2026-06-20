@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /brand.html
+Disallow: /logo-exploration.html
 
 Sitemap: https://aisignaldesk.ai/sitemap.xml
