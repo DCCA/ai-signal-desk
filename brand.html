@@ -5,102 +5,269 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>AI Signal Desk - Brand System</title>
+    <meta
+      name="description"
+      content="The Daylight Desk brand system for AI Signal Desk: a light and dark editorial system with signal and field-brief DNA, shown as live components, color tokens, and type."
+    />
+    <title>Brand System &mdash; AI Signal Desk</title>
+    <link rel="canonical" href="https://aisignaldesk.ai/brand.html" />
+
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="preview.css" />
+    <script src="theme.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div class="scanline" aria-hidden="true"></div>
+
+    <!-- ============ SHARED HEADER ============ -->
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="AI Signal Desk home">
-        <img class="brand-mark" src="assets/brand-mark.svg" alt="" />
-        <span>AI Signal Desk</span>
-      </a>
-      <nav aria-label="Brand navigation">
-        <a href="#positioning">Positioning</a>
-        <a href="#voice">Voice</a>
-        <a href="#system">System</a>
-        <a href="#components">Components</a>
-        <a href="logo-exploration.html">Logos</a>
-      </nav>
-      <a class="header-cta" href="index.html">Back to site</a>
+      <div class="header-row">
+        <a class="brand" href="index.html" aria-label="AI Signal Desk home">
+          <span class="brand-mark" aria-hidden="true">SD</span>
+          AI Signal Desk
+        </a>
+        <nav class="site-nav no-scrollbar" aria-label="Primary">
+          <a href="index.html?filter=concept">Concepts</a>
+          <a href="index.html?filter=product">Products</a>
+          <a href="index.html?filter=repo">Repos</a>
+          <a href="index.html?filter=workflow">Workflows</a>
+          <a href="weekly.html">Weekly</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+            <span data-theme-icon aria-hidden="true">&#9790;</span>
+            <span data-theme-label>Dark</span>
+          </button>
+          <a class="btn-accent" href="#newsletter">Subscribe free</a>
+        </div>
+      </div>
     </header>
 
     <main id="main" tabindex="-1">
-      <section class="hero field-brief">
-        <div class="hero-copy-block">
-          <p class="eyebrow">Brand System / v0.1</p>
-          <h1>The calm intelligence desk for the AI firehose.</h1>
-          <p class="hero-copy">
-            AI Signal Desk classifies AI concepts, products, repos, and workflows by usefulness - so readers know what to learn, try, watch, and ignore.
+      <!-- ============ HERO ============ -->
+      <section class="preview-hero">
+        <p class="kicker">Brand System</p>
+        <h1>Visual system</h1>
+        <p class="preview-lead">
+          Daylight Desk is the light and dark editorial system for AI Signal Desk.
+          It keeps the signal and field-brief DNA, classified and scored, with a
+          calm operations-desk feel that themes correctly in both light and dark.
+        </p>
+      </section>
+
+      <div class="preview-wrap">
+        <!-- ============ COMPONENT LANGUAGE ============ -->
+        <section class="preview-section" aria-labelledby="components-h">
+          <div class="preview-head">
+            <p class="kicker">Component language</p>
+            <h2 id="components-h">Live components</h2>
+            <p>Rendered with the real production classes, not screenshots.</p>
+          </div>
+
+          <!-- Sample signal card -->
+          <article class="signal-card demo-card">
+            <div class="card-top">
+              <span class="cat-tag cat-repo"><span class="dot dot-repo"></span>Repo</span>
+              <span class="verdict verdict-watch">Watch</span>
+            </div>
+            <div>
+              <h3 class="card-title">Example classified signal</h3>
+              <p class="card-summary">
+                A signal card always explains what it is, why it matters, and what
+                to do next, then scores signal against hype.
+              </p>
+            </div>
+            <div class="bars bars-lg">
+              <div class="bar-row">
+                <span class="bar-label">Signal</span>
+                <span class="bar-track"><span class="bar-fill bar-fill-signal bar-w-84"></span></span>
+                <span class="bar-val">84</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Hype</span>
+                <span class="bar-track"><span class="bar-fill bar-fill-hype bar-w-31"></span></span>
+                <span class="bar-val">31</span>
+              </div>
+            </div>
+            <div class="card-try">
+              <p><b>Try this:</b> Save one concrete next step for the reader.</p>
+              <span class="card-cta">Read full signal</span>
+            </div>
+          </article>
+
+          <!-- Category tags -->
+          <div class="preview-head">
+            <h2 id="cats-h">Category tags</h2>
+          </div>
+          <div class="demo-row">
+            <span class="cat-tag cat-concept"><span class="dot dot-concept"></span>Concept</span>
+            <span class="cat-tag cat-product"><span class="dot dot-product"></span>Product</span>
+            <span class="cat-tag cat-repo"><span class="dot dot-repo"></span>Repo</span>
+            <span class="cat-tag cat-workflow"><span class="dot dot-workflow"></span>Workflow</span>
+          </div>
+
+          <!-- Verdict pills -->
+          <div class="preview-head">
+            <h2>Verdict pills</h2>
+          </div>
+          <div class="demo-row">
+            <span class="verdict verdict-learn">Learn</span>
+            <span class="verdict verdict-try">Try</span>
+            <span class="verdict verdict-watch">Watch</span>
+            <span class="verdict verdict-ignore">Ignore</span>
+          </div>
+
+          <!-- Filter chips -->
+          <div class="preview-head">
+            <h2>Filter chips</h2>
+          </div>
+          <div class="demo-row">
+            <span class="chips">
+              <button class="chip is-active" type="button" aria-pressed="true">All 18</button>
+              <button class="chip" type="button">Concepts</button>
+              <button class="chip" type="button">Products</button>
+              <button class="chip" type="button">Repos</button>
+            </span>
+          </div>
+
+          <!-- Accent button -->
+          <div class="preview-head">
+            <h2>Accent button</h2>
+          </div>
+          <div class="demo-row">
+            <a class="btn-accent" href="#newsletter">Subscribe free</a>
+          </div>
+        </section>
+
+        <!-- ============ COLOR TOKENS ============ -->
+        <section class="preview-section" aria-labelledby="color-h">
+          <div class="preview-head">
+            <p class="kicker">Color tokens</p>
+            <h2 id="color-h">Palette</h2>
+            <p>Each swatch reads from a CSS custom property, so the palette swaps with the theme.</p>
+          </div>
+          <div class="swatch-grid">
+            <div class="swatch-item">
+              <span class="swatch-chip sw-accent"></span>
+              <div class="swatch-meta"><span class="swatch-name">Accent</span><span class="swatch-token">--accent</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-surface"></span>
+              <div class="swatch-meta"><span class="swatch-name">Surface</span><span class="swatch-token">--surface</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-ink"></span>
+              <div class="swatch-meta"><span class="swatch-name">Ink</span><span class="swatch-token">--ink</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-line"></span>
+              <div class="swatch-meta"><span class="swatch-name">Line</span><span class="swatch-token">--line</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-concept"></span>
+              <div class="swatch-meta"><span class="swatch-name">Concept</span><span class="swatch-token">--c-concept</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-product"></span>
+              <div class="swatch-meta"><span class="swatch-name">Product</span><span class="swatch-token">--c-product</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-repo"></span>
+              <div class="swatch-meta"><span class="swatch-name">Repo</span><span class="swatch-token">--c-repo</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-workflow"></span>
+              <div class="swatch-meta"><span class="swatch-name">Workflow</span><span class="swatch-token">--c-workflow</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-signal"></span>
+              <div class="swatch-meta"><span class="swatch-name">Signal</span><span class="swatch-token">--signal</span></div>
+            </div>
+            <div class="swatch-item">
+              <span class="swatch-chip sw-hype"></span>
+              <div class="swatch-meta"><span class="swatch-name">Hype</span><span class="swatch-token">--hype</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ TYPOGRAPHY ============ -->
+        <section class="preview-section" aria-labelledby="type-h">
+          <div class="preview-head">
+            <p class="kicker">Typography</p>
+            <h2 id="type-h">Type system</h2>
+            <p>Space Grotesk for display and UI, IBM Plex Mono for labels, metadata, and scores.</p>
+          </div>
+          <div class="type-grid">
+            <div class="type-card">
+              <p class="type-eyebrow">Space Grotesk / Display</p>
+              <p class="type-display">AI signal, not AI noise.</p>
+              <p class="type-display-sub">Headlines are large, tightly tracked, and fluid.</p>
+            </div>
+            <div class="type-card">
+              <p class="type-eyebrow">IBM Plex Mono / Labels</p>
+              <p class="type-mono">SIGNAL 84 / HYPE 31</p>
+              <ul class="type-mono-list">
+                <li>Concept</li>
+                <li>Classified</li>
+                <li>Updated 2026-06-20</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ============ SHARED NEWSLETTER ============ -->
+    <section class="news" id="newsletter" aria-label="Newsletter signup">
+      <div class="news-panel">
+        <div>
+          <h2>Get the field brief every week.</h2>
+          <p>
+            Five useful updates, three things to try, one concept to learn, one
+            thing to ignore. For people who want to know what matters and what to
+            do next.
           </p>
         </div>
-        <aside class="signal-console">
-          <div class="console-topbar"><span></span><span></span><span></span><strong>/brand-system</strong></div>
-          <div class="console-feed">
-            <p><span>&gt;</span> core promise: AI signal, not AI noise</p>
-            <p><span>&gt;</span> voice: calm / sharp / practical</p>
-            <p><span>&gt;</span> visual: dark editorial / radar / field brief</p>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section weekly-panel" id="positioning">
         <div>
-          <p class="eyebrow">Positioning</p>
-          <h2>Not another AI newsletter. A usefulness filter.</h2>
+          <form
+            class="news-field"
+            data-waitlist-link="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief"
+            action="mailto:signals@aisignaldesk.example"
+            method="post"
+            enctype="text/plain"
+          >
+            <input type="email" placeholder="you@company.com" aria-label="Email address" />
+            <a
+              class="btn-accent"
+              href="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief&body=Please%20add%20me%20to%20the%20weekly%20field%20brief."
+              >Join free</a
+            >
+          </form>
+          <div class="news-trust">
+            <span>Free weekly</span><span>&middot;</span><span>No spam</span><span>&middot;</span><span>Unsubscribe anytime</span>
+          </div>
         </div>
-        <ol class="brief-list">
-          <li><strong>Promise</strong><span>AI signal, not AI noise.</span></li>
-          <li><strong>Audience</strong><span>Builders, operators, PMs, founders, and AI-curious professionals.</span></li>
-          <li><strong>Enemy</strong><span>Hype cycles, announcement-chasing, and tool lists with no judgment.</span></li>
-          <li><strong>Outcome</strong><span>Know what to learn, try, watch, and ignore.</span></li>
-        </ol>
-      </section>
+      </div>
+    </section>
 
-      <section class="section intro-grid" id="voice">
-        <article class="pillar-card"><span class="index">01</span><span class="pill concept">Voice</span><h2>Calm</h2><p>Never breathless. Explain what matters without panic or hype.</p></article>
-        <article class="pillar-card"><span class="index">02</span><span class="pill product">Voice</span><h2>Sharp</h2><p>Have a point of view. Classify before explaining.</p></article>
-        <article class="pillar-card"><span class="index">03</span><span class="pill repo">Voice</span><h2>Practical</h2><p>Every signal earns its place by giving the reader a next action.</p></article>
-        <article class="pillar-card"><span class="index">04</span><span class="pill workflow">Voice</span><h2>Skeptical</h2><p>Curious, but not credulous. Name uncertainty and filter hype.</p></article>
-      </section>
-
-      <section class="section" id="system">
-        <div class="section-heading">
-          <p class="eyebrow">Visual system</p>
-          <h2>Deep ink, signal cyan, operational metadata.</h2>
-          <p>The identity combines editorial typography with intelligence-desk UI: radar, console, classified labels, and explicit signal/hype scoring.</p>
+    <!-- ============ SHARED FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="footer-row">
+        <span>AI Signal Desk</span>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="contact.html">Contact</a>
         </div>
-        <div class="digest-grid">
-          <article class="digest-card"><div class="meta"><span class="pill concept">Primary</span><span class="status">#080A0F</span></div><h3>Deep Ink</h3><p>Main environment color. Creates the briefing-room atmosphere.</p></article>
-          <article class="digest-card"><div class="meta"><span class="pill concept">Accent</span><span class="status">#58E6FF</span></div><h3>Signal Cyan</h3><p>Radar glow, active states, primary actions, and concept labels.</p></article>
-          <article class="digest-card"><div class="meta"><span class="pill workflow">Accent</span><span class="status">#F6C85F</span></div><h3>Watch Amber</h3><p>Used for watch states, warning energy, and action emphasis.</p></article>
-        </div>
-      </section>
-
-      <section class="section" id="components">
-        <div class="section-heading">
-          <p class="eyebrow">Component language</p>
-          <h2>Signal reports, not generic cards.</h2>
-        </div>
-        <div class="digest-grid">
-          <article class="digest-card">
-            <div class="meta"><span class="pill repo">01 / Repo</span><span class="status">Watch</span></div>
-            <h3>Example signal report</h3>
-            <p>A signal report always explains what it is, why it matters, and what to do next.</p>
-            <div class="scoreboard"><span>Signal <strong>84</strong></span><span>Hype <strong>31</strong></span></div>
-            <p class="try-this"><strong>Try this:</strong> Save one practical next step for the reader.</p>
-          </article>
-          <article class="signal-console">
-            <div class="console-topbar"><span></span><span></span><span></span><strong>/hype-filter</strong></div>
-            <div class="console-feed"><p><span>&gt;</span> classify first</p><p><span>&gt;</span> explain second</p><p><span>&gt;</span> recommend action last</p></div>
-          </article>
-        </div>
-      </section>
-    </main>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,180 +1,133 @@
 ---
-version: alpha
+version: beta
 name: AI Signal Desk
-description: "Calm intelligence desk for the AI firehose: dark editorial surfaces, radar motifs, and operational signal labels."
-colors:
-  primary: "#080A0F"
-  secondary: "#111722"
-  tertiary: "#58E6FF"
-  neutral: "#F4F1E8"
-  muted: "#9AA4B8"
-  line: "#2A3342"
-  amber: "#F6C85F"
-  coral: "#FF6B6B"
-  violet: "#9B87FF"
-  green: "#78F0B2"
-typography:
-  h1:
-    fontFamily: Inter
-    fontSize: 6rem
-    fontWeight: 800
-    lineHeight: 0.86
-    letterSpacing: "-0.085em"
-  h2:
-    fontFamily: Inter
-    fontSize: 3.5rem
-    fontWeight: 800
-    lineHeight: 0.96
-    letterSpacing: "-0.065em"
-  body-md:
-    fontFamily: Inter
-    fontSize: 1rem
-    fontWeight: 400
-    lineHeight: 1.65
-  body-lg:
-    fontFamily: Inter
-    fontSize: 1.25rem
-    fontWeight: 400
-    lineHeight: 1.7
-  mono-label:
-    fontFamily: IBM Plex Mono
-    fontSize: 0.75rem
-    fontWeight: 600
-    lineHeight: 1.2
-    letterSpacing: "0.11em"
-rounded:
-  sm: 8px
-  md: 16px
-  lg: 24px
-  pill: 999px
+description: "Daylight Desk: a light/dark editorial-premium system for a weekly AI field brief. Signal/field-brief DNA, classified and scored, with a calm operations-desk feel."
+themes: [light, dark]
+fonts:
+  display: "Space Grotesk (400/500/600/700), fallback system-ui, -apple-system, sans-serif"
+  mono: "IBM Plex Mono (400/500/600) for labels, metadata, category tags, scores, kickers"
+  google: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+accent:
+  default: "#0a7ea4"   # teal; brand-tweakable (also blue #2a6fdb / green #1a8a5a)
+  fg: "#ffffff"
+tokens_light:
+  bg: "#f7f5f0"
+  surface: "#ffffff"
+  ink: "#16181d"
+  muted: "#5b6470"
+  faint: "#8a9099"
+  line: "#e6e2d9"
+  line2: "#f0ece3"
+  track: "#ece8df"
+  c-concept: "#0a7ea4"
+  c-product: "#6d4bd6"
+  c-repo: "#1a8a5a"
+  c-workflow: "#a76a00"
+  s-learn: "#0a7ea4"
+  s-try: "#1a8a5a"
+  s-watch: "#a76a00"
+  s-ignore: "#c5482f"
+  signal: "#1a8a5a"
+  hype: "#c5482f"
+  panel-bg: "#16181d"
+tokens_dark:
+  bg: "#0c0e12"
+  surface: "#14171d"
+  ink: "#f2f1ec"
+  muted: "#9aa0ab"
+  faint: "#6f7682"
+  c-concept: "#58e6ff"
+  c-product: "#b3a4ff"
+  c-repo: "#5fd39a"
+  c-workflow: "#f6c85f"
+  s-learn: "#58e6ff"
+  s-try: "#5fd39a"
+  s-watch: "#f6c85f"
+  s-ignore: "#ff7a66"
+  signal: "#5fd39a"
+  hype: "#ff7a66"
+  panel-bg: "#1a1e25"
+radius:
+  control: 8px      # buttons, chips active, inputs-in-header
+  pill: 999px       # category/verdict/eyebrow/filter chips
+  card: 14px        # signal cards, meta, try-this (12px for compact tiles)
+  panel: 16px       # aside, method cards
+  band: 18px        # newsletter band
 spacing:
-  xs: 8px
-  sm: 12px
-  md: 16px
-  lg: 24px
-  xl: 32px
-  xxl: 72px
-components:
-  button-primary:
-    backgroundColor: "{colors.tertiary}"
-    textColor: "{colors.primary}"
-    rounded: "{rounded.pill}"
-    padding: 13px 16px
-  button-secondary:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.neutral}"
-    rounded: "{rounded.pill}"
-    padding: 12px 16px
-  signal-card:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.neutral}"
-    rounded: "{rounded.lg}"
-    padding: 24px
-  label-concept:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.tertiary}"
-    rounded: "{rounded.pill}"
-    padding: 5px 8px
-  label-product:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.violet}"
-    rounded: "{rounded.pill}"
-    padding: 5px 8px
-  label-repo:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.green}"
-    rounded: "{rounded.pill}"
-    padding: 5px 8px
-  label-workflow:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.amber}"
-    rounded: "{rounded.pill}"
-    padding: 5px 8px
-  text-muted:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.muted}"
-    rounded: "{rounded.sm}"
-    padding: 0px
-  divider-line:
-    backgroundColor: "{colors.line}"
-    textColor: "{colors.neutral}"
-    rounded: "{rounded.sm}"
-    padding: 0px
-  label-alert:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.coral}"
-    rounded: "{rounded.pill}"
-    padding: 5px 8px
+  page-max: 1200px  # article 780, weekly 920, about hero 820 / sections 1080
+  page-pad: 28px
 ---
 
 ## Overview
 
-AI Signal Desk should feel like a calm intelligence terminal for practical AI — more editorial briefing room than cyberpunk dashboard. The brand classifies the AI firehose into useful signals with clear next actions.
+The "Daylight Desk" redesign moves AI Signal Desk from a dark intelligence-terminal
+look to a light editorial-premium direction (benchmarked against Linear / Vercel /
+Resend, Stripe / Anthropic, Perplexity / Exa) while keeping the brand's signal /
+field-brief DNA. It ships **light and dark themes of the same layout**.
 
-The visual system is dark, precise, and restrained. It uses radar/scanner motifs, classified report cards, mono metadata, and a small operational palette to make the product memorable without becoming noisy.
+The product still does one thing: filter the AI firehose into a small set of
+**concepts, products, repos, and workflows** worth attention, each item **classified**,
+**scored** for signal versus hype (0-100), and given a verdict and next action
+(**learn / try / watch / ignore**).
 
-## Colors
+## Theming
 
-- **Primary / Deep Ink (#080A0F):** Main background. It creates the intelligence-desk atmosphere.
-- **Secondary / Graphite Panel (#111722):** Card and console surfaces.
-- **Tertiary / Signal Cyan (#58E6FF):** Primary action color, radar glow, concept labels, active filters.
-- **Neutral / Pearl (#F4F1E8):** Main text. Warm enough to avoid sterile white.
-- **Muted / Steel (#9AA4B8):** Supporting body copy and metadata.
-- **Amber (#F6C85F):** Watch/action emphasis and hype-filter accents.
-- **Coral (#FF6B6B):** Alert/high-hype emphasis, used sparingly.
-- **Violet (#9B87FF):** Product category.
-- **Green (#78F0B2):** Repo/open-source category.
+All theme-dependent values are CSS custom properties on `:root` (light, default) and
+`[data-theme="dark"]` in `styles.css`, swapped wholesale. The accent
+(`--accent`, default teal `#0a7ea4`) is theme-independent. Theme is chosen by
+`theme.js` from `localStorage`, falling back to `prefers-color-scheme`, and is
+applied before first paint.
 
 ## Typography
 
-Use **Inter** for editorial headlines and readable body text. Headlines are large, tightly tracked, and confident. Use **IBM Plex Mono** for operational labels, category tags, scores, and terminal fragments.
-
-The contrast between Inter and IBM Plex Mono is core to the brand: editorial clarity plus intelligence-desk metadata.
+**Space Grotesk** for display and UI; **IBM Plex Mono** for labels, metadata,
+category tags, scores, and kickers. Headlines are large, tightly tracked, and fluid
+via `clamp()`. The Space Grotesk / IBM Plex Mono contrast (editorial clarity plus
+operational metadata) is core to the brand.
 
 ## Layout
 
-Prefer asymmetric editorial layouts over repeated generic card grids. Pages should feel like briefings:
-
-- hero statement + console/radar artifact;
-- content classified by type and action;
-- metadata visible but not overwhelming;
-- generous section spacing with dense cards only where useful.
-
-## Elevation & Depth
-
-Cards use dark layered surfaces with subtle borders and atmospheric shadows. Avoid bright glassmorphism. Glow is reserved for radar/signal moments and should be low-opacity.
-
-## Shapes
-
-Use rounded-but-not-cute geometry:
-
-- 8px for compact controls;
-- 16px for smaller panels;
-- 24px for signal cards and hero consoles;
-- full pill for filters, category labels, and CTAs.
+- Sticky blurred header (brand SD tile + nav + theme toggle + Subscribe).
+- Home: hero (eyebrow, H1 "AI signal, not AI noise.", search) + "this week at a
+  glance" aside, wayfinding tiles, then the classified signal-card grid with filter
+  chips and a segmented sort control.
+- Article (`signal.html?i=N`): category/verdict, lead, meta card (signal/hype bars +
+  confidence), prose (What it is / Why it matters / Try this), source, related.
+- Weekly: items grouped by verdict (learn / try / watch / ignore).
+- About: method (Classify / Score / Action) + principles.
+- Shared newsletter band + footer.
 
 ## Components
 
-- **Signal card:** dark panel with category/action header, title, summary, signal/hype scores, why-it-matters, and try-this.
-- **Signal console:** terminal-like preview with command/status lines and meters.
-- **Radar panel:** circular scanning motif showing concepts, products, repos, and workflows.
-- **Hype filter:** explicit signal-versus-hype comparison.
-- **Field brief CTA:** newsletter/subscribe action framed as receiving a briefing.
+- **Signal card:** surface panel with category tag + verdict pill, title, summary,
+  signal/hype bars, a "Try this" line, and a "Read full signal" cue. Whole card is a
+  link to the article.
+- **Signal/hype bars:** mono label + track + colored fill (`--signal` green /
+  `--hype` coral) + numeric score. Fill width is data-driven via the `--w` custom
+  property set from JS (so no inline styles are needed under the strict CSP).
+- **Verdict pill / category tag:** mono, color-coded by `--s-{status}` / `--c-{category}`.
+- **This week at a glance:** elevated aside summarizing the issue.
+- **Newsletter band:** inverted panel CTA framed as receiving the field brief.
+
+## Implementation rules
+
+- No inline `style` attributes and no inline `<script>`: everything lives in
+  `styles.css` / external JS, so the strict Content-Security-Policy (`script-src
+  'self'`, `style-src 'self'`) holds. Dynamic styling uses the CSSOM.
+- Multi-page (no build step): each route is a real HTML file sharing `styles.css`,
+  `theme.js`, and the digest (`content/digest.json`).
+- Card index numbers are the item's 1-based position in the full unfiltered list and
+  stay stable across filter/sort.
 
 ## Do's and Don'ts
 
 ### Do
-
-- Use “signal,” “field brief,” “classified,” “watchlist,” and “hype filter” language consistently.
-- Classify every item by category and action.
-- Use mono labels for metadata.
-- Keep the palette restrained.
-- Make the product feel useful before it feels decorative.
+- Use "signal," "field brief," "classified," and "hype filter" language consistently.
+- Classify every item by category and verdict, and give it a next action.
+- Use mono labels for metadata; keep the palette restrained.
+- Respect `prefers-reduced-motion` (the live dots pulse otherwise).
 
 ### Don't
-
-- Do not use generic AI gradients as the main identity.
-- Do not add robot/brain/bolt clichés.
-- Do not make the page look like a crypto trading dashboard.
-- Do not use fake metrics unless they explain editorial judgment.
-- Do not publish generic tool lists without a next action.
+- Do not use generic AI gradients, robot/brain/bolt cliches, or fake metrics.
+- Do not publish tool lists without a next action.
+- Do not introduce inline styles or scripts (it would force weakening the CSP).

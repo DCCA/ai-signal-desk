@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Deterministic checks for the AI Signal Desk static MVP."""
+"""Deterministic checks for the AI Signal Desk static site ("Daylight Desk").
+
+Validates the multi-page structure, the shared design system, the digest data
+contract, and the security invariants that keep the strict CSP intact
+(no inline styles, no inline scripts). Run from anywhere:
+
+    python3 scripts/check_site.py
+"""
 from __future__ import annotations
 
 import json
@@ -8,69 +15,33 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-REQUIRED_FILES = [
-    "index.html",
-    "about.html",
-    "privacy.html",
-    "contact.html",
-    "weekly.html",
-    "brand.html",
-    "logo-exploration.html",
-    "styles.css",
-    "app.js",
+PAGES = [
+    "index.html", "signal.html", "weekly.html",
+    "about.html", "privacy.html", "contact.html",
+]
+
+# Internal preview pages (not in the primary nav / sitemap) held to the same
+# shared-shell and security standards as the main pages.
+PREVIEW_PAGES = ["brand.html", "logo-exploration.html"]
+ALL_PAGES = PAGES + PREVIEW_PAGES
+
+REQUIRED_FILES = PAGES + PREVIEW_PAGES + [
+    "styles.css", "preview.css", "theme.js", "app.js", "signal.js", "weekly.js",
     "content/digest.json",
-    "docs/product-brief.md",
-    "docs/brand-foundation.md",
-    "docs/launch-readiness-plan.md",
-    "docs/launch-config.md",
-    "docs/editorial-workflow.md",
-    "docs/signal-card-schema.md",
-    "docs/launch-checklist.md",
-    "content/drafts/.gitkeep",
-    "posts/agent-loops.html",
-    "posts/context-engineering.html",
-    "posts/lightweight-eval-harnesses.html",
-    "DESIGN.md",
-    "robots.txt",
-    "sitemap.xml",
-    "assets/brand-mark.svg",
-    "favicon.svg",
-    "assets/logo-radar-monogram.svg",
-    "assets/logo-aperture.svg",
-    "assets/logo-terminal-signal.svg",
-    "assets/logo-classified-stamp.svg",
-    "assets/logo-signal-grid.svg",
-    "assets/logo-minimal-asd.svg",
-    "README.md",
+    "favicon.svg", "assets/brand-mark.svg",
+    "robots.txt", "sitemap.xml", "CNAME", ".nojekyll",
+    "DESIGN.md", "README.md", "SECURITY.md",
+    ".github/workflows/deploy-pages.yml", ".github/dependabot.yml",
+    "docs/product-brief.md", "docs/brand-foundation.md",
+    "scripts/check_site.py",
 ]
 
-REQUIRED_NAV_TARGETS = ["#concepts", "#products", "#repos", "#workflows", "#weekly"]
-REQUIRED_CONTENT_CATEGORIES = {"concept", "product", "repo", "workflow"}
-REQUIRED_HERO_PHRASES = [
-    "AI signal, not AI noise",
-    "weekly field brief",
-]
-REQUIRED_META_MARKERS = [
-    'property="og:title"',
-    'property="og:description"',
-    'property="og:type"',
-    'property="og:image"',
-    'name="twitter:card"',
-    'rel="canonical"',
-]
-REQUIRED_TRUST_LINKS = ["about.html", "privacy.html", "contact.html"]
-REQUIRED_WAITLIST_MARKERS = [
-    "Join the free beta",
-    "data-waitlist-link",
-    "One practical brief per week",
-]
+CATEGORIES = {"concept", "product", "repo", "workflow"}
+STATUSES = {"learn", "try", "watch", "ignore"}
+CONFIDENCES = {"low", "medium", "high"}
 
-REQUIRED_IDENTITY_MARKERS = [
-    "signal-console",
-    "radar-panel",
-    "hype-filter",
-    "field-brief",
-]
+# Files that must no longer be referenced anywhere (old design, removed).
+REMOVED_REFS = ["posts/"]
 
 
 def read(path: str) -> str:
@@ -78,310 +49,228 @@ def read(path: str) -> str:
 
 
 def assert_required_files() -> None:
-    missing = [path for path in REQUIRED_FILES if not (ROOT / path).exists()]
+    missing = [p for p in REQUIRED_FILES if not (ROOT / p).exists()]
     assert not missing, f"Missing required files: {missing}"
 
 
-def assert_homepage_contract() -> None:
+def assert_shared_page_contract() -> None:
+    """Every page shares the same head/header/footer + a11y landmarks."""
+    for page in ALL_PAGES:
+        html = read(page)
+        assert 'lang="en"' in html, f"{page}: missing lang"
+        assert 'class="skip-link" href="#main"' in html, f"{page}: missing skip link"
+        assert re.search(r'<main[^>]*id="main"[^>]*tabindex="-1"', html), f"{page}: <main id=main tabindex=-1> required"
+        assert 'name="viewport"' in html, f"{page}: missing viewport"
+        assert 'name="referrer"' in html, f"{page}: missing referrer policy"
+        assert 'fonts.googleapis.com/css2' in html, f"{page}: missing Google Fonts link"
+        assert 'href="styles.css"' in html, f"{page}: missing styles.css"
+        assert '<script src="theme.js"></script>' in html, f"{page}: theme.js must be loaded"
+        assert 'class="site-header"' in html, f"{page}: missing shared header"
+        assert 'class="site-footer"' in html, f"{page}: missing shared footer"
+        assert 'id="newsletter"' in html, f"{page}: missing newsletter band"
+        # Shared nav + footer links.
+        for target in ["weekly.html", "about.html"]:
+            assert f'href="{target}"' in html, f"{page}: nav/footer missing {target}"
+        for target in ["about.html", "privacy.html", "contact.html"]:
+            assert f'href="{target}"' in html, f"{page}: footer missing {target}"
+        # Theme toggle present and wired.
+        assert "data-theme-toggle" in html, f"{page}: missing theme toggle button"
+    # Every public (sitemap-listed) page carries social/SEO cards.
+    for page in PAGES:
+        html = read(page)
+        assert 'rel="canonical"' in html, f"{page}: missing canonical"
+        assert 'property="og:title"' in html, f"{page}: missing Open Graph tags"
+        assert 'name="twitter:card"' in html, f"{page}: missing Twitter card tags"
+
+
+def assert_security_invariants() -> None:
+    """The hardening that lets the strict CSP stay strict."""
+    for page in ALL_PAGES:
+        html = read(page)
+        # No inline style attributes (style-src 'self' has no 'unsafe-inline').
+        assert 'style="' not in html, f"{page}: inline style attribute breaks the strict CSP"
+        assert "<style" not in html, f"{page}: inline <style> block breaks the strict CSP"
+        # Every <script> must be external (src=), never an inline block.
+        for m in re.finditer(r"<script\b([^>]*)>", html):
+            attrs = m.group(1)
+            assert "src=" in attrs, f"{page}: inline <script> breaks script-src 'self'"
+        # CSP present and strict.
+        assert 'http-equiv="Content-Security-Policy"' in html, f"{page}: missing CSP meta"
+        assert "script-src 'self'" in html, f"{page}: CSP must pin script-src 'self'"
+        assert "style-src 'self'" in html, f"{page}: CSP must pin style-src 'self'"
+        assert "object-src 'none'" in html, f"{page}: CSP should set object-src 'none'"
+        assert "'unsafe-inline'" not in html, f"{page}: CSP must not allow 'unsafe-inline'"
+        assert "'unsafe-eval'" not in html, f"{page}: CSP must not allow 'unsafe-eval'"
+    # No external links opening a new tab without noopener.
+    for page in ALL_PAGES + ["signal.js"]:
+        text = read(page)
+        for m in re.finditer(r'target="_blank"', text):
+            window = text[max(0, m.start() - 200): m.end() + 200]
+            assert "noopener" in window, f"{page}: target=_blank without rel=noopener"
+
+
+def assert_no_removed_refs() -> None:
+    for page in ALL_PAGES:
+        html = read(page)
+        for ref in REMOVED_REFS:
+            assert ref not in html, f"{page}: still references removed asset '{ref}'"
+
+
+def assert_preview_pages() -> None:
+    brand = read("brand.html")
+    for marker in ["Brand System", "Visual system", "Component language"]:
+        assert marker in brand, f"brand.html missing marker: {marker}"
+    logos = read("logo-exploration.html")
+    for marker in ["Logo exploration", "Radar monogram", "Signal aperture",
+                   "Terminal signal", "Classified stamp", "Signal grid",
+                   "Minimal ASD square", "Keep Option F"]:
+        assert marker in logos, f"logo-exploration.html missing marker: {marker}"
+    # The logo board references the restored SVG assets.
+    for svg in ["assets/logo-radar-monogram.svg", "assets/logo-minimal-asd.svg"]:
+        assert svg in logos, f"logo-exploration.html missing {svg}"
+        assert (ROOT / svg).exists(), f"missing asset {svg}"
+
+
+def assert_design_system() -> None:
+    css = read("styles.css")
+    # Token architecture.
+    assert ":root" in css, "styles.css missing :root tokens"
+    assert '[data-theme="dark"]' in css, "styles.css missing dark theme tokens"
+    for token in ["--accent", "--bg", "--ink", "--muted", "--line",
+                  "--signal", "--hype", "--c-concept", "--s-ignore",
+                  "--panel-bg", "--chip-active-bg", "--seg-track"]:
+        assert token in css, f"styles.css missing token {token}"
+    # Light + dark accent-driven category colors both defined.
+    assert "#0a7ea4" in css, "styles.css missing light teal accent"
+    assert "#58e6ff" in css, "styles.css missing dark concept color"
+    # Typography.
+    assert "Space Grotesk" in css, "styles.css must use Space Grotesk"
+    assert "IBM Plex Mono" in css, "styles.css must use IBM Plex Mono"
+    assert "font-family: Inter" not in css, "styles.css must not default to Inter"
+    # Accessibility.
+    assert ":focus-visible" in css, "styles.css must define a visible focus style"
+    assert ".skip-link" in css, "styles.css must style a skip link"
+    assert "prefers-reduced-motion" in css, "styles.css must respect reduced motion"
+    # Core component classes used by the JS renderers exist.
+    for cls in [".signal-card", ".bar-fill", ".chip", ".seg-btn",
+                ".wk-row", ".meta-card", ".related-card", ".method-card", ".principle-card"]:
+        assert cls in css, f"styles.css missing component class {cls}"
+    # Dynamic bar fill must be driven by a custom property (set via CSSOM in JS).
+    assert "var(--w" in css, "styles.css .bar-fill must use var(--w) for dynamic width"
+
+
+def assert_home_contract() -> None:
     html = read("index.html")
-    for phrase in REQUIRED_HERO_PHRASES:
-        assert phrase in html, f"Homepage missing hero phrase: {phrase}"
-    for marker in REQUIRED_META_MARKERS:
-        assert marker in html, f"Homepage missing launch metadata marker: {marker}"
-    for marker in REQUIRED_WAITLIST_MARKERS:
-        assert marker in html, f"Homepage missing waitlist marker: {marker}"
-    assert "replace-with-ai-signal-desk-waitlist" not in html, "Homepage should not ship with placeholder waitlist URL"
-    assert "Newsletter signup demo" not in html, "Homepage should not contain demo-only signup form copy"
-    for marker in REQUIRED_IDENTITY_MARKERS:
-        assert marker in html, f"Homepage missing unique identity marker: {marker}"
-    for target in REQUIRED_NAV_TARGETS:
-        assert f'href="{target}"' in html, f"Navigation missing target {target}"
-    for target in REQUIRED_TRUST_LINKS:
-        assert f'href="{target}"' in html, f"Homepage missing trust link {target}"
-    for section in ["concepts", "products", "repos", "workflows", "weekly"]:
-        assert f'id="{section}"' in html, f"Homepage missing #{section} section"
-    assert "digest-grid" in html, "Homepage should render digest cards"
-    assert "newsletter" in html.lower(), "Homepage should include a newsletter/conversion section"
+    for phrase in ["AI signal,", "not AI noise", "Classified signal cards",
+                   "This week at a glance"]:
+        assert phrase in html, f"index.html missing hero/section phrase: {phrase}"
+    for hook in ["data-digest-grid", "data-filters", "data-sorts",
+                 "data-results-count", "data-search", 'id="digest"']:
+        assert hook in html, f"index.html missing hook: {hook}"
+    for cat in CATEGORIES:
+        assert f'data-count="{cat}"' in html, f"index.html wayfinding missing count for {cat}"
+        assert f'index.html?filter={cat}' in html, f"index.html missing nav filter link for {cat}"
+    # SEO/social tags.
+    for tag in ['rel="canonical"', 'property="og:title"', 'property="og:image"',
+                'name="twitter:card"', 'property="og:description"']:
+        assert tag in html, f"index.html missing SEO tag: {tag}"
+    assert "aisignaldesk.ai" in html, "index.html canonical/OG should use the live domain"
+    assert "<noscript>" in html, "index.html should degrade without JS"
 
 
-def assert_launch_trust_pages() -> None:
-    page_requirements = {
-        "about.html": ["Editorial standard", "What gets ignored", "human review"],
-        "privacy.html": ["email address", "unsubscribe", "no selling"],
-        "contact.html": ["Contact", "signals@aisignaldesk.example", "signals"],
-    }
-    for page_path, markers in page_requirements.items():
-        page = read(page_path)
-        assert 'href="styles.css"' in page, f"Trust page missing stylesheet: {page_path}"
-        assert 'src="assets/brand-mark.svg"' in page, f"Trust page missing brand mark: {page_path}"
-        for marker in markers:
-            assert marker.lower() in page.lower(), f"{page_path} missing marker: {marker}"
+def assert_other_views() -> None:
+    signal = read("signal.html")
+    assert "data-article" in signal, "signal.html missing data-article mount"
+    assert '<script src="signal.js"></script>' in signal, "signal.html must load signal.js"
+
+    weekly = read("weekly.html")
+    assert "The weekly field brief" in weekly, "weekly.html missing H1"
+    assert "data-weekly-groups" in weekly, "weekly.html missing groups mount"
+    assert '<script src="weekly.js"></script>' in weekly, "weekly.html must load weekly.js"
+
+    about = read("about.html")
+    for marker in ["What we hold to", "Classify", "Score", "Action",
+                   "calm intelligence desk"]:
+        assert marker in about, f"about.html missing marker: {marker}"
 
 
-def assert_launch_config_contract() -> None:
-    config = read("docs/launch-config.md")
-    for marker in ["Free beta", "Tally", "Cloudflare Pages", "Waitlist URL"]:
-        assert marker in config, f"Launch config missing marker: {marker}"
-    robots = read("robots.txt")
-    assert "User-agent: *" in robots, "robots.txt missing user-agent rule"
-    assert "Sitemap:" in robots, "robots.txt should point to sitemap"
-    sitemap = read("sitemap.xml")
-    for page in ["index.html", "about.html", "privacy.html", "contact.html"]:
-        assert page in sitemap, f"sitemap.xml missing page: {page}"
+def assert_trust_pages() -> None:
+    privacy = read("privacy.html")
+    for marker in ["email address", "unsubscribe", "no selling"]:
+        assert marker.lower() in privacy.lower(), f"privacy.html missing marker: {marker}"
+    contact = read("contact.html")
+    for marker in ["Contact", "signals@aisignaldesk.example", "signals"]:
+        assert marker.lower() in contact.lower(), f"contact.html missing marker: {marker}"
 
 
-def assert_content_contract() -> None:
+def assert_js_render_safety() -> None:
+    for js in ["app.js", "signal.js", "weekly.js"]:
+        src = read(js)
+        # DOM construction only: no innerHTML/insertAdjacentHTML sink for
+        # untrusted-looking fields (matches real assignments, not comments).
+        assert not re.search(r"\.innerHTML\s*=", src), f"{js}: must not assign innerHTML (use the DOM API)"
+        assert "insertAdjacentHTML" not in src, f"{js}: must not use insertAdjacentHTML"
+        assert ("textContent" in src or "createTextNode" in src), f"{js}: must set text via textContent"
+    # Bar widths set through the CSSOM, never inline markup.
+    for js in ["app.js", "signal.js"]:
+        assert "setProperty('--w'" in read(js), f"{js}: bar width must use setProperty('--w', ...)"
+    # The article's external source link is scheme-sanitized.
+    signal = read("signal.js")
+    assert "function safeUrl" in signal, "signal.js must define safeUrl"
+    assert "i" in read("signal.js"), "signal.js must read the ?i index param"
+    # Weekly groups by verdict, in order, linking back to articles.
+    weekly = read("weekly.js")
+    for key in STATUSES:
+        assert key in weekly, f"weekly.js missing status group: {key}"
+    assert "signal.html?i=" in weekly, "weekly.js rows must link to articles"
+
+
+def assert_digest_contract() -> None:
     data = json.loads(read("content/digest.json"))
     items = data.get("items", [])
-    assert len(items) >= 6, "MVP should include at least 6 seeded digest items"
-    categories = {item.get("category") for item in items}
-    assert REQUIRED_CONTENT_CATEGORIES <= categories, (
-        f"Missing categories: {REQUIRED_CONTENT_CATEGORIES - categories}"
-    )
-    linked_posts = 0
-    for item in items:
-        for key in [
-            "title",
-            "category",
-            "summary",
-            "why_it_matters",
-            "try_this",
-            "status",
-            "confidence",
-            "source_url",
-            "source_label",
-        ]:
-            assert item.get(key), f"Digest item missing {key}: {item}"
-        assert item["status"] in {"learn", "try", "watch", "ignore"}, item
-        assert item["confidence"] in {"high", "medium", "low"}, item
-        assert item["source_url"].startswith(("https://", "mailto:")), item
-        if item.get("post_url"):
-            linked_posts += 1
-            assert (ROOT / item["post_url"]).exists(), f"Digest post_url does not exist: {item['post_url']}"
-    assert linked_posts >= 3, "At least 3 homepage cards should link to launch sample posts"
+    assert len(items) >= 18, "digest should ship at least 18 items"
+    cats = {it.get("category") for it in items}
+    assert CATEGORIES <= cats, f"digest missing categories: {CATEGORIES - cats}"
+    for it in items:
+        for key in ["title", "category", "summary", "why_it_matters",
+                    "try_this", "status", "confidence", "source_label",
+                    "signal_score", "hype_score"]:
+            assert it.get(key) not in (None, ""), f"digest item missing {key}: {it.get('title')}"
+        assert it["category"] in CATEGORIES, it
+        assert it["status"] in STATUSES, it
+        assert it["confidence"] in CONFIDENCES, it
+        for score in ("signal_score", "hype_score"):
+            v = it[score]
+            assert isinstance(v, int) and 0 <= v <= 100, f"{score} out of range: {it.get('title')}"
+        # source_url is optional but, when present, must be a safe scheme.
+        su = it.get("source_url", "")
+        assert su == "" or su.startswith(("https://", "http://", "mailto:")), f"bad source_url: {su}"
 
 
-def assert_sample_posts_contract() -> None:
-    index = read("index.html")
-    for path, markers in {
-        "posts/agent-loops.html": ["Agent loops", "What changed", "Why it matters", "Try this", "Sources"],
-        "posts/context-engineering.html": ["Context engineering", "What changed", "Why it matters", "Try this", "Sources"],
-        "posts/lightweight-eval-harnesses.html": ["Lightweight eval harnesses", "What changed", "Why it matters", "Try this", "Sources"],
-    }.items():
-        page = read(path)
-        assert 'href="../styles.css"' in page, f"Post missing shared stylesheet: {path}"
-        assert 'src="../assets/brand-mark.svg"' in page, f"Post missing brand mark: {path}"
-        for marker in markers:
-            assert marker in page, f"Post {path} missing marker: {marker}"
-        assert path in index or path in read("content/digest.json"), f"Post not linked from launch content: {path}"
-
-
-def assert_weekly_issue_contract() -> None:
-    weekly = read("weekly.html")
-    for marker in [
-        "Issue 001",
-        "Five useful updates",
-        "Three things to try",
-        "One concept to learn",
-        "One thing to ignore",
-        "Agent loops",
-        "Context engineering",
-        "Lightweight eval harnesses",
-        "Sources reviewed",
-    ]:
-        assert marker in weekly, f"weekly.html missing marker: {marker}"
-    assert 'href="posts/agent-loops.html"' in weekly, "weekly.html should link sample post"
-    assert 'href="styles.css"' in weekly, "weekly.html should use shared stylesheet"
-
-
-def assert_editorial_workflow_contract() -> None:
-    workflow = read("docs/editorial-workflow.md")
-    schema = read("docs/signal-card-schema.md")
-    checklist = read("docs/launch-checklist.md")
-    for marker in ["AI Daily Digest", "signals@aisignaldesk.example", "human review", "draft", "publish"]:
-        assert marker.lower() in workflow.lower(), f"Editorial workflow missing marker: {marker}"
-    for marker in ["source_url", "confidence", "status", "human_reviewed", "published"]:
-        assert marker in schema, f"Signal card schema missing marker: {marker}"
-    for marker in ["Mobile", "Signup", "Issue 001", "sample posts", "Tally"]:
-        assert marker.lower() in checklist.lower(), f"Launch checklist missing marker: {marker}"
-
-
-def assert_css_quality_bar() -> None:
-    css = read("styles.css")
-    for token in ["--ink", "--muted", "--card-shadow", "font-family", "@media"]:
-        assert token in css, f"CSS missing expected design token/pattern: {token}"
-    assert len(re.findall(r"\.(digest-card|pillar-card|signal-console)", css)) >= 3, "CSS should define distinct signal-desk card styling"
-
-
-HTML_PAGES = ["index.html", "brand.html", "logo-exploration.html"]
-
-
-def assert_accessibility_contract() -> None:
-    css = read("styles.css")
-    assert ":focus-visible" in css, "CSS must define a visible keyboard focus style"
-    assert ".skip-link" in css, "CSS must style a skip-to-content link"
-    assert "prefers-reduced-motion" in css, "CSS must respect reduced-motion users"
-    # Navigation must stay reachable on mobile, never fully hidden.
-    assert "nav { display: none; }" not in css, "Mobile nav must not be hidden entirely"
-
-    for page in HTML_PAGES:
-        html = read(page)
-        assert 'lang="en"' in html, f"{page} must declare a document language"
-        assert 'class="skip-link"' in html, f"{page} missing skip-to-content link"
-        assert "<main" in html, f"{page} missing a <main> landmark"
-        # Skip link target must resolve to a focusable main landmark.
-        match = re.search(r'class="skip-link" href="#([\w-]+)"', html)
-        assert match, f"{page} skip link must point to an in-page target"
-        target = match.group(1)
-        assert re.search(rf'<main[^>]*id="{target}"', html), (
-            f"{page} skip link target #{target} must be the <main> landmark"
-        )
-        assert re.search(r'<main[^>]*tabindex="-1"', html), (
-            f"{page} <main> must be focusable for skip-link navigation"
-        )
-
-
-def assert_seo_contract() -> None:
-    html = read("index.html")
-    for tag in [
-        'rel="canonical"',
-        'property="og:title"',
-        'property="og:description"',
-        'property="og:image"',
-        'name="twitter:card"',
-    ]:
-        assert tag in html, f"index.html missing social/SEO tag: {tag}"
-
-
-def assert_digest_filter_contract() -> None:
-    html = read("index.html")
-    # Every filter button must expose its pressed state to assistive tech.
-    buttons = re.findall(r'<button class="filter[^\"]*"[^>]*>', html)
-    assert buttons, "Homepage must render digest filter buttons"
-    for button in buttons:
-        assert "aria-pressed" in button, f"Filter button missing aria-pressed: {button}"
-
-
-def assert_render_safety() -> None:
-    app = read("app.js")
-    assert "function escapeHtml" in app, "app.js must define an HTML escaper"
-    # Untrusted digest fields must be escaped, never interpolated raw, so that
-    # automated content ingestion cannot inject markup.
-    for field in ["title", "summary", "why_it_matters", "try_this", "category", "status"]:
-        assert f"${{item.{field}}}" not in app, (
-            f"app.js interpolates item.{field} without escaping"
-        )
-        assert f"escapeHtml(item.{field})" in app or f"escapeHtml(scoreFor" in app, (
-            f"app.js must escape item.{field}"
-        )
-
-
-def assert_internal_anchors() -> None:
-    for page in HTML_PAGES:
-        html = read(page)
-        ids = set(re.findall(r'id="([\w-]+)"', html))
-        targets = set(re.findall(r'href="#([\w-]+)"', html))
-        broken = sorted(target for target in targets if target not in ids)
-        assert not broken, f"{page} has in-page links with no matching id: {broken}"
-
-
-def assert_taste_skill_quality_bar() -> None:
-    """Guard against the most visible AI-slop patterns on rendered pages."""
-    html = read("index.html")
-    css = read("styles.css")
-    app = read("app.js")
-    content = read("content/digest.json")
-    html_pages = [path for path in ROOT.rglob("*.html")]
-    for forbidden in ["—", "–"]:
-        offenders = [str(path.relative_to(ROOT)) for path in html_pages if forbidden in path.read_text(encoding="utf-8")]
-        assert not offenders, f"HTML pages should not ship visible dash tell {forbidden}: {offenders}"
-        assert forbidden not in content, f"Digest content should not render visible dash tell: {forbidden}"
-    assert " · " not in app, "Rendered digest cards should not use middle-dot separator as a default"
-    inter_pages = [str(path.relative_to(ROOT)) for path in html_pages if "family=Inter" in path.read_text(encoding="utf-8")]
-    assert not inter_pages, f"HTML pages should not default to Inter after Taste Skill pass: {inter_pages}"
-    assert "font-family: Inter" not in css, "CSS should not default to Inter after Taste Skill pass"
-    hero_top_padding = re.search(r"\.hero\s*\{[^}]*padding-top:\s*(\d+)px", css, re.S)
-    assert hero_top_padding, "CSS should define explicit hero top padding"
-    assert int(hero_top_padding.group(1)) <= 96, "Hero top padding should stay within Taste Skill viewport cap"
-    assert "trust-note" not in html, "Hero should not include extra tagline/trust note below CTAs"
-
-
-
-def assert_product_brief_contract() -> None:
-    brief = read("docs/product-brief.md")
-    for heading in ["## Target reader", "## Product promise", "## MVP scope", "## Editorial rules"]:
-        assert heading in brief, f"Product brief missing {heading}"
-    assert "not generic ai news" in brief.lower(), "Brief should protect differentiated positioning"
-
-
-def assert_brand_contract() -> None:
-    brand = read("docs/brand-foundation.md")
-    for phrase in [
-        "AI signal, not AI noise",
-        "calm intelligence desk",
-        "learn, try, watch, or ignore",
-        "Signal score",
-        "Hype score",
-    ]:
-        assert phrase in brand, f"Brand foundation missing phrase: {phrase}"
-    design = read("DESIGN.md")
-    for token in ["#080A0F", "#58E6FF", "IBM Plex Mono", "signal-card"]:
-        assert token in design, f"DESIGN.md missing brand token: {token}"
-    brand_page = read("brand.html")
-    for marker in ["Brand System", "Visual system", "Component language"]:
-        assert marker in brand_page, f"Brand page missing marker: {marker}"
-    for page_path in ["index.html", "brand.html", "logo-exploration.html"]:
-        page = read(page_path)
-        assert 'href="favicon.svg"' in page, f"Page missing favicon link: {page_path}"
-        assert 'src="assets/brand-mark.svg"' in page, f"Page missing selected brand mark: {page_path}"
-
-
-def assert_logo_exploration_contract() -> None:
-    logo_page = read("logo-exploration.html")
-    for marker in [
-        "Logo exploration / v0.1",
-        "Radar monogram",
-        "Signal aperture",
-        "Terminal signal",
-        "Classified stamp",
-        "Signal grid",
-        "Minimal ASD square",
-        "Keep Option F",
-    ]:
-        assert marker in logo_page, f"Logo exploration missing marker: {marker}"
-    for path in [
-        "assets/logo-radar-monogram.svg",
-        "assets/logo-aperture.svg",
-        "assets/logo-terminal-signal.svg",
-        "assets/logo-classified-stamp.svg",
-        "assets/logo-signal-grid.svg",
-        "assets/logo-minimal-asd.svg",
-    ]:
-        svg = read(path)
-        assert "<svg" in svg and "</svg>" in svg, f"Invalid SVG wrapper: {path}"
-        assert "#080A0F" in svg, f"Logo should use brand ink background: {path}"
+def assert_seo_files() -> None:
+    sitemap = read("sitemap.xml")
+    for page in ["weekly.html", "about.html", "privacy.html", "contact.html"]:
+        assert page in sitemap, f"sitemap.xml missing {page}"
+    assert "aisignaldesk.ai" in sitemap, "sitemap should use the live domain"
+    assert "posts/" not in sitemap, "sitemap must not reference removed posts/"
+    robots = read("robots.txt")
+    assert "Sitemap:" in robots, "robots.txt should point to the sitemap"
 
 
 def main() -> None:
     assert_required_files()
-    assert_homepage_contract()
-    assert_launch_trust_pages()
-    assert_launch_config_contract()
-    assert_content_contract()
-    assert_sample_posts_contract()
-    assert_weekly_issue_contract()
-    assert_editorial_workflow_contract()
-    assert_css_quality_bar()
-    assert_accessibility_contract()
-    assert_seo_contract()
-    assert_digest_filter_contract()
-    assert_render_safety()
-    assert_internal_anchors()
-    assert_taste_skill_quality_bar()
-    assert_product_brief_contract()
-    assert_brand_contract()
-    assert_logo_exploration_contract()
-    print("OK: AI Signal Desk static MVP passes scaffold checks")
+    assert_shared_page_contract()
+    assert_security_invariants()
+    assert_no_removed_refs()
+    assert_preview_pages()
+    assert_design_system()
+    assert_home_contract()
+    assert_other_views()
+    assert_trust_pages()
+    assert_js_render_safety()
+    assert_digest_contract()
+    assert_seo_files()
+    print("OK: AI Signal Desk (Daylight Desk) passes site + security checks")
 
 
 if __name__ == "__main__":

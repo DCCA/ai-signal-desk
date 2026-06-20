@@ -5,62 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="description" content="Contact AI Signal Desk with useful AI signals, feedback, and beta questions." />
+    <meta
+      name="description"
+      content="Contact AI Signal Desk with useful AI signals, feedback, and beta questions."
+    />
     <title>Contact - AI Signal Desk</title>
+    <link rel="canonical" href="https://aisignaldesk.ai/contact.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AI Signal Desk" />
+    <meta property="og:title" content="Contact - AI Signal Desk" />
+    <meta property="og:description" content="Contact AI Signal Desk with useful AI signals, feedback, and beta questions." />
+    <meta property="og:url" content="https://aisignaldesk.ai/contact.html" />
+    <meta property="og:image" content="https://aisignaldesk.ai/assets/brand-mark.svg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Contact - AI Signal Desk" />
+    <meta name="twitter:description" content="Contact AI Signal Desk with useful AI signals, feedback, and beta questions." />
+    <meta name="twitter:image" content="https://aisignaldesk.ai/assets/brand-mark.svg" />
+
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
+    <script src="theme.js"></script>
   </head>
   <body>
-    <div class="scanline" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============ SHARED HEADER ============ -->
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="AI Signal Desk home">
-        <img class="brand-mark" src="assets/brand-mark.svg" alt="" />
-        <span>AI Signal Desk</span>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="index.html#digest">Signals</a>
-        <a href="about.html">About</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <a class="header-cta" href="index.html#newsletter">Join the free beta</a>
+      <div class="header-row">
+        <a class="brand" href="index.html" aria-label="AI Signal Desk home">
+          <span class="brand-mark" aria-hidden="true">SD</span>
+          AI Signal Desk
+        </a>
+        <nav class="site-nav no-scrollbar" aria-label="Primary">
+          <a href="index.html?filter=concept">Concepts</a>
+          <a href="index.html?filter=product">Products</a>
+          <a href="index.html?filter=repo">Repos</a>
+          <a href="index.html?filter=workflow">Workflows</a>
+          <a href="weekly.html">Weekly</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+            <span data-theme-icon aria-hidden="true">☾</span>
+            <span data-theme-label>Dark</span>
+          </button>
+          <a class="btn-accent" href="#newsletter">Subscribe free</a>
+        </div>
+      </div>
     </header>
 
-    <main class="content-page">
-      <p class="eyebrow">Contact</p>
-      <h1>Send signals, feedback, or beta questions.</h1>
-      <section class="content-panel">
-        <h2>Contact</h2>
-        <p>
-          For now, send useful AI signals, product/repo suggestions, corrections,
-          and beta feedback to:
-        </p>
-        <p><a href="mailto:signals@aisignaldesk.example">signals@aisignaldesk.example</a></p>
+    <main id="main" tabindex="-1" class="doc">
+      <p class="kicker">Contact</p>
+      <h1>Contact: send signals, feedback, or beta questions.</h1>
+      <p class="doc-lead">
+        For now, send useful AI signals, product and repo suggestions,
+        corrections, and beta feedback to the address below.
+      </p>
 
-        <h2>What to send</h2>
-        <ul>
-          <li>AI products or repos that seem practically useful.</li>
-          <li>Concepts that need a clear explanation.</li>
-          <li>Workflows worth testing.</li>
-          <li>Feedback about which signals are useful or too noisy.</li>
-        </ul>
+      <h2>Get in touch</h2>
+      <p>
+        Email us at
+        <a href="mailto:signals@aisignaldesk.example">signals@aisignaldesk.example</a>.
+      </p>
 
-        <h2>How messages are handled</h2>
-        <p>
-          Hermes may help filter incoming signals and newsletters, but publishing
-          decisions stay human-reviewed during the beta.
-        </p>
-      </section>
+      <h2>What to send</h2>
+      <ul>
+        <li>AI products or repos that seem practically useful.</li>
+        <li>Concepts that need a clear explanation.</li>
+        <li>Workflows worth testing.</li>
+        <li>Feedback about which signals are useful or too noisy.</li>
+      </ul>
+
+      <h2>How messages are handled</h2>
+      <p>
+        Automated tooling may help filter incoming signals and newsletters, but
+        publishing decisions stay human-reviewed during the beta.
+      </p>
     </main>
 
-    <footer class="footer">
-      <span>AI Signal Desk</span>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="privacy.html">Privacy</a>
+    <!-- ============ SHARED NEWSLETTER ============ -->
+    <section class="news" id="newsletter" aria-label="Newsletter signup">
+      <div class="news-panel">
+        <div>
+          <h2>Get the field brief every week.</h2>
+          <p>
+            Five useful updates, three things to try, one concept to learn, one
+            thing to ignore. For people who want to know what matters and what to
+            do next.
+          </p>
+        </div>
+        <div>
+          <form
+            class="news-field"
+            data-waitlist-link="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief"
+            action="mailto:signals@aisignaldesk.example"
+            method="post"
+            enctype="text/plain"
+          >
+            <input type="email" placeholder="you@company.com" aria-label="Email address" />
+            <a
+              class="btn-accent"
+              href="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief&body=Please%20add%20me%20to%20the%20weekly%20field%20brief."
+              >Join free</a
+            >
+          </form>
+          <div class="news-trust">
+            <span>Free weekly</span><span>&middot;</span><span>No spam</span><span>&middot;</span><span>Unsubscribe anytime</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHARED FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="footer-row">
+        <span>AI Signal Desk</span>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

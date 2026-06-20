@@ -1,47 +1,165 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <title>AI Signal Desk - Logo Exploration</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="logo-exploration.css" />
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="scanline" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="brand" href="index.html"><img class="brand-mark" src="assets/brand-mark.svg" alt="" /><span>AI Signal Desk</span></a>
-    <nav><a href="brand.html">Brand</a><a href="logo-exploration.html">Logos</a><a href="index.html">Site</a></nav>
-    <a class="header-cta" href="assets/brand-mark.svg">Open selected SVG</a>
-  </header>
-  <main id="main" class="logo-board" tabindex="-1">
-    <section class="logo-hero">
-      <div>
-        <p class="eyebrow">Logo exploration / v0.1</p>
-        <h1>Six ways to mark the signal desk.</h1>
-        <p class="hero-copy">The goal is a logo that works as a favicon, publication mark, and product lockup without falling into generic AI symbolism.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      name="description"
+      content="A six-direction logo comparison board for AI Signal Desk, restyled in the Daylight Desk system, with a recommendation for the final mark."
+    />
+    <title>Logo Exploration &mdash; AI Signal Desk</title>
+    <link rel="canonical" href="https://aisignaldesk.ai/logo-exploration.html" />
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="preview.css" />
+    <script src="theme.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============ SHARED HEADER ============ -->
+    <header class="site-header">
+      <div class="header-row">
+        <a class="brand" href="index.html" aria-label="AI Signal Desk home">
+          <span class="brand-mark" aria-hidden="true">SD</span>
+          AI Signal Desk
+        </a>
+        <nav class="site-nav no-scrollbar" aria-label="Primary">
+          <a href="index.html?filter=concept">Concepts</a>
+          <a href="index.html?filter=product">Products</a>
+          <a href="index.html?filter=repo">Repos</a>
+          <a href="index.html?filter=workflow">Workflows</a>
+          <a href="weekly.html">Weekly</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+            <span data-theme-icon aria-hidden="true">&#9790;</span>
+            <span data-theme-label>Dark</span>
+          </button>
+          <a class="btn-accent" href="#newsletter">Subscribe free</a>
+        </div>
       </div>
-      <div class="logo-stage"><img src="assets/brand-mark.svg" alt="Selected minimal ASD logo" /></div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- ============ HERO ============ -->
+      <section class="preview-hero">
+        <p class="kicker">Logo exploration</p>
+        <h1>Six ways to mark the signal desk</h1>
+        <p class="preview-lead">
+          The goal is a logo that works as a favicon, publication mark, and
+          product lockup without falling into generic AI symbolism.
+        </p>
+      </section>
+
+      <div class="preview-wrap">
+        <section class="preview-section" aria-label="Logo directions">
+          <div class="logo-grid">
+            <article class="logo-tile">
+              <div class="logo-stage"><img src="assets/logo-radar-monogram.svg" alt="Radar monogram logo" /></div>
+              <span class="logo-option">Option A</span>
+              <h2 class="logo-name">Radar monogram</h2>
+              <p class="logo-note">Most direct fit: ASD inside a scanner. Strong for favicon and product identity.</p>
+            </article>
+            <article class="logo-tile">
+              <div class="logo-stage"><img src="assets/logo-aperture.svg" alt="Signal aperture logo" /></div>
+              <span class="logo-option">Option B</span>
+              <h2 class="logo-name">Signal aperture</h2>
+              <p class="logo-note">Most premium and abstract. Good if the brand should mature beyond the ASD letters.</p>
+            </article>
+            <article class="logo-tile">
+              <div class="logo-stage"><img src="assets/logo-terminal-signal.svg" alt="Terminal signal logo" /></div>
+              <span class="logo-option">Option C</span>
+              <h2 class="logo-name">Terminal signal</h2>
+              <p class="logo-note">Most developer and operator coded. Strong if the product leans into tools and workflows.</p>
+            </article>
+            <article class="logo-tile">
+              <div class="logo-stage"><img src="assets/logo-classified-stamp.svg" alt="Classified stamp logo" /></div>
+              <span class="logo-option">Option D</span>
+              <h2 class="logo-name">Classified stamp</h2>
+              <p class="logo-note">Most editorial. Useful for issue covers, but weaker as a tiny app icon.</p>
+            </article>
+            <article class="logo-tile">
+              <div class="logo-stage"><img src="assets/logo-signal-grid.svg" alt="Signal grid logo" /></div>
+              <span class="logo-option">Option E</span>
+              <h2 class="logo-name">Signal grid</h2>
+              <p class="logo-note">Most ownable metaphor: many dots, one useful signal. Clear at small sizes.</p>
+            </article>
+            <article class="logo-tile">
+              <div class="logo-stage"><img src="assets/logo-minimal-asd.svg" alt="Minimal ASD square logo" /></div>
+              <span class="logo-option">Option F</span>
+              <h2 class="logo-name">Minimal ASD square</h2>
+              <p class="logo-note">Simplest and most flexible. Less distinctive, but easiest to use everywhere.</p>
+            </article>
+          </div>
+
+          <div class="logo-pick">
+            <p class="kicker">Selected direction</p>
+            <h2>Keep Option F: Minimal ASD square</h2>
+            <p>
+              The selected mark is simple, flexible, and readable as a favicon. It
+              keeps the operational ASD monogram while using the signal underline
+              as the distinct brand cue, so it survives on light and dark surfaces
+              for social previews, docs, embeds, and favicons.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ============ SHARED NEWSLETTER ============ -->
+    <section class="news" id="newsletter" aria-label="Newsletter signup">
+      <div class="news-panel">
+        <div>
+          <h2>Get the field brief every week.</h2>
+          <p>
+            Five useful updates, three things to try, one concept to learn, one
+            thing to ignore. For people who want to know what matters and what to
+            do next.
+          </p>
+        </div>
+        <div>
+          <form
+            class="news-field"
+            data-waitlist-link="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief"
+            action="mailto:signals@aisignaldesk.example"
+            method="post"
+            enctype="text/plain"
+          >
+            <input type="email" placeholder="you@company.com" aria-label="Email address" />
+            <a
+              class="btn-accent"
+              href="mailto:signals@aisignaldesk.example?subject=Join%20the%20AI%20Signal%20Desk%20field%20brief&body=Please%20add%20me%20to%20the%20weekly%20field%20brief."
+              >Join free</a
+            >
+          </form>
+          <div class="news-trust">
+            <span>Free weekly</span><span>&middot;</span><span>No spam</span><span>&middot;</span><span>Unsubscribe anytime</span>
+          </div>
+        </div>
+      </div>
     </section>
-    <section class="variant-grid">
-      <article class="logo-variant"><img src="assets/logo-radar-monogram.svg" alt="Radar monogram"/><span class="pill concept">Option A</span><h2>Radar monogram</h2><p>Most direct fit: ASD inside a scanner. Strong for favicon and product identity.</p><div class="usage-row"><img src="assets/logo-radar-monogram.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-radar-monogram.svg" alt=""/><img src="assets/logo-radar-monogram.svg" alt=""/></span></div></article>
-      <article class="logo-variant"><img src="assets/logo-aperture.svg" alt="Aperture mark"/><span class="pill product">Option B</span><h2>Signal aperture</h2><p>Most premium and abstract. Good if the brand should mature beyond the ASD letters.</p><div class="usage-row"><img src="assets/logo-aperture.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-aperture.svg" alt=""/><img src="assets/logo-aperture.svg" alt=""/></span></div></article>
-      <article class="logo-variant"><img src="assets/logo-terminal-signal.svg" alt="Terminal signal"/><span class="pill workflow">Option C</span><h2>Terminal signal</h2><p>Most developer/operator coded. Strong if the product leans into tools and workflows.</p><div class="usage-row"><img src="assets/logo-terminal-signal.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-terminal-signal.svg" alt=""/><img src="assets/logo-terminal-signal.svg" alt=""/></span></div></article>
-      <article class="logo-variant"><img src="assets/logo-classified-stamp.svg" alt="Classified stamp"/><span class="pill repo">Option D</span><h2>Classified stamp</h2><p>Most editorial. Useful for issue covers, but weaker as a tiny app icon.</p><div class="usage-row"><img src="assets/logo-classified-stamp.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-classified-stamp.svg" alt=""/><img src="assets/logo-classified-stamp.svg" alt=""/></span></div></article>
-      <article class="logo-variant"><img src="assets/logo-signal-grid.svg" alt="Signal grid"/><span class="pill concept">Option E</span><h2>Signal grid</h2><p>Most ownable metaphor: many dots, one useful signal. Clear at small sizes.</p><div class="usage-row"><img src="assets/logo-signal-grid.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-signal-grid.svg" alt=""/><img src="assets/logo-signal-grid.svg" alt=""/></span></div></article>
-      <article class="logo-variant"><img src="assets/logo-minimal-asd.svg" alt="Minimal ASD"/><span class="pill product">Option F</span><h2>Minimal ASD square</h2><p>Simplest and most flexible. Less distinctive, but easiest to use everywhere.</p><div class="usage-row"><img src="assets/logo-minimal-asd.svg" alt=""/><span class="mini-lockup">AI Signal Desk</span><span class="fav-test"><img src="assets/logo-minimal-asd.svg" alt=""/><img src="assets/logo-minimal-asd.svg" alt=""/></span></div></article>
-    </section>
-    <section class="recommendation weekly-panel">
-      <div><p class="eyebrow">Selected direction</p><h2>Keep Option F: Minimal ASD square.</h2><p>The selected mark is simple, flexible, and readable as a favicon. It keeps the operational ASD monogram while using the cyan/amber/green signal underline as the distinct brand cue.</p></div>
-      <div class="light-test"><img src="assets/brand-mark.svg" alt="Selected minimal ASD mark on light background"/><h3>Light-background check</h3><p>The dark container survives on light surfaces, so the mark can work in social previews, docs, embeds, and favicons.</p></div>
-    </section>
-  </main>
-</body>
+
+    <!-- ============ SHARED FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="footer-row">
+        <span>AI Signal Desk</span>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
