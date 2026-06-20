@@ -3,33 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>AI Signal Desk - Logo Exploration</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .logo-board { max-width: 1220px; margin: 0 auto; padding: 92px 24px; }
-    .logo-hero { display:grid; grid-template-columns: 1fr .8fr; gap: 40px; align-items:center; margin-bottom: 48px; }
-    .logo-hero h1 { font-size: clamp(54px, 8vw, 104px); }
-    .logo-stage { border:1px solid var(--line); border-radius:32px; background:linear-gradient(180deg,rgba(21,29,42,.94),rgba(8,10,15,.96)); padding:32px; box-shadow:var(--card-shadow); }
-    .logo-stage img { width:100%; max-width: 340px; display:block; margin:0 auto; }
-    .variant-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:18px; }
-    .logo-variant { background:linear-gradient(180deg,rgba(21,29,42,.92),rgba(13,17,24,.92)); border:1px solid var(--line); border-radius:24px; padding:22px; box-shadow:var(--card-shadow); }
-    .logo-variant img { width:132px; height:132px; display:block; margin: 4px auto 20px; }
-    .logo-variant h2 { margin:0 0 8px; font-size:22px; letter-spacing:-.04em; }
-    .logo-variant p { color:var(--muted); line-height:1.55; min-height:75px; }
-    .usage-row { display:grid; grid-template-columns: 44px 1fr 86px; gap:12px; align-items:center; border-top:1px solid var(--line); padding-top:14px; margin-top:14px; }
-    .usage-row img { width:36px; height:36px; margin:0; }
-    .mini-lockup { font-weight:800; letter-spacing:-.04em; }
-    .fav-test { display:flex; gap:6px; align-items:center; justify-content:flex-end; }
-    .fav-test img { width:18px; height:18px; margin:0; }
-    .recommendation { margin-top: 44px; }
-    .light-test { background:#F4F1E8; color:#080A0F; border-radius:18px; padding:18px; }
-    .light-test img { width:72px; height:72px; }
-    @media (max-width: 980px) { .logo-hero, .variant-grid { grid-template-columns: 1fr; } }
-  </style>
+  <link rel="stylesheet" href="logo-exploration.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
