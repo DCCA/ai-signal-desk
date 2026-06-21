@@ -18,6 +18,7 @@ Signal cards are the atomic content unit for AI Signal Desk.
   "post_url": "posts/agent-loops.html",
   "human_reviewed": true,
   "published": true,
+  "automated_reviewed": false,
   "signal_score": 92,
   "hype_score": 18
 }
@@ -69,4 +70,9 @@ Draft cards in `content/drafts/` should include:
 
 ## Publication rule
 
-A card should not appear in `content/digest.json`, `weekly.html`, or `posts/` until it is human-reviewed and has source attribution.
+Cards may appear in `content/digest.json` through either:
+
+1. manual human review with `human_reviewed: true`, or
+2. the automated Hermes reviewer/editor pipeline with `human_reviewed: false`, `automated_reviewed: true`, and `published: true`.
+
+Deeper `posts/*.html` analysis pages and manually curated weekly issues still require human review.

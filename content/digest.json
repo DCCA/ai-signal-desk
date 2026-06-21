@@ -1,7 +1,7 @@
 {
   "publication": "AI Signal Desk",
   "tagline": "AI signal, not AI noise.",
-  "updated": "2026-06-20",
+  "updated": "2026-06-21",
   "items": [
     {
       "title": "Agent loops",
@@ -269,6 +269,74 @@
       "source_digest_date": "2026-06-20",
       "signal_score": 84,
       "hype_score": 19
+    },
+    {
+      "title": "Gortex code intelligence for agents",
+      "category": "repo",
+      "summary": "Gortex is a local code-intelligence engine that gives AI coding agents symbol lookup, call-chain analysis, semantic search, a CLI, an API, and an MCP server.",
+      "why_it_matters": "Coding agents often waste context by rereading large parts of a repository. A local code-intelligence layer can make agent context more targeted and may improve both cost and code-change quality.",
+      "try_this": "Install it against one non-critical repository and compare one agent task with and without Gortex-assisted lookup before adopting it more broadly.",
+      "status": "try",
+      "confidence": "medium",
+      "source_label": "GitHub - zzet/gortex",
+      "source_url": "https://github.com/zzet/gortex",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "source_digest_date": "2026-06-21",
+      "signal_score": 88,
+      "hype_score": 22
+    },
+    {
+      "title": "Kelos Kubernetes agent workers",
+      "category": "repo",
+      "summary": "Kelos is a Kubernetes-native framework for running autonomous coding agents as isolated pods connected to issue trackers, pull requests, webhooks, scheduled jobs, and multi-agent pipelines.",
+      "why_it_matters": "As coding agents move from local experiments to background workers, teams need isolation, repeatability, and integration with existing delivery systems.",
+      "try_this": "Review the architecture and only test it in a disposable Kubernetes environment with a low-risk repository before using it for real development work.",
+      "status": "watch",
+      "confidence": "medium",
+      "source_label": "GitHub - Kelos-dev/kelos",
+      "source_url": "https://github.com/kelos-dev/kelos",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "source_digest_date": "2026-06-21",
+      "signal_score": 78,
+      "hype_score": 34
+    },
+    {
+      "title": "Kiln AI eval workbench",
+      "category": "repo",
+      "summary": "Kiln is a local-first AI workbench and Python library for evals, prompt optimization, RAG, agents, synthetic data, fine-tuning, model selection, and review workflows.",
+      "why_it_matters": "Agent and RAG workflows need repeatable checks before they are trusted. A local-first eval workbench can help teams move from ad hoc prompt testing to measured iteration.",
+      "try_this": "Create a small eval set for one AI workflow, run it through Kiln, and use the results to compare two prompts or model choices.",
+      "status": "try",
+      "confidence": "medium",
+      "source_label": "GitHub - Kiln-AI/Kiln",
+      "source_url": "https://github.com/Kiln-AI/Kiln",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "source_digest_date": "2026-06-21",
+      "signal_score": 88,
+      "hype_score": 22
+    },
+    {
+      "title": "Model routing as cost control",
+      "category": "workflow",
+      "summary": "Model routing means sending different AI tasks to different model tiers instead of defaulting every step to the most capable and expensive model.",
+      "why_it_matters": "Frontier-model pricing, cached input discounts, and batch discounts make cost-aware routing a practical design concern for AI products and agent workflows.",
+      "try_this": "Split one AI workflow into planning, extraction, summarization, verification, and final-writing steps, then decide which steps actually require a flagship model.",
+      "status": "learn",
+      "confidence": "high",
+      "source_label": "OpenAI API pricing",
+      "source_url": "https://openai.com/api/pricing/",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "source_digest_date": "2026-06-21",
+      "signal_score": 90,
+      "hype_score": 14
     }
   ]
 }
