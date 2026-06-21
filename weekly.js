@@ -85,6 +85,11 @@
     .then(function (r) { return r.json(); })
     .then(function (data) {
       var items = (data && data.items) || [];
+      if (data && data.updated) {
+        document.querySelectorAll('[data-updated]').forEach(function (n) {
+          n.textContent = data.updated;
+        });
+      }
       renderGroups(items);
     })
     .catch(function () {

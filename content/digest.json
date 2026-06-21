@@ -40,7 +40,7 @@
       "status": "try",
       "confidence": "low",
       "source_label": "Reader/product suggestion queue",
-      "source_url": "mailto:signals@aisignaldesk.example",
+      "source_url": "mailto:signals@aisignaldesk.ai",
       "signal_score": 81,
       "hype_score": 29,
       "published_date": "2026-06-19"
@@ -54,7 +54,7 @@
       "status": "try",
       "confidence": "medium",
       "source_label": "AI Signal Desk editorial",
-      "source_url": "mailto:signals@aisignaldesk.example",
+      "source_url": "mailto:signals@aisignaldesk.ai",
       "signal_score": 86,
       "hype_score": 14,
       "published_date": "2026-06-19"
@@ -96,7 +96,7 @@
       "status": "ignore",
       "confidence": "high",
       "source_label": "AI Signal Desk editorial",
-      "source_url": "mailto:signals@aisignaldesk.example",
+      "source_url": "mailto:signals@aisignaldesk.ai",
       "signal_score": 28,
       "hype_score": 94,
       "published_date": "2026-06-19"

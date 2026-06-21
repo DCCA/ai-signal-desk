@@ -21,6 +21,32 @@
     });
   }
 
+  // "This week at a glance": verdict counts scoped to the most recent week so
+  // the label stays literally true as the back-catalog grows.
+  function fillGlance(items) {
+    var scoped = items;
+    if (SD.weekKey && items.length) {
+      var latest = items.reduce(function (max, it) {
+        var k = SD.weekKey(it.published_date);
+        return k > max ? k : max;
+      }, '');
+      scoped = items.filter(function (it) { return SD.weekKey(it.published_date) === latest; });
+    }
+    var s = { learn: 0, try: 0, watch: 0, ignore: 0 };
+    scoped.forEach(function (it) { if (s[it.status] != null) s[it.status]++; });
+    document.querySelectorAll('[data-glance]').forEach(function (n) {
+      var k = n.getAttribute('data-glance');
+      if (s[k] != null) n.textContent = s[k];
+    });
+  }
+
+  function fillUpdated(updated) {
+    if (!updated) return;
+    document.querySelectorAll('[data-updated]').forEach(function (n) {
+      n.textContent = updated;
+    });
+  }
+
   function renderTop(items) {
     // Keep the original digest index so deep links (signal.html?i=N) stay stable.
     var rows = items.map(function (it, i) { return { it: it, i: i }; });
@@ -37,6 +63,8 @@
     .then(function (data) {
       var items = (data && data.items) || [];
       fillWayfinding(items);
+      fillGlance(items);
+      fillUpdated(data && data.updated);
       renderTop(items);
     })
     .catch(function () {
