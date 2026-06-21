@@ -22,8 +22,11 @@ header/footer/newsletter and a digest rendered from `content/digest.json`.
 
 ## Site contents
 
-- `index.html` — home: hero, "this week at a glance", wayfinding, and the
-  classified signal-card grid (filter chips + segmented sort + live search)
+- `index.html` — home: a lean front door with hero, "this week at a glance",
+  wayfinding, and the **top signals** by score (links into the archive)
+- `archive.html` — the full back-catalog, grouped by calendar week (newest
+  first), with category filter chips + live search (`archive.html?filter=N`,
+  `?q=…`), rendered from the digest
 - `signal.html` — article / signal deep-dive (`signal.html?i=N`, rendered from
   the digest; deep-linkable, with related signals)
 - `weekly.html` — the weekly field brief, grouped by verdict (learn/try/watch/ignore)
@@ -32,9 +35,12 @@ header/footer/newsletter and a digest rendered from `content/digest.json`.
 - `contact.html` — contact route for signals and feedback
 - `styles.css` — the Daylight Desk token system + all component styles
 - `theme.js` — theme bootstrap (localStorage + `prefers-color-scheme`) and toggle
-- `app.js` — home digest rendering, filtering, sorting, search (DOM API, no innerHTML)
-- `signal.js` / `weekly.js` — article and weekly rendering from the digest
+- `signals-shared.js` — shared signal-card builder + week helpers (DOM API, no innerHTML)
+- `app.js` — home "top signals" grid (consumes `signals-shared.js`)
+- `archive.js` — archive: week grouping, category filter, search, deep links
+- `signal.js` / `weekly.js` — article and current-week rendering from the digest
 - `content/digest.json` — `{ publication, tagline, updated, items: Signal[] }`
+  where each item carries a `published_date` (the date spine the archive groups by)
 - `docs/*.md` — product brief, brand foundation, editorial workflow, launch notes
 - `robots.txt` / `sitemap.xml` — crawler metadata
 - `DESIGN.md` — design-token/spec reference
@@ -113,6 +119,5 @@ redirect configured at the registrar/DNS (GitHub Pages serves only the single
 ## Next steps
 
 1. Convert existing AI Daily Digest entries into three long-form sample posts.
-2. Add a `/weekly` archive page.
-3. Connect a newsletter provider or simple waitlist form.
-4. Add a Hermes workflow that turns daily digest notes into draft cards for review.
+2. Connect a newsletter provider or simple waitlist form.
+3. Add a Hermes workflow that turns daily digest notes into draft cards for review.
