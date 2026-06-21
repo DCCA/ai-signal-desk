@@ -440,6 +440,44 @@
       "hype_score": 18,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true
+    },
+    {
+      "title": "Codebase Memory MCP",
+      "category": "repo",
+      "summary": "Codebase Memory MCP is an open-source MCP server that indexes repositories into a persistent code knowledge graph for fast symbol, semantic, and dependency lookups.",
+      "why_it_matters": "Coding agents often lose time and context repeatedly scanning the same files. A dedicated code-memory layer could make repository-aware agents cheaper, faster, and easier to inspect.",
+      "try_this": "Test it on a disposable repository first, compare one coding-agent task with and without code-memory lookups, and review the generated index before using it on sensitive code.",
+      "status": "watch",
+      "confidence": "medium",
+      "source_label": "GitHub - DeusData/codebase-memory-mcp",
+      "source_url": "https://github.com/DeusData/codebase-memory-mcp",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "review_notes": "Direct GitHub source was checked after discovery via a third-party trending snapshot; publish as watch until README claims are independently tested.",
+      "source_digest_date": "2026-06-21",
+      "sanitized": true,
+      "signal_score": 83,
+      "hype_score": 32
+    },
+    {
+      "title": "Kilo Code",
+      "category": "repo",
+      "summary": "Kilo Code is an open-source agentic engineering platform and coding-agent project with a large GitHub footprint and recent activity.",
+      "why_it_matters": "Open-source coding agents are maturing quickly, but adoption should depend on sandboxing, permissions, review flow, and integration fit rather than stars alone.",
+      "try_this": "Scan the README, permissions model, and extension surface, then compare one low-risk coding task against the current default coding-agent setup before adopting it.",
+      "status": "watch",
+      "confidence": "medium",
+      "source_label": "GitHub - Kilo-Org/kilocode",
+      "source_url": "https://github.com/Kilo-Org/kilocode",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "review_notes": "Direct GitHub source was checked after discovery via a third-party trending snapshot; publish as watch because practical differentiation still needs hands-on validation.",
+      "source_digest_date": "2026-06-21",
+      "sanitized": true,
+      "signal_score": 79,
+      "hype_score": 36
     }
   ]
 }
