@@ -147,7 +147,7 @@ def public_review_notes(card: dict[str, Any]) -> str:
     return notes
 
 
-def promote_card(card: dict[str, Any]) -> dict[str, Any]:
+def promote_card(card: dict[str, Any], publish_date: str) -> dict[str, Any]:
     promoted = {
         "title": card["title"],
         "category": card["category"],
@@ -163,6 +163,7 @@ def promote_card(card: dict[str, Any]) -> dict[str, Any]:
         "automated_reviewed": True,
         "review_notes": public_review_notes(card),
         "source_digest_date": card["source_digest_date"],
+        "published_date": publish_date,
         "sanitized": True,
         "signal_score": card.get("signal_score", default_signal_score(card)),
         "hype_score": card.get("hype_score", default_hype_score(card)),
@@ -241,7 +242,7 @@ def main(argv: list[str]) -> int:
 
     promoted: list[dict[str, Any]] = []
     for path, card in candidates[: args.max_cards]:
-        promoted_item = promote_card(card)
+        promoted_item = promote_card(card, args.date)
         promoted.append(promoted_item)
         existing_urls.add(str(promoted_item["source_url"]).strip().lower())
         existing_titles.add(slugify(promoted_item["title"]))

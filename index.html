@@ -53,10 +53,11 @@
           AI Signal Desk
         </a>
         <nav class="site-nav no-scrollbar" aria-label="Primary">
-          <a href="index.html?filter=concept">Concepts</a>
-          <a href="index.html?filter=product">Products</a>
-          <a href="index.html?filter=repo">Repos</a>
-          <a href="index.html?filter=workflow">Workflows</a>
+          <a href="archive.html?filter=concept">Concepts</a>
+          <a href="archive.html?filter=product">Products</a>
+          <a href="archive.html?filter=repo">Repos</a>
+          <a href="archive.html?filter=workflow">Workflows</a>
+          <a href="archive.html">Archive</a>
           <a href="weekly.html">Weekly</a>
           <a href="about.html">About</a>
         </nav>
@@ -84,17 +85,15 @@
             products, repos, and workflows worth your attention &mdash; each one
             classified, scored, and given a next action.
           </p>
-          <div class="search-bar">
+          <a
+            class="search-bar search-bar-link"
+            href="archive.html"
+            aria-label="Search the full signal archive"
+          >
             <span class="search-glyph" aria-hidden="true">&#9906;</span>
-            <input
-              type="search"
-              data-search
-              placeholder="Search 18 classified signals&hellip;"
-              aria-label="Search classified signals"
-            />
-            <kbd class="kbd" aria-hidden="true">&#8984; K</kbd>
-            <button class="btn-accent" type="button" data-search-btn>Search</button>
-          </div>
+            <span class="search-placeholder">Search the full signal archive&hellip;</span>
+            <span class="btn-accent">Open archive</span>
+          </a>
         </div>
 
         <aside class="glance" aria-label="This week at a glance">
@@ -143,7 +142,7 @@
       <!-- ============ WAYFINDING ============ -->
       <section class="wrap" aria-label="Browse by category">
         <div class="way-grid">
-          <a class="way-tile" href="index.html?filter=concept">
+          <a class="way-tile" href="archive.html?filter=concept">
             <div class="way-top">
               <span class="dot dot-concept"></span>
               <span class="way-count" data-count="concept">4</span>
@@ -151,7 +150,7 @@
             <div class="way-label">Concepts</div>
             <div class="way-note">Learn the ideas</div>
           </a>
-          <a class="way-tile" href="index.html?filter=product">
+          <a class="way-tile" href="archive.html?filter=product">
             <div class="way-top">
               <span class="dot dot-product"></span>
               <span class="way-count" data-count="product">3</span>
@@ -159,7 +158,7 @@
             <div class="way-label">Products</div>
             <div class="way-note">Judge the tools</div>
           </a>
-          <a class="way-tile" href="index.html?filter=repo">
+          <a class="way-tile" href="archive.html?filter=repo">
             <div class="way-top">
               <span class="dot dot-repo"></span>
               <span class="way-count" data-count="repo">7</span>
@@ -167,7 +166,7 @@
             <div class="way-label">Repos</div>
             <div class="way-note">Watch the projects</div>
           </a>
-          <a class="way-tile" href="index.html?filter=workflow">
+          <a class="way-tile" href="archive.html?filter=workflow">
             <div class="way-top">
               <span class="dot dot-workflow"></span>
               <span class="way-count" data-count="workflow">4</span>
@@ -185,25 +184,17 @@
             <h2>Classified signal cards</h2>
             <p>What it is, why it matters, and whether to learn, try, watch, or ignore.</p>
           </div>
-          <span class="results-count" data-results-count>18 results</span>
-        </div>
-
-        <div class="toolbar">
-          <div class="chips" data-filters aria-label="Filter by category">
-            <button class="chip is-active" type="button" aria-pressed="true">All 18</button>
-          </div>
-          <div class="sort-wrap">
-            <span class="sort-label">Sort</span>
-            <div class="seg" data-sorts aria-label="Sort signals">
-              <button class="seg-btn is-active" type="button" aria-pressed="true">Top signal</button>
-            </div>
-          </div>
+          <span class="results-count" data-results-count>Top signals</span>
         </div>
 
         <div class="cards-grid" data-digest-grid>
           <noscript>
             <p class="empty-note">Enable JavaScript to view the classified signal cards.</p>
           </noscript>
+        </div>
+
+        <div class="digest-cta">
+          <a class="btn-accent" href="archive.html">Browse the full archive &rarr;</a>
         </div>
       </section>
     </main>
@@ -246,6 +237,7 @@
       <div class="footer-row">
         <span>AI Signal Desk</span>
         <div class="footer-links">
+          <a href="archive.html">Archive</a>
           <a href="about.html">About</a>
           <a href="privacy.html">Privacy</a>
           <a href="contact.html">Contact</a>
@@ -253,6 +245,7 @@
       </div>
     </footer>
 
+    <script src="signals-shared.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

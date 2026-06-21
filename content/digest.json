@@ -14,7 +14,8 @@
       "source_label": "Anthropic - Building effective agents",
       "source_url": "https://www.anthropic.com/research/building-effective-agents",
       "signal_score": 92,
-      "hype_score": 18
+      "hype_score": 18,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Context engineering",
@@ -27,7 +28,8 @@
       "source_label": "LangChain - Context Engineering",
       "source_url": "https://www.langchain.com/blog/context-engineering-for-agents",
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Herdr",
@@ -40,7 +42,8 @@
       "source_label": "Reader/product suggestion queue",
       "source_url": "mailto:signals@aisignaldesk.example",
       "signal_score": 81,
-      "hype_score": 29
+      "hype_score": 29,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Personal AI knowledge workflow",
@@ -53,7 +56,8 @@
       "source_label": "AI Signal Desk editorial",
       "source_url": "mailto:signals@aisignaldesk.example",
       "signal_score": 86,
-      "hype_score": 14
+      "hype_score": 14,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Lightweight eval harnesses",
@@ -66,7 +70,8 @@
       "source_label": "Founder Collective - Eval-Driven Development",
       "source_url": "https://foundercollective.com/blog/eval-driven-development",
       "signal_score": 90,
-      "hype_score": 16
+      "hype_score": 16,
+      "published_date": "2026-06-19"
     },
     {
       "title": "MCP servers",
@@ -79,7 +84,8 @@
       "source_label": "Model Context Protocol",
       "source_url": "https://modelcontextprotocol.io/",
       "signal_score": 84,
-      "hype_score": 40
+      "hype_score": 40,
+      "published_date": "2026-06-19"
     },
     {
       "title": "AGI countdown takes",
@@ -92,7 +98,8 @@
       "source_label": "AI Signal Desk editorial",
       "source_url": "mailto:signals@aisignaldesk.example",
       "signal_score": 28,
-      "hype_score": 94
+      "hype_score": 94,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Agent safety controls",
@@ -108,7 +115,8 @@
       "published": true,
       "source_digest_date": "2026-06-19",
       "signal_score": 86,
-      "hype_score": 24
+      "hype_score": 24,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Awesome AI Agent Papers",
@@ -124,7 +132,8 @@
       "published": true,
       "source_digest_date": "2026-06-19",
       "signal_score": 82,
-      "hype_score": 18
+      "hype_score": 18,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Claude Agent SDK billing uncertainty",
@@ -140,7 +149,8 @@
       "published": true,
       "source_digest_date": "2026-06-19",
       "signal_score": 79,
-      "hype_score": 16
+      "hype_score": 16,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Context compression for agents",
@@ -156,7 +166,8 @@
       "published": true,
       "source_digest_date": "2026-06-19",
       "signal_score": 85,
-      "hype_score": 15
+      "hype_score": 15,
+      "published_date": "2026-06-19"
     },
     {
       "title": "DiffusionGemma",
@@ -172,7 +183,8 @@
       "published": true,
       "source_digest_date": "2026-06-19",
       "signal_score": 78,
-      "hype_score": 36
+      "hype_score": 36,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Gemini 3.5 Flash",
@@ -188,7 +200,8 @@
       "published": true,
       "source_digest_date": "2026-06-19",
       "signal_score": 87,
-      "hype_score": 34
+      "hype_score": 34,
+      "published_date": "2026-06-19"
     },
     {
       "title": "Small language models for agents",
@@ -204,7 +217,8 @@
       "published": true,
       "source_digest_date": "2026-06-19",
       "signal_score": 80,
-      "hype_score": 28
+      "hype_score": 28,
+      "published_date": "2026-06-19"
     },
     {
       "title": "DeerFlow",
@@ -220,7 +234,8 @@
       "published": true,
       "source_digest_date": "2026-06-20",
       "signal_score": 91,
-      "hype_score": 31
+      "hype_score": 31,
+      "published_date": "2026-06-20"
     },
     {
       "title": "Microsoft Agent Framework",
@@ -236,7 +251,8 @@
       "published": true,
       "source_digest_date": "2026-06-20",
       "signal_score": 89,
-      "hype_score": 27
+      "hype_score": 27,
+      "published_date": "2026-06-20"
     },
     {
       "title": "Omnigent",
@@ -252,7 +268,8 @@
       "published": true,
       "source_digest_date": "2026-06-20",
       "signal_score": 76,
-      "hype_score": 38
+      "hype_score": 38,
+      "published_date": "2026-06-20"
     },
     {
       "title": "PandaProbe",
@@ -268,7 +285,8 @@
       "published": true,
       "source_digest_date": "2026-06-20",
       "signal_score": 84,
-      "hype_score": 19
+      "hype_score": 19,
+      "published_date": "2026-06-20"
     },
     {
       "title": "Gortex code intelligence for agents",
@@ -287,7 +305,8 @@
       "signal_score": 88,
       "hype_score": 22,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Kelos Kubernetes agent workers",
@@ -306,7 +325,8 @@
       "signal_score": 78,
       "hype_score": 34,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Kiln AI eval workbench",
@@ -325,7 +345,8 @@
       "signal_score": 88,
       "hype_score": 22,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Model routing as cost control",
@@ -344,7 +365,8 @@
       "signal_score": 90,
       "hype_score": 14,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Behavior-based code review evals",
@@ -363,7 +385,8 @@
       "signal_score": 82,
       "hype_score": 18,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Claude Agent SDK",
@@ -382,7 +405,8 @@
       "signal_score": 80,
       "hype_score": 30,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Codex Record & Replay",
@@ -401,7 +425,8 @@
       "signal_score": 94,
       "hype_score": 18,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Copilot cloud agent automations",
@@ -420,7 +445,8 @@
       "signal_score": 84,
       "hype_score": 30,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "GitHub MCP Server",
@@ -439,7 +465,8 @@
       "signal_score": 93,
       "hype_score": 18,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
-      "sanitized": true
+      "sanitized": true,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Codebase Memory MCP",
@@ -458,7 +485,8 @@
       "source_digest_date": "2026-06-21",
       "sanitized": true,
       "signal_score": 83,
-      "hype_score": 32
+      "hype_score": 32,
+      "published_date": "2026-06-21"
     },
     {
       "title": "Kilo Code",
@@ -477,7 +505,8 @@
       "source_digest_date": "2026-06-21",
       "sanitized": true,
       "signal_score": 79,
-      "hype_score": 36
+      "hype_score": 36,
+      "published_date": "2026-06-21"
     }
   ]
 }

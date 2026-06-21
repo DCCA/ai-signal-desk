@@ -353,6 +353,34 @@ img { max-width: 100%; }
   font-weight: 600; box-shadow: var(--seg-shadow);
 }
 
+/* ---------- Hero search-as-link (home front door) ---------- */
+.digest-head h1 { margin: 0 0 6px; font-size: 34px; letter-spacing: -0.04em; font-weight: 700; }
+.search-bar-link { text-decoration: none; color: inherit; cursor: pointer; }
+.search-bar-link:hover { border-color: var(--muted); }
+.search-bar-link .search-placeholder {
+  flex: 1; min-width: 0; font-size: 15px; color: var(--faint); padding: 8px 0;
+}
+
+/* ---------- Home "browse the archive" CTA ---------- */
+.digest-cta { display: flex; justify-content: center; margin-top: 32px; }
+
+/* ---------- Archive: week sections ---------- */
+.archive-search { flex: 1; max-width: 360px; }
+.archive-week { margin: 0 0 40px; }
+.archive-week-head {
+  display: flex; align-items: baseline; gap: 12px;
+  margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line);
+}
+.archive-week-head h2 {
+  margin: 0; font-size: 20px; letter-spacing: -0.02em; font-weight: 700; color: var(--ink);
+}
+.archive-week-count {
+  font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--faint);
+  text-transform: uppercase; letter-spacing: .05em;
+}
+.wk-archive-link { color: var(--accent); text-decoration: none; font-weight: 600; }
+.wk-archive-link:hover { text-decoration: underline; }
+
 /* ---------- Signal cards ---------- */
 .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .signal-card {

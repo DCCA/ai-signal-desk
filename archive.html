@@ -7,23 +7,29 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       name="description"
-      content="Contact AI Signal Desk with useful AI signals, feedback, and beta questions."
+      content="The full AI Signal Desk archive: every classified signal card, grouped by week, searchable and filterable by category."
     />
-    <title>Contact - AI Signal Desk</title>
-    <link rel="canonical" href="https://aisignaldesk.ai/contact.html" />
+    <title>Signal archive — AI Signal Desk</title>
+    <link rel="canonical" href="https://aisignaldesk.ai/archive.html" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AI Signal Desk" />
-    <meta property="og:title" content="Contact - AI Signal Desk" />
-    <meta property="og:description" content="Contact AI Signal Desk with useful AI signals, feedback, and beta questions." />
-    <meta property="og:url" content="https://aisignaldesk.ai/contact.html" />
+    <meta property="og:title" content="Signal archive — AI Signal Desk" />
+    <meta
+      property="og:description"
+      content="Every classified AI signal, grouped by week and searchable by category."
+    />
+    <meta property="og:url" content="https://aisignaldesk.ai/archive.html" />
     <meta property="og:image" content="https://aisignaldesk.ai/assets/brand-mark.svg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Contact - AI Signal Desk" />
-    <meta name="twitter:description" content="Contact AI Signal Desk with useful AI signals, feedback, and beta questions." />
+    <meta name="twitter:title" content="Signal archive — AI Signal Desk" />
+    <meta
+      name="twitter:description"
+      content="Every classified AI signal, grouped by week and searchable by category."
+    />
     <meta name="twitter:image" content="https://aisignaldesk.ai/assets/brand-mark.svg" />
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -51,7 +57,7 @@
           <a href="archive.html?filter=product">Products</a>
           <a href="archive.html?filter=repo">Repos</a>
           <a href="archive.html?filter=workflow">Workflows</a>
-          <a href="archive.html">Archive</a>
+          <a href="archive.html" aria-current="page">Archive</a>
           <a href="weekly.html">Weekly</a>
           <a href="about.html">About</a>
         </nav>
@@ -65,33 +71,36 @@
       </div>
     </header>
 
-    <main id="main" tabindex="-1" class="doc">
-      <p class="kicker">Contact</p>
-      <h1>Contact: send signals, feedback, or beta questions.</h1>
-      <p class="doc-lead">
-        For now, send useful AI signals, product and repo suggestions,
-        corrections, and beta feedback to the address below.
-      </p>
+    <main id="main" tabindex="-1">
+      <!-- ============ ARCHIVE ============ -->
+      <section class="digest" id="archive">
+        <div class="digest-head">
+          <div>
+            <h1>Signal archive</h1>
+            <p>Every classified signal, newest week first. Filter by category or search the back-catalog.</p>
+          </div>
+          <span class="results-count" data-results-count>All signals</span>
+        </div>
 
-      <h2>Get in touch</h2>
-      <p>
-        Email us at
-        <a href="mailto:signals@aisignaldesk.example">signals@aisignaldesk.example</a>.
-      </p>
+        <div class="toolbar">
+          <div class="chips" data-filters aria-label="Filter by category"></div>
+          <div class="search-bar archive-search">
+            <span class="search-glyph" aria-hidden="true">&#9906;</span>
+            <input
+              type="search"
+              data-search
+              placeholder="Search the archive&hellip;"
+              aria-label="Search the archive"
+            />
+          </div>
+        </div>
 
-      <h2>What to send</h2>
-      <ul>
-        <li>AI products or repos that seem practically useful.</li>
-        <li>Concepts that need a clear explanation.</li>
-        <li>Workflows worth testing.</li>
-        <li>Feedback about which signals are useful or too noisy.</li>
-      </ul>
-
-      <h2>How messages are handled</h2>
-      <p>
-        Automated tooling may help filter incoming signals and newsletters, but
-        publishing decisions stay human-reviewed during the beta.
-      </p>
+        <div data-archive>
+          <noscript>
+            <p class="empty-note">Enable JavaScript to view the signal archive.</p>
+          </noscript>
+        </div>
+      </section>
     </main>
 
     <!-- ============ SHARED NEWSLETTER ============ -->
@@ -139,5 +148,8 @@
         </div>
       </div>
     </footer>
+
+    <script src="signals-shared.js"></script>
+    <script src="archive.js"></script>
   </body>
 </html>

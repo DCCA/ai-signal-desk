@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 PAGES = [
-    "index.html", "signal.html", "weekly.html",
+    "index.html", "archive.html", "signal.html", "weekly.html",
     "about.html", "privacy.html", "contact.html",
 ]
 
@@ -26,7 +26,8 @@ PREVIEW_PAGES = ["brand.html", "logo-exploration.html"]
 ALL_PAGES = PAGES + PREVIEW_PAGES
 
 REQUIRED_FILES = PAGES + PREVIEW_PAGES + [
-    "styles.css", "preview.css", "theme.js", "app.js", "signal.js", "weekly.js",
+    "styles.css", "preview.css", "theme.js",
+    "signals-shared.js", "app.js", "archive.js", "signal.js", "weekly.js",
     "content/digest.json",
     "favicon.svg", "assets/brand-mark.svg",
     "robots.txt", "sitemap.xml", "CNAME", ".nojekyll",
@@ -69,7 +70,7 @@ def assert_shared_page_contract() -> None:
         assert 'class="site-footer"' in html, f"{page}: missing shared footer"
         assert 'id="newsletter"' in html, f"{page}: missing newsletter band"
         # Shared nav + footer links.
-        for target in ["weekly.html", "about.html"]:
+        for target in ["archive.html", "weekly.html", "about.html"]:
             assert f'href="{target}"' in html, f"{page}: nav/footer missing {target}"
         for target in ["about.html", "privacy.html", "contact.html"]:
             assert f'href="{target}"' in html, f"{page}: footer missing {target}"
@@ -164,18 +165,45 @@ def assert_home_contract() -> None:
     for phrase in ["AI signal,", "not AI noise", "Classified signal cards",
                    "This week at a glance"]:
         assert phrase in html, f"index.html missing hero/section phrase: {phrase}"
-    for hook in ["data-digest-grid", "data-filters", "data-sorts",
-                 "data-results-count", "data-search", 'id="digest"']:
+    # Home is now a lean "best of" front door: the grid + wayfinding remain, but
+    # the filter/sort/search controls moved to the archive.
+    for hook in ["data-digest-grid", "data-results-count", 'id="digest"']:
         assert hook in html, f"index.html missing hook: {hook}"
+    for removed in ["data-filters", "data-sorts", "data-search"]:
+        assert removed not in html, f"index.html should no longer carry {removed} (moved to archive)"
+    assert 'href="archive.html"' in html, "index.html missing archive CTA/link"
     for cat in CATEGORIES:
         assert f'data-count="{cat}"' in html, f"index.html wayfinding missing count for {cat}"
-        assert f'index.html?filter={cat}' in html, f"index.html missing nav filter link for {cat}"
+        assert f'archive.html?filter={cat}' in html, f"index.html wayfinding must link into the archive for {cat}"
     # SEO/social tags.
     for tag in ['rel="canonical"', 'property="og:title"', 'property="og:image"',
                 'name="twitter:card"', 'property="og:description"']:
         assert tag in html, f"index.html missing SEO tag: {tag}"
     assert "aisignaldesk.ai" in html, "index.html canonical/OG should use the live domain"
     assert "<noscript>" in html, "index.html should degrade without JS"
+
+
+def assert_archive_contract() -> None:
+    """The archive is the date-grouped, filterable view of the full digest."""
+    html = read("archive.html")
+    for hook in ["data-archive", "data-filters", "data-search"]:
+        assert hook in html, f"archive.html missing hook: {hook}"
+    assert '<script src="signals-shared.js"></script>' in html, "archive.html must load signals-shared.js"
+    assert '<script src="archive.js"></script>' in html, "archive.html must load archive.js"
+    # signals-shared.js must be loaded before archive.js (it provides buildCard).
+    assert html.index("signals-shared.js") < html.index("archive.js"), \
+        "archive.html must load signals-shared.js before archive.js"
+    for tag in ['rel="canonical"', 'property="og:title"', 'name="twitter:card"']:
+        assert tag in html, f"archive.html missing SEO tag: {tag}"
+    assert "<noscript>" in html, "archive.html should degrade without JS"
+
+    js = read("archive.js")
+    # Date is the spine: group by week, link back to articles, honor deep links.
+    assert "weekKey" in js, "archive.js must group by weekKey"
+    assert "weekLabel" in js, "archive.js must label week sections via weekLabel"
+    assert "signal.html?i=" in read("signals-shared.js"), "shared card must link to articles"
+    for param in ["filter", "q"]:
+        assert f"get('{param}')" in js, f"archive.js must read the ?{param} deep-link param"
 
 
 def assert_other_views() -> None:
@@ -187,6 +215,10 @@ def assert_other_views() -> None:
     assert "The weekly field brief" in weekly, "weekly.html missing H1"
     assert "data-weekly-groups" in weekly, "weekly.html missing groups mount"
     assert '<script src="weekly.js"></script>' in weekly, "weekly.html must load weekly.js"
+    assert '<script src="signals-shared.js"></script>' in weekly, "weekly.html must load signals-shared.js"
+    assert 'href="archive.html"' in weekly, "weekly.html must link to the full archive"
+    # The weekly brief is scoped to the current week via the shared week helper.
+    assert "weekKey" in read("weekly.js"), "weekly.js must scope to the current week via weekKey"
 
     about = read("about.html")
     for marker in ["What we hold to", "Classify", "Score", "Action",
@@ -204,15 +236,16 @@ def assert_trust_pages() -> None:
 
 
 def assert_js_render_safety() -> None:
-    for js in ["app.js", "signal.js", "weekly.js"]:
+    for js in ["signals-shared.js", "app.js", "archive.js", "signal.js", "weekly.js"]:
         src = read(js)
         # DOM construction only: no innerHTML/insertAdjacentHTML sink for
         # untrusted-looking fields (matches real assignments, not comments).
         assert not re.search(r"\.innerHTML\s*=", src), f"{js}: must not assign innerHTML (use the DOM API)"
         assert "insertAdjacentHTML" not in src, f"{js}: must not use insertAdjacentHTML"
         assert ("textContent" in src or "createTextNode" in src), f"{js}: must set text via textContent"
-    # Bar widths set through the CSSOM, never inline markup.
-    for js in ["app.js", "signal.js"]:
+    # Bar widths set through the CSSOM, never inline markup. The shared card
+    # builder owns the home/archive bars; signal.js renders its own.
+    for js in ["signals-shared.js", "signal.js"]:
         assert "setProperty('--w'" in read(js), f"{js}: bar width must use setProperty('--w', ...)"
     # The article's external source link is scheme-sanitized.
     signal = read("signal.js")
@@ -234,8 +267,11 @@ def assert_digest_contract() -> None:
     for it in items:
         for key in ["title", "category", "summary", "why_it_matters",
                     "try_this", "status", "confidence", "source_label",
-                    "signal_score", "hype_score"]:
+                    "signal_score", "hype_score", "published_date"]:
             assert it.get(key) not in (None, ""), f"digest item missing {key}: {it.get('title')}"
+        # published_date is the date spine the archive groups by.
+        assert re.match(r"^\d{4}-\d{2}-\d{2}$", str(it["published_date"])), \
+            f"bad published_date: {it.get('title')} -> {it.get('published_date')}"
         assert it["category"] in CATEGORIES, it
         assert it["status"] in STATUSES, it
         assert it["confidence"] in CONFIDENCES, it
@@ -249,7 +285,7 @@ def assert_digest_contract() -> None:
 
 def assert_seo_files() -> None:
     sitemap = read("sitemap.xml")
-    for page in ["weekly.html", "about.html", "privacy.html", "contact.html"]:
+    for page in ["archive.html", "weekly.html", "about.html", "privacy.html", "contact.html"]:
         assert page in sitemap, f"sitemap.xml missing {page}"
     assert "aisignaldesk.ai" in sitemap, "sitemap should use the live domain"
     assert "posts/" not in sitemap, "sitemap must not reference removed posts/"
@@ -265,6 +301,7 @@ def main() -> None:
     assert_preview_pages()
     assert_design_system()
     assert_home_contract()
+    assert_archive_contract()
     assert_other_views()
     assert_trust_pages()
     assert_js_render_safety()
