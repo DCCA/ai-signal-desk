@@ -29,7 +29,7 @@ REQUIRED_FILES = PAGES + PREVIEW_PAGES + [
     "styles.css", "preview.css", "theme.js",
     "signals-shared.js", "app.js", "archive.js", "signal.js", "weekly.js",
     "content/digest.json",
-    "favicon.svg", "assets/brand-mark.svg",
+    "favicon.svg", "assets/brand-mark.svg", "assets/og-image.png",
     "robots.txt", "sitemap.xml", "CNAME", ".nojekyll",
     "DESIGN.md", "README.md", "SECURITY.md",
     ".github/workflows/deploy-pages.yml", ".github/dependabot.yml",
@@ -41,8 +41,9 @@ CATEGORIES = {"concept", "product", "repo", "workflow"}
 STATUSES = {"learn", "try", "watch", "ignore"}
 CONFIDENCES = {"low", "medium", "high"}
 
-# Files that must no longer be referenced anywhere (old design, removed).
-REMOVED_REFS = ["posts/"]
+# Strings that must no longer appear on any page: the old posts/ design and
+# the reserved, non-deliverable .example contact domain.
+REMOVED_REFS = ["posts/", "aisignaldesk.example"]
 
 
 def read(path: str) -> str:
@@ -76,12 +77,17 @@ def assert_shared_page_contract() -> None:
             assert f'href="{target}"' in html, f"{page}: footer missing {target}"
         # Theme toggle present and wired.
         assert "data-theme-toggle" in html, f"{page}: missing theme toggle button"
-    # Every public (sitemap-listed) page carries social/SEO cards.
+    # Every public (sitemap-listed) page carries social/SEO cards. The share
+    # image must be a raster (PNG) at the standard 1200x630 — social platforms
+    # do not render SVG OG images, so a share would otherwise have no preview.
     for page in PAGES:
         html = read(page)
         assert 'rel="canonical"' in html, f"{page}: missing canonical"
         assert 'property="og:title"' in html, f"{page}: missing Open Graph tags"
         assert 'name="twitter:card"' in html, f"{page}: missing Twitter card tags"
+        assert 'content="summary_large_image"' in html, f"{page}: twitter:card should be summary_large_image"
+        assert "assets/og-image.png" in html, f"{page}: og/twitter image must be the raster og-image.png"
+        assert "brand-mark.svg" not in html, f"{page}: must not use an SVG as the social share image"
 
 
 def assert_security_invariants() -> None:
@@ -231,7 +237,10 @@ def assert_trust_pages() -> None:
     for marker in ["email address", "unsubscribe", "no selling"]:
         assert marker.lower() in privacy.lower(), f"privacy.html missing marker: {marker}"
     contact = read("contact.html")
-    for marker in ["Contact", "signals@aisignaldesk.example", "signals"]:
+    # The contact address must live on the production domain, not the reserved
+    # .example TLD (which is non-deliverable).
+    assert "aisignaldesk.example" not in contact, "contact.html must not use the reserved .example domain"
+    for marker in ["Contact", "signals@aisignaldesk.ai", "signals"]:
         assert marker.lower() in contact.lower(), f"contact.html missing marker: {marker}"
 
 
