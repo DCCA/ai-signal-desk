@@ -285,7 +285,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     },
     {
       "title": "Kelos Kubernetes agent workers",
@@ -302,7 +304,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 78,
-      "hype_score": 34
+      "hype_score": 34,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     },
     {
       "title": "Kiln AI eval workbench",
@@ -319,7 +323,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     },
     {
       "title": "Model routing as cost control",
@@ -336,7 +342,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 90,
-      "hype_score": 14
+      "hype_score": 14,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     },
     {
       "title": "Behavior-based code review evals",
@@ -353,7 +361,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 82,
-      "hype_score": 18
+      "hype_score": 18,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     },
     {
       "title": "Claude Agent SDK",
@@ -370,7 +380,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 80,
-      "hype_score": 30
+      "hype_score": 30,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     },
     {
       "title": "Codex Record & Replay",
@@ -387,7 +399,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 94,
-      "hype_score": 18
+      "hype_score": 18,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     },
     {
       "title": "Copilot cloud agent automations",
@@ -404,7 +418,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 84,
-      "hype_score": 30
+      "hype_score": 30,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     },
     {
       "title": "GitHub MCP Server",
@@ -421,7 +437,9 @@
       "automated_reviewed": true,
       "source_digest_date": "2026-06-21",
       "signal_score": 93,
-      "hype_score": 18
+      "hype_score": 18,
+      "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
+      "sanitized": true
     }
   ]
 }

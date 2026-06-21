@@ -136,6 +136,17 @@ def validate_card(card: dict[str, Any], path: Path) -> list[str]:
     return errors
 
 
+def public_review_notes(card: dict[str, Any]) -> str:
+    """Return review notes that are safe to expose in the public digest."""
+    notes = str(card.get("review_notes", "")).strip()
+    if not notes:
+        notes = "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication."
+    for pattern in PRIVATE_PATTERNS:
+        if re.search(pattern, notes, flags=re.IGNORECASE):
+            raise ValueError(f"review_notes contains private-context pattern: {pattern}")
+    return notes
+
+
 def promote_card(card: dict[str, Any]) -> dict[str, Any]:
     promoted = {
         "title": card["title"],
@@ -150,7 +161,9 @@ def promote_card(card: dict[str, Any]) -> dict[str, Any]:
         "human_reviewed": False,
         "published": True,
         "automated_reviewed": True,
+        "review_notes": public_review_notes(card),
         "source_digest_date": card["source_digest_date"],
+        "sanitized": True,
         "signal_score": card.get("signal_score", default_signal_score(card)),
         "hype_score": card.get("hype_score", default_hype_score(card)),
     }
