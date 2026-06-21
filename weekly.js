@@ -47,12 +47,24 @@
     return a;
   }
 
+  // Keep only the most recent calendar week (Monday-start). Items carry their
+  // original digest index so deep links (signal.html?i=N) stay stable.
+  function currentWeek(items) {
+    var SD = window.SignalDesk;
+    var rows = items.map(function (it, i) { return { it: it, i: i }; });
+    if (!SD || !rows.length) return rows;
+    var latest = rows.reduce(function (max, x) {
+      var k = SD.weekKey(x.it.published_date);
+      return k > max ? k : max;
+    }, '');
+    return rows.filter(function (x) { return SD.weekKey(x.it.published_date) === latest; });
+  }
+
   function renderGroups(items) {
     groupsEl.textContent = '';
+    var week = currentWeek(items);
     GROUP_DEFS.forEach(function (g) {
-      var rows = items
-        .map(function (it, i) { return { it: it, i: i }; })
-        .filter(function (x) { return x.it.status === g.key; });
+      var rows = week.filter(function (x) { return x.it.status === g.key; });
       if (!rows.length) return;
 
       var group = el('div');
