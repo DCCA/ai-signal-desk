@@ -40,21 +40,49 @@ REQUIRED = [
 CATEGORIES = {"concept", "product", "repo", "workflow"}
 STATUSES = {"learn", "try", "watch", "ignore"}
 CONFIDENCE = {"high", "medium", "low"}
-PRIVATE_PATTERNS = [
-    r"\bDCCA\b",
-    r"Telegram",
-    r"Obsidian",
-    r"/home/dcca",
-    r"/mnt/c",
-    r"Hermes-Inbox",
+# Generic, non-identifying private-context patterns kept in this public file.
+# Account-specific terms (personal handles, private tool/app names, internal
+# system names, project codenames) are NOT committed here — they load from a
+# gitignored local file so they never enter this public repo. See
+# scripts/private_patterns.example.txt for setup.
+DEFAULT_PRIVATE_PATTERNS = [
+    r"/home/[^\s/\"']+",       # any local home-directory path
+    r"/mnt/[a-z](?:/|\b)",     # WSL drive mounts (/mnt/c, /mnt/d, ...)
     r"\bcron\b",
-    r"AI Daily Digest Redesign",
     r"local file path",
     r"private repo",
     r"personal side project",
     r"your workflow",
     r"my workflow",
 ]
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+
+
+def load_private_patterns() -> list[str]:
+    """Union the generic in-source patterns with account-specific ones loaded
+    from a local (gitignored) file. Falls back to the committed example file and
+    warns, so the editorial flow never silently runs without the local terms."""
+    patterns = list(DEFAULT_PRIVATE_PATTERNS)
+    local = SCRIPT_DIR / "private_patterns.local.txt"
+    source = local if local.exists() else SCRIPT_DIR / "private_patterns.example.txt"
+    if source != local:
+        print(
+            "warning: scripts/private_patterns.local.txt not found — only generic "
+            "patterns are active. Copy private_patterns.example.txt to "
+            "private_patterns.local.txt and add your account-specific terms "
+            "before publishing.",
+            file=sys.stderr,
+        )
+    if source.exists():
+        for line in source.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line and not line.startswith("#"):
+                patterns.append(line)
+    return patterns
+
+
+PRIVATE_PATTERNS = load_private_patterns()
 
 
 def slugify(value: str) -> str:

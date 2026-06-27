@@ -1,0 +1,21 @@
+# Template for scripts/private_patterns.local.txt.
+#
+# The publish scrubber (publish_signal_drafts.py) refuses to promote any draft
+# card containing one of these patterns, so private context never leaks into the
+# public digest. Generic, non-identifying patterns live in the script itself
+# (DEFAULT_PRIVATE_PATTERNS). Account-specific terms — your handle, private
+# tool/app names, internal system names, project codenames — must NOT be
+# committed to this public repo. Keep them in private_patterns.local.txt, which
+# is gitignored.
+#
+# Setup:
+#   cp scripts/private_patterns.example.txt scripts/private_patterns.local.txt
+#   # then add your real private terms below (one regex per line)
+#
+# Lines starting with # are ignored. Matching is case-insensitive.
+#
+# Examples (placeholders — replace with your own in the .local.txt copy):
+#   MyHandle
+#   MyPrivateNotesApp
+#   Internal-System-Name
+#   Project Codename
