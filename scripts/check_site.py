@@ -161,6 +161,22 @@ def assert_analytics_contract() -> None:
         )
 
 
+def assert_i18n_contract() -> None:
+    """The locale layer. theme.js (loaded first on every page) exposes the
+    helpers the renderers use to localize labels (SD_T) and pick translated
+    content fields (SD_PICK, with EN fallback). The pt site also flags that the
+    external source link is in English."""
+    theme = read("theme.js")
+    for sym in ["window.SD_LOCALE", "window.SD_T", "window.SD_PICK"]:
+        assert sym in theme, f"theme.js must expose {sym}"
+    # Renderers must localize content via SD_PICK rather than hard-coding English.
+    for js in ["signals-shared.js", "signal.js", "weekly.js"]:
+        assert "SD_PICK" in read(js), f"{js} must localize card content via SD_PICK"
+    # The English-source tag on pt article pages.
+    assert "source-lang-tag" in read("signal.js"), \
+        "signal.js must render the English-source tag (source-lang-tag)"
+
+
 def assert_pt_contract() -> None:
     """The Portuguese (pt-BR) mirror under /pt/. Same shared shell + a11y as the
     EN pages, but served from a subdirectory: absolute asset paths, lang=pt-BR,
@@ -251,7 +267,8 @@ def assert_design_system() -> None:
     assert "prefers-reduced-motion" in css, "styles.css must respect reduced motion"
     # Core component classes used by the JS renderers exist.
     for cls in [".signal-card", ".bar-fill", ".chip", ".seg-btn",
-                ".wk-row", ".meta-card", ".related-card", ".method-card", ".principle-card"]:
+                ".wk-row", ".meta-card", ".related-card", ".method-card", ".principle-card",
+                ".source-lang-tag"]:
         assert cls in css, f"styles.css missing component class {cls}"
     # Dynamic bar fill must be driven by a custom property (set via CSSOM in JS).
     assert "var(--w" in css, "styles.css .bar-fill must use var(--w) for dynamic width"
@@ -369,6 +386,11 @@ def assert_digest_contract() -> None:
                     "try_this", "status", "confidence", "source_label",
                     "signal_score", "hype_score", "published_date"]:
             assert it.get(key) not in (None, ""), f"digest item missing {key}: {it.get('title')}"
+        # Bilingual site: every card carries pt-BR translations (renderers fall
+        # back to EN, but the digest must be fully translated — enforced at
+        # publish time by publish_signal_drafts.py too).
+        for key in ["title_pt", "summary_pt", "why_it_matters_pt", "try_this_pt"]:
+            assert it.get(key) not in (None, ""), f"digest item missing pt translation {key}: {it.get('title')}"
         # published_date is the date spine the archive groups by.
         assert re.match(r"^\d{4}-\d{2}-\d{2}$", str(it["published_date"])), \
             f"bad published_date: {it.get('title')} -> {it.get('published_date')}"
@@ -402,6 +424,7 @@ def main() -> None:
     assert_shared_page_contract()
     assert_security_invariants()
     assert_analytics_contract()
+    assert_i18n_contract()
     assert_pt_contract()
     assert_newsletter_contract()
     assert_no_removed_refs()

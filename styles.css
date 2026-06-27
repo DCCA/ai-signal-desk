@@ -451,6 +451,12 @@ img { max-width: 100%; }
   letter-spacing: .06em; color: var(--faint); margin-bottom: 4px;
 }
 .source-label { font-size: 15px; font-weight: 600; color: var(--ink); }
+.source-lang-tag {
+  display: inline-block; margin-top: 6px;
+  font-family: "IBM Plex Mono", monospace; font-size: 10px; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--faint);
+  border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px;
+}
 .related-wrap { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
 .related-wrap h3 { margin: 0 0 18px; font-size: 22px; letter-spacing: -0.03em; font-weight: 700; }
 .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }

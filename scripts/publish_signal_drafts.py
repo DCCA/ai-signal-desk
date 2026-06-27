@@ -28,6 +28,14 @@ REQUIRED = [
     "summary",
     "why_it_matters",
     "try_this",
+    # pt-BR translations: the site is bilingual, so every promoted card must
+    # carry Portuguese content. Renderers fall back to English if a field is
+    # ever missing, but publishing requires them so content/digest.json stays
+    # fully translated (and check_site's pt-content gate stays green).
+    "title_pt",
+    "summary_pt",
+    "why_it_matters_pt",
+    "try_this_pt",
     "source_label",
     "source_url",
     "confidence",
@@ -182,6 +190,10 @@ def promote_card(card: dict[str, Any], publish_date: str) -> dict[str, Any]:
         "summary": card["summary"],
         "why_it_matters": card["why_it_matters"],
         "try_this": card["try_this"],
+        "title_pt": card["title_pt"],
+        "summary_pt": card["summary_pt"],
+        "why_it_matters_pt": card["why_it_matters_pt"],
+        "try_this_pt": card["try_this_pt"],
         "status": card["status"],
         "confidence": card["confidence"],
         "source_label": card["source_label"],

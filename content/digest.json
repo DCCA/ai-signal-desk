@@ -15,7 +15,11 @@
       "source_url": "https://www.anthropic.com/research/building-effective-agents",
       "signal_score": 92,
       "hype_score": 18,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Loops de agente",
+      "summary_pt": "O padrão básico por trás de agentes autônomos: observar o contexto, escolher uma ação, usar ferramentas, inspecionar os resultados e iterar em direção a um objetivo.",
+      "why_it_matters_pt": "Entender o loop ajuda os leitores a avaliar o que os produtos de agente realmente conseguem fazer, onde falham e onde devem ficar os pontos de revisão.",
+      "try_this_pt": "Mapeie um fluxo de trabalho repetitivo em: entrada, ferramentas, critérios de sucesso e etapa de revisão."
     },
     {
       "title": "Context engineering",
@@ -29,7 +33,11 @@
       "source_url": "https://www.langchain.com/blog/context-engineering-for-agents",
       "signal_score": 88,
       "hype_score": 22,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Engenharia de contexto",
+      "summary_pt": "Projetar as instruções, a memória, os exemplos e as saídas de ferramentas corretas em torno de um modelo de IA para que ele se comporte de forma confiável.",
+      "why_it_matters_pt": "A maioria dos sistemas de IA úteis melhora mais com um contexto melhor do que com a troca de modelos.",
+      "try_this_pt": "Escreva um briefing operacional de uma página para uma tarefa recorrente e reutilize-o como template de prompt."
     },
     {
       "title": "Herdr",
@@ -43,7 +51,11 @@
       "source_url": "mailto:signals@aisignaldesk.ai",
       "signal_score": 81,
       "hype_score": 29,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Herdr",
+      "summary_pt": "Um multiplexador de terminal ciente de agentes para executar múltiplos agentes de codificação de IA, shells e tarefas de longa duração em um único workspace.",
+      "why_it_matters_pt": "À medida que os fluxos de trabalho de agentes se tornam paralelos, os operadores precisam de visibilidade sobre quais agentes estão bloqueados, em execução ou concluídos.",
+      "try_this_pt": "Crie um workspace com um painel de agente, um painel de testes, um painel de git status e um painel de servidor de desenvolvimento."
     },
     {
       "title": "Personal AI knowledge workflow",
@@ -57,7 +69,11 @@
       "source_url": "mailto:signals@aisignaldesk.ai",
       "signal_score": 86,
       "hype_score": 14,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Fluxo de conhecimento pessoal com IA",
+      "summary_pt": "Um fluxo de trabalho em que a captura rápida, um assistente de IA e um sistema de notas transformam links, tarefas e decisões em registros duradouros.",
+      "why_it_matters_pt": "Transforma o chat passivo de IA em um sistema reutilizável de conhecimento e execução, sem exigir que cada detalhe útil permaneça no histórico da conversa.",
+      "try_this_pt": "Capture um artigo em uma nota estruturada com resumo, próximas ações, tags e um link da fonte."
     },
     {
       "title": "Lightweight eval harnesses",
@@ -71,7 +87,11 @@
       "source_url": "https://foundercollective.com/blog/eval-driven-development",
       "signal_score": 90,
       "hype_score": 16,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Harnesses de avaliação leves",
+      "summary_pt": "Pequenas suítes de testes determinísticas que validam fluxos de trabalho de IA usando fixtures e verificações de artefatos em vez de avaliações por intuição.",
+      "why_it_matters_pt": "Produtos de IA precisam de portões de qualidade repetíveis antes que possam ser confiáveis em fluxos de trabalho recorrentes.",
+      "try_this_pt": "Crie três entradas de exemplo e verifique as seções exatas de saída que o fluxo de trabalho deve produzir."
     },
     {
       "title": "MCP servers",
@@ -85,7 +105,11 @@
       "source_url": "https://modelcontextprotocol.io/",
       "signal_score": 84,
       "hype_score": 40,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Servidores MCP",
+      "summary_pt": "Um padrão consolidado para expor ferramentas e fontes de dados a agentes de IA por meio de interfaces estruturadas.",
+      "why_it_matters_pt": "O MCP pode transformar agentes de IA de interfaces de chat em operadores que atuam em sistemas reais.",
+      "try_this_pt": "Liste uma fonte de dados ou ferramenta interna que você gostaria que um agente consultasse com segurança."
     },
     {
       "title": "AGI countdown takes",
@@ -99,7 +123,11 @@
       "source_url": "mailto:signals@aisignaldesk.ai",
       "signal_score": 28,
       "hype_score": 94,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Opiniões de contagem regressiva para a AGI",
+      "summary_pt": "Threads virais que afirmam uma data específica para a IA de nível humano, geralmente extrapolando um único salto em benchmark para uma linha do tempo civilizacional.",
+      "why_it_matters_pt": "O teatro de prazos gera cliques, mas raramente muda o que um construtor deveria fazer nesta semana; e ofusca sinais concretos e testáveis.",
+      "try_this_pt": "Quando vir uma afirmação de contagem regressiva, pergunte qual decisão ela mudaria para você. Se nenhuma, ignore-a."
     },
     {
       "title": "Agent safety controls",
@@ -116,7 +144,11 @@
       "source_digest_date": "2026-06-19",
       "signal_score": 86,
       "hype_score": 24,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Controles de segurança de agentes",
+      "summary_pt": "À medida que os sistemas de agentes ganham mais acesso a ferramentas, o trabalho prático de segurança está migrando para permissões com escopo, monitoramento, pontos de revisão e controles de risco multiagente.",
+      "why_it_matters_pt": "A superfície de risco dos agentes de IA vem das ações que eles podem tomar, não apenas do texto que podem gerar. Designs mais seguros tornam a autonomia mais fácil de testar e operar.",
+      "try_this_pt": "Para um fluxo de trabalho de agente, liste todas as ações externas que ele pode tomar e adicione uma revisão, registro de logs ou limite de permissão em torno de qualquer operação destrutiva."
     },
     {
       "title": "Awesome AI Agent Papers",
@@ -133,7 +165,11 @@
       "source_digest_date": "2026-06-19",
       "signal_score": 82,
       "hype_score": 18,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Awesome AI Agent Papers",
+      "summary_pt": "A VoltAgent mantém um repositório curado de papers sobre agentes de IA organizados em tópicos como memória, RAG, avaliação, ferramentas, coordenação e segurança.",
+      "why_it_matters_pt": "Um índice curado de papers pode reduzir a sobrecarga de pesquisa e ajudar profissionais a acompanhar trabalhos sobre agentes com valor de implementação no curto prazo.",
+      "try_this_pt": "Revise primeiro as seções de memória, RAG e avaliação, depois salve dois papers que poderiam melhorar um fluxo de trabalho de agente real."
     },
     {
       "title": "Claude Agent SDK billing uncertainty",
@@ -150,7 +186,11 @@
       "source_digest_date": "2026-06-19",
       "signal_score": 79,
       "hype_score": 16,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Incerteza na cobrança do Claude Agent SDK",
+      "summary_pt": "A Anthropic pausou uma mudança planejada que separaria o uso do Claude Agent SDK dos limites padrão de assinatura.",
+      "why_it_matters_pt": "Quem constrói agentes precisa de limites de uso previsíveis antes de depender de fluxos de trabalho do Claude agendados ou automatizados em ambientes semelhantes a produção.",
+      "try_this_pt": "Antes de escalar automações baseadas no Claude, verifique a política atual de cobrança do Agent SDK e projete um roteamento de contingência para tarefas não críticas."
     },
     {
       "title": "Context compression for agents",
@@ -167,7 +207,11 @@
       "source_digest_date": "2026-06-19",
       "signal_score": 85,
       "hype_score": 15,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Compressão de contexto para agentes",
+      "summary_pt": "Os fluxos de trabalho de agentes se beneficiam cada vez mais de comprimir logs longos, documentos recuperados e saídas intermediárias de ferramentas antes de enviá-los de volta a um modelo.",
+      "why_it_matters_pt": "Um contexto menor e mais limpo pode reduzir custo e latência, além de tornar agentes de múltiplas etapas mais fáceis de inspecionar e depurar.",
+      "try_this_pt": "Escolha um trace de agente ou fonte de pesquisa verboso, resuma-o em um briefing estruturado e compacto, depois compare a próxima resposta do modelo com a versão não comprimida."
     },
     {
       "title": "DiffusionGemma",
@@ -184,7 +228,11 @@
       "source_digest_date": "2026-06-19",
       "signal_score": 78,
       "hype_score": 36,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "DiffusionGemma",
+      "summary_pt": "O Google DeepMind descreve o DiffusionGemma como uma linha de modelos da família Gemma focada em geração de texto baseada em difusão, em vez da geração autorregressiva padrão.",
+      "why_it_matters_pt": "Arquiteturas alternativas de geração podem mudar os trade-offs de latência, controlabilidade ou implantação para sistemas de IA menores, caso se mostrem práticas além das demonstrações.",
+      "try_this_pt": "Revise a página do modelo e aguarde benchmarks concretos, exemplos ou acesso para desenvolvedores antes de tratá-lo como relevante para produção."
     },
     {
       "title": "Gemini 3.5 Flash",
@@ -201,7 +249,11 @@
       "source_digest_date": "2026-06-19",
       "signal_score": 87,
       "hype_score": 34,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Gemini 3.5 Flash",
+      "summary_pt": "O Google está posicionando o Gemini 3.5 Flash como uma opção de modelo rápido para codificação agêntica, pesquisa e tarefas de automação de múltiplas etapas.",
+      "why_it_matters_pt": "Velocidade e latência determinam cada vez mais se os agentes de IA são práticos para fluxos de trabalho do dia a dia, não apenas o desempenho bruto em benchmarks.",
+      "try_this_pt": "Execute o mesmo prompt estruturado de pesquisa ou manutenção de código no modelo e compare latência, confiabilidade no uso de ferramentas e qualidade da saída com o modelo padrão atual."
     },
     {
       "title": "Small language models for agents",
@@ -218,7 +270,11 @@
       "source_digest_date": "2026-06-19",
       "signal_score": 80,
       "hype_score": 28,
-      "published_date": "2026-06-19"
+      "published_date": "2026-06-19",
+      "title_pt": "Modelos de linguagem pequenos para agentes",
+      "summary_pt": "Modelos de linguagem pequenos estão sendo explorados como componentes especializados mais baratos dentro de sistemas de agentes, especialmente para subtarefas rotineiras ou restritas.",
+      "why_it_matters_pt": "Direcionar cada etapa para um modelo de fronteira pode tornar os fluxos de trabalho de agentes mais lentos e caros do que o necessário. Modelos menores podem se tornar trabalhadores úteis para classificação, extração, formatação e decisões simples de ferramentas.",
+      "try_this_pt": "Identifique uma subtarefa de baixo risco em um pipeline de agente e teste se um modelo menor consegue executá-la de forma confiável com exemplos fixos e um conjunto de avaliação."
     },
     {
       "title": "DeerFlow",
@@ -235,7 +291,11 @@
       "source_digest_date": "2026-06-20",
       "signal_score": 91,
       "hype_score": 31,
-      "published_date": "2026-06-20"
+      "published_date": "2026-06-20",
+      "title_pt": "DeerFlow",
+      "summary_pt": "O DeerFlow é um harness de agentes de longo horizonte e código aberto para pesquisa, codificação, geração de conteúdo, execução em sandbox, memória, ferramentas, skills, subagentes e gateways de mensagens.",
+      "why_it_matters_pt": "Agentes de longa duração precisam de mais do que um prompt: precisam de orquestração, limites de ferramentas, gerenciamento de estado e padrões de recuperação. O DeerFlow é uma arquitetura de referência útil para entender como essas peças estão sendo empacotadas no código aberto.",
+      "try_this_pt": "Revise o README e a arquitetura, depois compare seu design de memória, sandbox e subagentes com um fluxo de trabalho de agente existente antes de adotar a stack completa."
     },
     {
       "title": "Microsoft Agent Framework",
@@ -252,7 +312,11 @@
       "source_digest_date": "2026-06-20",
       "signal_score": 89,
       "hype_score": 27,
-      "published_date": "2026-06-20"
+      "published_date": "2026-06-20",
+      "title_pt": "Microsoft Agent Framework",
+      "summary_pt": "O Microsoft Agent Framework é um framework em Python e .NET para construir, orquestrar e implantar agentes de IA e fluxos de trabalho multiagente.",
+      "why_it_matters_pt": "As ferramentas para agentes estão migrando para orquestração gerenciada, governança e implantação, em vez de scripts pontuais. Um framework apoiado pela Microsoft pode ser relevante para equipes que precisam de integração corporativa ou interoperabilidade entre .NET e Python.",
+      "try_this_pt": "Use um fluxo de trabalho pequeno e não crítico para comparar seu modelo de orquestração, rastreamento, processo de implantação e esforço de configuração com frameworks de agentes mais leves."
     },
     {
       "title": "Omnigent",
@@ -269,7 +333,11 @@
       "source_digest_date": "2026-06-20",
       "signal_score": 76,
       "hype_score": 38,
-      "published_date": "2026-06-20"
+      "published_date": "2026-06-20",
+      "title_pt": "Omnigent",
+      "summary_pt": "O Omnigent é um meta-harness de código aberto para orquestrar múltiplos agentes de codificação com controles de política, sandbox e recursos de colaboração em tempo real.",
+      "why_it_matters_pt": "As equipes estão cada vez mais comparando e combinando agentes de codificação em vez de padronizar em um único assistente. Uma camada de orquestração neutra poderia tornar os experimentos multiagente mais fáceis de controlar e avaliar.",
+      "try_this_pt": "Teste-o primeiro apenas em um repositório descartável: execute duas tarefas comparáveis de agentes de codificação, inspecione os controles de política e sandbox e anote onde a revisão humana ainda é necessária."
     },
     {
       "title": "PandaProbe",
@@ -286,7 +354,11 @@
       "source_digest_date": "2026-06-20",
       "signal_score": 84,
       "hype_score": 19,
-      "published_date": "2026-06-20"
+      "published_date": "2026-06-20",
+      "title_pt": "PandaProbe",
+      "summary_pt": "O PandaProbe é uma plataforma de engenharia de agentes de código aberto para traces, avaliações e métricas, com integrações para frameworks de agentes comuns.",
+      "why_it_matters_pt": "À medida que os agentes executam loops de ferramentas mais longos, a qualidade da saída depende de observabilidade e verificações de regressão. Ferramentas de trace e avaliação ajudam a substituir verificações manuais por intuição por evidências repetíveis.",
+      "try_this_pt": "Instrumente uma tarefa de agente recorrente, capture traces de execuções bem-sucedidas e com falha, depois defina duas métricas que não podem regredir antes de alterar prompts ou modelos."
     },
     {
       "title": "Gortex code intelligence for agents",
@@ -306,7 +378,11 @@
       "hype_score": 22,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Inteligência de código Gortex para agentes",
+      "summary_pt": "O Gortex é um motor local de inteligência de código que oferece aos agentes de codificação de IA busca de símbolos, análise de cadeia de chamadas, busca semântica, uma CLI, uma API e um servidor MCP.",
+      "why_it_matters_pt": "Agentes de codificação muitas vezes desperdiçam contexto relendo grandes partes de um repositório. Uma camada local de inteligência de código pode tornar o contexto do agente mais direcionado e melhorar tanto o custo quanto a qualidade das alterações de código.",
+      "try_this_pt": "Instale-o em um repositório não crítico e compare uma tarefa de agente com e sem a busca assistida pelo Gortex antes de adotá-lo mais amplamente."
     },
     {
       "title": "Kelos Kubernetes agent workers",
@@ -326,7 +402,11 @@
       "hype_score": 34,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Workers de agente Kelos no Kubernetes",
+      "summary_pt": "O Kelos é um framework nativo do Kubernetes para executar agentes de codificação autônomos como pods isolados conectados a rastreadores de issues, pull requests, webhooks, jobs agendados e pipelines multiagente.",
+      "why_it_matters_pt": "À medida que os agentes de codificação passam de experimentos locais a workers em segundo plano, as equipes precisam de isolamento, repetibilidade e integração com os sistemas de entrega existentes.",
+      "try_this_pt": "Revise a arquitetura e só teste-o em um ambiente Kubernetes descartável com um repositório de baixo risco antes de usá-lo em trabalho de desenvolvimento real."
     },
     {
       "title": "Kiln AI eval workbench",
@@ -346,7 +426,11 @@
       "hype_score": 22,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Bancada de avaliação Kiln AI",
+      "summary_pt": "O Kiln é uma bancada de trabalho de IA local-first e uma biblioteca Python para avaliações, otimização de prompts, RAG, agentes, dados sintéticos, fine-tuning, seleção de modelos e fluxos de revisão.",
+      "why_it_matters_pt": "Fluxos de trabalho de agentes e RAG precisam de verificações repetíveis antes de serem confiáveis. Uma bancada de avaliação local-first pode ajudar as equipes a sair do teste de prompts ad hoc para uma iteração mensurada.",
+      "try_this_pt": "Crie um pequeno conjunto de avaliação para um fluxo de trabalho de IA, execute-o no Kiln e use os resultados para comparar dois prompts ou escolhas de modelo."
     },
     {
       "title": "Model routing as cost control",
@@ -366,7 +450,11 @@
       "hype_score": 14,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Roteamento de modelos como controle de custos",
+      "summary_pt": "Roteamento de modelos significa enviar diferentes tarefas de IA para diferentes níveis de modelo em vez de direcionar todas as etapas, por padrão, ao modelo mais capaz e caro.",
+      "why_it_matters_pt": "Os preços dos modelos de fronteira, os descontos para entradas em cache e os descontos por lote tornam o roteamento consciente de custos uma preocupação prática de design para produtos de IA e fluxos de trabalho de agentes.",
+      "try_this_pt": "Divida um fluxo de trabalho de IA em etapas de planejamento, extração, sumarização, verificação e redação final, depois decida quais etapas realmente exigem um modelo de ponta."
     },
     {
       "title": "Behavior-based code review evals",
@@ -386,7 +474,11 @@
       "hype_score": 18,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Avaliações de revisão de código baseadas em comportamento",
+      "summary_pt": "O benchmark c-CRAB avalia agentes de revisão de código pelo fato de os comentários de revisão levarem a correções corretas que passam nos testes, em vez de pela similaridade textual com revisões humanas.",
+      "why_it_matters_pt": "Para pull requests gerados por agentes, uma prosa de revisão plausível não basta. Os sistemas de revisão precisam de verificações executáveis ou afirmações testáveis que confirmem se uma mudança sugerida realmente melhora o código.",
+      "try_this_pt": "Ao usar um revisor de IA, peça passos de reprodução, testes que falham ou um caminho concreto de verificação do patch em vez de aceitar apenas comentários narrativos."
     },
     {
       "title": "Claude Agent SDK",
@@ -406,7 +498,11 @@
       "hype_score": 30,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Claude Agent SDK",
+      "summary_pt": "A Anthropic documenta o Claude Agent SDK como o loop de agente do Claude Code exposto por meio de bibliotecas Python e TypeScript, com ferramentas integradas de arquivo, comando e edição.",
+      "why_it_matters_pt": "Loops de agente programáveis facilitam incorporar o comportamento de codificação no estilo Claude em software, mas devem ser tratados como automação de produção, não como chat interativo.",
+      "try_this_pt": "Avalie-o primeiro em um sandbox com autenticação explícita, registro de logs, restrições de comandos e monitoramento de uso antes de conectá-lo a repositórios ou sistemas importantes."
     },
     {
       "title": "Codex Record & Replay",
@@ -426,7 +522,11 @@
       "hype_score": 18,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Codex Record & Replay",
+      "summary_pt": "O OpenAI Codex adicionou o Record & Replay no macOS, transformando um fluxo de tarefa demonstrado em uma skill reutilizável que pode ser reexecutada e revisada.",
+      "why_it_matters_pt": "A mudança útil é do prompt pontual para a captura inspecionável de fluxos de trabalho. Skills reutilizáveis criam uma superfície mais clara para revisão, permissões e execução repetida.",
+      "try_this_pt": "Use-o em uma tarefa repetitiva de codificação ou pesquisa de baixo risco, depois inspecione o texto da skill gerada antes de confiar nela para uma automação mais ampla."
     },
     {
       "title": "Copilot cloud agent automations",
@@ -446,7 +546,11 @@
       "hype_score": 30,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Automações do agente em nuvem do Copilot",
+      "summary_pt": "As automações do agente em nuvem do GitHub Copilot podem ser executadas a partir de agendamentos ou eventos do repositório e produzir trabalho com escopo no repositório, como triagem de issues, correções de testes ou rascunhos de notas de release.",
+      "why_it_matters_pt": "Agentes de codificação agendados transformam a automação em segundo plano em um problema de governança: escolha do modelo, responsável, escopo do repositório, revisão da saída e gasto recorrente de tokens, tudo precisa de controles explícitos.",
+      "try_this_pt": "Antes de habilitar uma automação, defina o gatilho, o escopo de repositório permitido, a saída esperada de pull request, a escolha do modelo e um limite de gasto ou de frequência de execução."
     },
     {
       "title": "GitHub MCP Server",
@@ -466,7 +570,11 @@
       "hype_score": 18,
       "review_notes": "Automated review passed: schema, source URL, duplicate, and private-context checks completed before publication.",
       "sanitized": true,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "GitHub MCP Server",
+      "summary_pt": "O servidor MCP oficial do GitHub expõe operações de repositório, issues, pull requests, projetos e qualidade de código para agentes compatíveis com MCP.",
+      "why_it_matters_pt": "Um conector oficial do GitHub pode tornar os agentes de codificação mais úteis, mas também amplia a superfície de ação. O valor prático depende de uma seleção rigorosa de ferramentas e de credenciais com privilégio mínimo.",
+      "try_this_pt": "Comece com ferramentas somente leitura ou de escopo restrito, verifique quais operações são realmente necessárias e só então considere ações de escrita para pull requests ou gerenciamento de issues."
     },
     {
       "title": "Codebase Memory MCP",
@@ -486,7 +594,11 @@
       "sanitized": true,
       "signal_score": 83,
       "hype_score": 32,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Codebase Memory MCP",
+      "summary_pt": "O Codebase Memory MCP é um servidor MCP de código aberto que indexa repositórios em um grafo de conhecimento de código persistente para buscas rápidas de símbolos, semânticas e de dependências.",
+      "why_it_matters_pt": "Agentes de codificação muitas vezes perdem tempo e contexto varrendo repetidamente os mesmos arquivos. Uma camada dedicada de memória de código poderia tornar os agentes cientes do repositório mais baratos, rápidos e fáceis de inspecionar.",
+      "try_this_pt": "Teste-o primeiro em um repositório descartável, compare uma tarefa de agente de codificação com e sem as buscas de memória de código e revise o índice gerado antes de usá-lo em código sensível."
     },
     {
       "title": "Kilo Code",
@@ -506,7 +618,11 @@
       "sanitized": true,
       "signal_score": 79,
       "hype_score": 36,
-      "published_date": "2026-06-21"
+      "published_date": "2026-06-21",
+      "title_pt": "Kilo Code",
+      "summary_pt": "O Kilo Code é uma plataforma de engenharia agêntica de código aberto e um projeto de agente de codificação com uma grande presença no GitHub e atividade recente.",
+      "why_it_matters_pt": "Agentes de codificação de código aberto estão amadurecendo rapidamente, mas a adoção deve depender de sandbox, permissões, fluxo de revisão e adequação de integração, e não apenas do número de stars.",
+      "try_this_pt": "Analise o README, o modelo de permissões e a superfície de extensões, depois compare uma tarefa de codificação de baixo risco com a configuração padrão atual de agente de codificação antes de adotá-lo."
     },
     {
       "title": "Apify MCP Server",
@@ -526,7 +642,11 @@
       "sanitized": true,
       "signal_score": 88,
       "hype_score": 22,
-      "published_date": "2026-06-22"
+      "published_date": "2026-06-22",
+      "title_pt": "Apify MCP Server",
+      "summary_pt": "O Apify MCP Server permite que agentes compatíveis com MCP chamem os Apify Actors para tarefas de web scraping, extração, crawling e automação.",
+      "why_it_matters_pt": "Agentes de pesquisa na web costumam falhar quando as páginas exigem extração estruturada ou crawling repetido. Uma ponte MCP mantida para um ecossistema de actors pode transformar o scraping em uma chamada de ferramenta reutilizável em vez de trabalho pontual no navegador.",
+      "try_this_pt": "Use um conjunto de páginas públicas não sensíveis, execute uma extração pelo servidor MCP e avalie a qualidade da saída, os limites de taxa, as credenciais e os limites de permissão antes de usá-lo em pesquisas recorrentes."
     },
     {
       "title": "Copilot code review cost controls",
@@ -546,7 +666,11 @@
       "sanitized": true,
       "signal_score": 79,
       "hype_score": 34,
-      "published_date": "2026-06-22"
+      "published_date": "2026-06-22",
+      "title_pt": "Controles de custo da revisão de código do Copilot",
+      "summary_pt": "O FAQ do plano individual do Copilot do GitHub informa que a cobrança por uso já está ativa, e a revisão de código do Copilot pode consumir minutos do GitHub Actions além dos GitHub AI Credits.",
+      "why_it_matters_pt": "A governança de agentes de codificação é, em parte, um problema de controle de custos. Automação de revisão, tarefas agendadas e créditos de IA precisam de limites explícitos para que a assistência em segundo plano não se torne um gasto recorrente sem rastreamento.",
+      "try_this_pt": "Antes de habilitar a revisão de código automatizada de forma ampla, documente quais repositórios podem usá-la, a frequência esperada de execução, o impacto em minutos do Actions, o orçamento de créditos e a etapa de revisão humana para o feedback gerado."
     },
     {
       "title": "Agentic Resource Discovery",
@@ -566,7 +690,11 @@
       "sanitized": true,
       "signal_score": 94,
       "hype_score": 18,
-      "published_date": "2026-06-22"
+      "published_date": "2026-06-22",
+      "title_pt": "Agentic Resource Discovery",
+      "summary_pt": "A Hugging Face introduziu o Agentic Resource Discovery como uma forma de os agentes de IA buscarem ferramentas, skills, servidores MCP, modelos, datasets, spaces e outros recursos acessíveis a agentes por intenção.",
+      "why_it_matters_pt": "Os sistemas de agentes ficam mais fáceis de montar quando as capacidades podem ser descobertas em vez de codificadas manualmente em cada configuração. Camadas de descoberta podem reduzir a curadoria manual de ferramentas e tornar as stacks de agentes mais portáteis.",
+      "try_this_pt": "Execute um pequeno teste de descoberta para uma tarefa de agente, compare as ferramentas ou servidores MCP retornados com uma lista curada manualmente e mantenha apenas os recursos com documentação clara e permissões seguras."
     },
     {
       "title": "OpenAI API changelog cleanup",
@@ -586,7 +714,11 @@
       "sanitized": true,
       "signal_score": 84,
       "hype_score": 30,
-      "published_date": "2026-06-22"
+      "published_date": "2026-06-22",
+      "title_pt": "Faxina no changelog da API da OpenAI",
+      "summary_pt": "O changelog de junho da API da OpenAI lista mudanças práticas, incluindo scores de moderação em Responses e Chat Completions, resultados de imagem em busca na web, disponibilidade no Bedrock, descontinuações de objetos de prompt reutilizáveis, Evals e Agent Builder, além da cobrança atualizada de sessões de container.",
+      "why_it_matters_pt": "Mudanças no lado da API afetam o roteamento, as verificações de conformidade, as dependências de avaliações hospedadas e as premissas de custo. Equipes que usam componentes gerenciados de fluxo de trabalho da OpenAI precisam de verificações de migração e cobrança antes de depender deles para automação recorrente.",
+      "try_this_pt": "Faça um inventário de quaisquer prompts hospedados na OpenAI, avaliações, experimentos do agent-builder, verificações de moderação e sessões de container; depois marque quais precisam de migração, premissas de preço atualizadas ou roteamento de contingência."
     },
     {
       "title": "Qwen Code",
@@ -606,7 +738,11 @@
       "sanitized": true,
       "signal_score": 88,
       "hype_score": 22,
-      "published_date": "2026-06-22"
+      "published_date": "2026-06-22",
+      "title_pt": "Qwen Code",
+      "summary_pt": "O Qwen Code é um agente de codificação de IA de terminal e código aberto com modos interativo, headless, IDE, desktop, daemon, SDK e bot de mensagens.",
+      "why_it_matters_pt": "Agentes de codificação abertos dão às equipes mais uma opção para avaliar custo, dependência de fornecedor, superfícies de automação e padrões de integração em comparação com assistentes de codificação proprietários.",
+      "try_this_pt": "Teste uma tarefa de codificação de baixo risco em um repositório descartável, inspecione os prompts de permissão e as alterações geradas, e compare a fricção de configuração e a qualidade da revisão com a linha de base atual de agente de codificação."
     },
     {
       "title": "AFT coding-agent tool layer",
@@ -626,7 +762,11 @@
       "published_date": "2026-06-23",
       "sanitized": true,
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "title_pt": "Camada de ferramentas AFT para agentes de codificação",
+      "summary_pt": "O AFT é uma camada de ferramentas de código aberto que oferece aos agentes de codificação esboços de símbolos, busca semântica, grafos de chamadas, inspeções, edições precisas, busca indexada de arquivos, compressão da saída do shell e auxiliares de recuperação.",
+      "why_it_matters_pt": "Agentes de codificação muitas vezes desperdiçam contexto com leituras de arquivos inteiros e tentativas frágeis de patch. Uma camada de ferramentas ciente de símbolos pode tornar a exploração do repositório e as edições mais direcionadas, baratas e fáceis de depurar.",
+      "try_this_pt": "Execute uma tarefa de codificação de baixo risco em um repositório descartável com o AFT habilitado, depois compare as leituras de arquivos, a precisão dos patches e o volume da saída do shell com a mesma tarefa usando ferramentas básicas de leitura/edição/bash."
     },
     {
       "title": "Claude Code MCP auth controls",
@@ -646,7 +786,11 @@
       "published_date": "2026-06-23",
       "sanitized": true,
       "signal_score": 84,
-      "hype_score": 30
+      "hype_score": 30,
+      "title_pt": "Controles de autenticação MCP do Claude Code",
+      "summary_pt": "O Claude Code v2.1.186 adicionou comandos de login e logout de MCP pela linha de comando e trouxe correções para prompts de permissão de agentes em segundo plano, tipos de ferramentas permitidas e falhas repetidas de esquema de workflow.",
+      "why_it_matters_pt": "Agentes habilitados para MCP só são práticos quando a autenticação, as permissões e os loops de falha são inspecionáveis. Controles de autenticação no nível da CLI e correções de permissão reduzem a fricção para operações de agente mais seguras.",
+      "try_this_pt": "Antes de conectar ferramentas MCP a um agente, verifique o caminho de login/logout, a lista de ferramentas permitidas, as ações negadas e o comportamento quando uma tarefa em segundo plano solicita permissão."
     },
     {
       "title": "Copilot AI credit telemetry",
@@ -666,7 +810,11 @@
       "published_date": "2026-06-23",
       "sanitized": true,
       "signal_score": 84,
-      "hype_score": 30
+      "hype_score": 30,
+      "title_pt": "Telemetria de créditos de IA do Copilot",
+      "summary_pt": "A API de métricas de uso do Copilot do GitHub agora expõe os créditos de IA consumidos diariamente por usuário para organizações e empresas.",
+      "why_it_matters_pt": "A adoção de agentes de codificação exige visibilidade de custos no mesmo nível do controle de acesso. A telemetria de créditos por usuário pode ajudar as equipes a identificar consumo incomum e comparar o gasto com IA com a atividade útil de engenharia.",
+      "try_this_pt": "Adicione o campo de créditos de IA por usuário a um relatório de uso do Copilot, sinalize valores discrepantes e combine a métrica com a atividade do repositório ou os resultados dos pull requests antes de alterar as políticas de acesso."
     },
     {
       "title": "Gemini media model deprecations",
@@ -686,7 +834,11 @@
       "published_date": "2026-06-23",
       "sanitized": true,
       "signal_score": 84,
-      "hype_score": 30
+      "hype_score": 30,
+      "title_pt": "Descontinuações de modelos de mídia do Gemini",
+      "summary_pt": "O changelog da API Gemini do Google lista as próximas datas de desativação de vários IDs de modelos de mídia, incluindo os IDs do Veo 2 e Veo 3 em 30 de junho de 2026 e os IDs de imagem do Imagen 4 e Gemini 3 em 17 de agosto de 2026.",
+      "why_it_matters_pt": "Descontinuações de IDs de modelo são fáceis de passar despercebidas na automação. Quaisquer scripts, agentes ou fluxos de trabalho de produto que chamem IDs específicos de geração de mídia precisam de verificações de roteamento antes que esses endpoints parem de funcionar.",
+      "try_this_pt": "Procure os IDs de modelo descontinuados nas integrações ativas, substitua-os por alternativas suportadas e adicione uma pequena verificação agendada para futuras mudanças de disponibilidade de modelos."
     },
     {
       "title": "Gitmoot local agent coordination",
@@ -706,7 +858,11 @@
       "published_date": "2026-06-23",
       "sanitized": true,
       "signal_score": 78,
-      "hype_score": 34
+      "hype_score": 34,
+      "title_pt": "Coordenação local de agentes do Gitmoot",
+      "summary_pt": "O Gitmoot é uma camada de controle local-first que coordena agentes de codificação de IA por meio de comentários e estado de pull requests do GitHub, com armazenamento em SQLite, bloqueios de branch, status e adaptadores de runtime.",
+      "why_it_matters_pt": "À medida que mais trabalho de agentes de codificação migra para branches e pull requests, as equipes precisam de padrões de coordenação que preservem a revisabilidade sem exigir que cada ação passe por um plano de controle hospedado.",
+      "try_this_pt": "Use-o primeiro apenas em um repositório descartável: encaminhe uma tarefa simples de pull request pelo loop de comentários/estado, depois inspecione como os bloqueios, status e alterações geradas são registrados."
     },
     {
       "title": "ADK and A2A validator pattern",
@@ -726,7 +882,11 @@
       "published_date": "2026-06-24",
       "sanitized": true,
       "signal_score": 90,
-      "hype_score": 14
+      "hype_score": 14,
+      "title_pt": "Padrão validador ADK e A2A",
+      "summary_pt": "O exemplo de ADK e Agent2Agent do Google divide um fluxo de trabalho multiagente entre um agente de extração baseado em Gemini e um agente de validação determinístico escrito em Go.",
+      "why_it_matters_pt": "Sistemas de agentes confiáveis muitas vezes precisam de verificações determinísticas em torno das saídas probabilísticas dos modelos. Separar a extração da validação cria um limite mais claro para testes e revisão.",
+      "try_this_pt": "Em um fluxo de trabalho de extração, passe a saída do modelo por um validador separado que verifique o esquema, os campos obrigatórios e os valores inaceitáveis antes que qualquer ação subsequente seja executada."
     },
     {
       "title": "Codex token budget guardrails",
@@ -746,7 +906,11 @@
       "published_date": "2026-06-24",
       "sanitized": true,
       "signal_score": 84,
-      "hype_score": 30
+      "hype_score": 30,
+      "title_pt": "Limites de orçamento de tokens do Codex",
+      "summary_pt": "O changelog do Codex da OpenAI lista orçamentos de tokens de rollout configuráveis que podem avisar ou abortar turnos do agente quando o uso ultrapassa um limite definido.",
+      "why_it_matters_pt": "Loops de agente sem supervisão precisam de limites rígidos de uso. Turnos cientes do orçamento tornam o custo e o risco de tarefas descontroladas mais fáceis de controlar antes de automatizar um fluxo de trabalho.",
+      "try_this_pt": "Defina um orçamento de tokens conservador para uma tarefa de baixo risco no Codex, verifique o comportamento de aviso ou abortar e registre quais etapas consomem mais orçamento."
     },
     {
       "title": "Entire AI session history",
@@ -766,7 +930,11 @@
       "published_date": "2026-06-24",
       "sanitized": true,
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "title_pt": "Histórico de sessões de IA do Entire",
+      "summary_pt": "O Entire é uma ferramenta de fluxo de trabalho Git que registra sessões de agentes de codificação de IA e as vincula aos commits para que as equipes possam pesquisar como as alterações foram produzidas.",
+      "why_it_matters_pt": "Código gerado por agentes é mais fácil de confiar quando prompts, decisões e edições fazem parte da trilha de auditoria do repositório em vez de espalhados por janelas de chat.",
+      "try_this_pt": "Instale-o em um repositório descartável, execute uma alteração assistida por agente, depois verifique se o histórico de sessão capturado responde por que a alteração foi feita."
     },
     {
       "title": "JCodeMunch symbol code retrieval",
@@ -786,7 +954,11 @@
       "published_date": "2026-06-24",
       "sanitized": true,
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "title_pt": "Recuperação de código por símbolos do JCodeMunch",
+      "summary_pt": "O JCodeMunch MCP expõe a recuperação de código do GitHub em nível de símbolo usando parsing de AST com tree-sitter, para que os agentes possam solicitar contexto de código direcionado em vez de despejos amplos de arquivos.",
+      "why_it_matters_pt": "Agentes de codificação muitas vezes desperdiçam tokens explorando repositórios. Esta é uma opção MCP mais restrita e focada no GitHub para recuperação precisa de símbolos, complementando abordagens mais amplas de memória de código e camadas de ferramentas.",
+      "try_this_pt": "Conecte-o a um repositório descartável, peça a um agente para inspecionar uma função ou classe por símbolo e compare o tamanho do contexto com um fluxo normal de leitura de arquivos."
     },
     {
       "title": "Copilot BYOK agent sessions",
@@ -806,7 +978,11 @@
       "published_date": "2026-06-25",
       "sanitized": true,
       "signal_score": 84,
-      "hype_score": 30
+      "hype_score": 30,
+      "title_pt": "Sessões de agente BYOK do Copilot",
+      "summary_pt": "O app do Copilot do GitHub pode rotear sessões de agente por provedores de modelo fornecidos pelo usuário e endpoints compatíveis com a OpenAI, com as chaves armazenadas localmente no keychain do sistema operacional.",
+      "why_it_matters_pt": "O suporte a chave própria (BYOK) torna o roteamento de modelos, o controle de custos e as escolhas de fronteira de dados parte da configuração cotidiana do agente de codificação, em vez de uma decisão de plataforma à parte.",
+      "try_this_pt": "Antes de adotar o roteamento BYOK, defina quais provedores são permitidos para edições de baixo risco, quais tarefas exigem um modelo mais forte e como as chaves locais serão gerenciadas e rotacionadas."
     },
     {
       "title": "Next.js DevTools MCP",
@@ -826,7 +1002,11 @@
       "published_date": "2026-06-25",
       "sanitized": true,
       "signal_score": 78,
-      "hype_score": 34
+      "hype_score": 34,
+      "title_pt": "Next.js DevTools MCP",
+      "summary_pt": "O servidor Next.js DevTools MCP da Vercel conecta agentes a um servidor de desenvolvimento Next.js em execução para erros de runtime ao vivo, rotas, logs e documentação ciente da versão.",
+      "why_it_matters_pt": "Agentes de codificação de aplicações web muitas vezes adivinham a partir de arquivos estáticos enquanto a falha real está visível no servidor de desenvolvimento. O contexto de runtime pode tornar os loops de depuração mais curtos e menos especulativos.",
+      "try_this_pt": "Em um app Next.js 16+ não crítico, conecte o servidor MCP e compare uma tarefa de correção de bug com e sem rotas ao vivo, logs e contexto de erros de runtime."
     },
     {
       "title": "Orca agent worktrees",
@@ -846,7 +1026,11 @@
       "published_date": "2026-06-25",
       "sanitized": true,
       "signal_score": 78,
-      "hype_score": 34
+      "hype_score": 34,
+      "title_pt": "Worktrees de agente do Orca",
+      "summary_pt": "O Orca é um ambiente de desenvolvimento de agentes de código aberto para executar múltiplos agentes de codificação lado a lado em worktrees Git isoladas, com fluxos de revisão e merge.",
+      "why_it_matters_pt": "Comparar vários agentes de codificação na mesma tarefa é mais fácil quando suas alterações estão isoladas, revisáveis e prontas para merge em vez de misturadas em uma única working tree.",
+      "try_this_pt": "Use um repositório descartável para executar dois agentes na mesma issue pequena, depois compare os diffs, testes, etapas de revisão e a fricção de merge antes de usar o fluxo em código importante."
     },
     {
       "title": "SonarQube MCP Server",
@@ -866,7 +1050,11 @@
       "published_date": "2026-06-25",
       "sanitized": true,
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "title_pt": "SonarQube MCP Server",
+      "summary_pt": "O servidor MCP da SonarSource permite que agentes de codificação compatíveis com MCP consultem o SonarQube Cloud ou Server por quality gates, issues, hotspots de segurança, cobertura, riscos de dependências, regras e trechos de código.",
+      "why_it_matters_pt": "Agentes de codificação são mais úteis quando conseguem ver os achados existentes de qualidade de código e segurança antes de propor alterações. Um conector oficial do SonarQube transforma essas verificações em contexto acessível ao agente.",
+      "try_this_pt": "Conecte-o primeiro a um repositório descartável ou de baixo risco, exponha apenas o escopo necessário do SonarQube e peça ao agente para inspecionar os achados de quality gate e hotspots antes de elaborar um patch."
     },
     {
       "title": "Agent-optimized CLI output",
@@ -886,7 +1074,11 @@
       "published_date": "2026-06-26",
       "sanitized": true,
       "signal_score": 90,
-      "hype_score": 14
+      "hype_score": 14,
+      "title_pt": "Saída de CLI otimizada para agentes",
+      "summary_pt": "A Hugging Face descreveu padrões de CLI que tornam as ferramentas mais fáceis de usar por agentes de codificação: saída compacta, completa, parseável e não interativa, além de referências de comandos projetadas para máquinas.",
+      "why_it_matters_pt": "As execuções de agentes muitas vezes desperdiçam tokens e falham diante de prompts, saídas truncadas ou texto de terminal ambíguo. Ferramentas que emitem saída estruturada e estável podem reduzir os loops de repetição e melhorar a confiabilidade da automação.",
+      "try_this_pt": "Adicione um modo JSON ou TSV a um script usado por agentes, documente as flags não interativas e torne a saída de erro explícita o suficiente para que um agente se recupere sem precisar raspar texto."
     },
     {
       "title": "Claude Code command and telemetry controls",
@@ -906,7 +1098,11 @@
       "published_date": "2026-06-26",
       "sanitized": true,
       "signal_score": 94,
-      "hype_score": 18
+      "hype_score": 18,
+      "title_pt": "Controles de comandos e telemetria do Claude Code",
+      "summary_pt": "O Claude Code adicionou uma classificação mais ampla de comandos de shell, motivos mais claros para negação de permissão, avisos de autenticação MCP e controles para o registro de telemetria das respostas do assistente.",
+      "why_it_matters_pt": "Agentes de codificação precisam de limites explícitos antes de executar comandos ou emitir traces operacionais. Os padrões de permissão e telemetria agora merecem a mesma revisão que a escolha do modelo.",
+      "try_this_pt": "Revise as configurações do Claude Code antes da próxima execução do agente: habilite a classificação ampla de comandos de shell onde disponível e defina as variáveis de ambiente de telemetria para corresponder à política de registro desejada."
     },
     {
       "title": "Containarium agent sandboxes",
@@ -926,7 +1122,11 @@
       "published_date": "2026-06-26",
       "sanitized": true,
       "signal_score": 78,
-      "hype_score": 34
+      "hype_score": 34,
+      "title_pt": "Sandboxes de agente do Containarium",
+      "summary_pt": "O Containarium é um projeto de sandbox de código aberto e auto-hospedável para executar agentes de codificação em ambientes isolados.",
+      "why_it_matters_pt": "Trabalho de codificação delegado precisa de limites repetíveis em torno do acesso ao sistema de arquivos, credenciais, dependências e limpeza. Uma camada de sandbox pode tornar os experimentos mais seguros antes que os agentes toquem em repositórios importantes.",
+      "try_this_pt": "Revise o README, o modelo de isolamento e os requisitos de configuração, depois teste com um repositório descartável antes de conectar quaisquer credenciais persistentes ou código de produção."
     },
     {
       "title": "Opik eval and tracing stack",
@@ -946,7 +1146,11 @@
       "published_date": "2026-06-26",
       "sanitized": true,
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "title_pt": "Stack de avaliação e tracing do Opik",
+      "summary_pt": "O Opik é uma stack de tracing, avaliação e monitoramento de código aberto para aplicações com LLM, sistemas RAG e fluxos de trabalho de agentes.",
+      "why_it_matters_pt": "Produtos de IA se tornam mais difíceis de melhorar quando a qualidade é avaliada apenas a partir de algumas execuções bem-sucedidas. Traces e datasets de avaliação criam uma forma repetível de comparar mudanças de prompt, modelo e recuperação.",
+      "try_this_pt": "Instrumente uma pequena tarefa de RAG ou agente, salve alguns exemplos representativos e use o Opik para comparar duas variantes de prompt ou modelo nos mesmos casos."
     },
     {
       "title": "Moon Bot agent pattern",
@@ -966,7 +1170,11 @@
       "published_date": "2026-06-27",
       "sanitized": true,
       "signal_score": 90,
-      "hype_score": 14
+      "hype_score": 14,
+      "title_pt": "Padrão de agente Moon Bot",
+      "summary_pt": "A Hugging Face descreveu um padrão interno de agente nativo de chat usando logs de sessão persistentes, arquivos de skill, execução em sandbox, credenciais com escopo, traces auditáveis e fluxos de pull request.",
+      "why_it_matters_pt": "A lição útil é arquitetural: agentes voltados para produção precisam mais de traces duráveis, limites explícitos de ferramentas e ações revisáveis do que de mais um wrapper de chat.",
+      "try_this_pt": "Para um assistente operado por chat, defina o formato do log de sessão, as ferramentas permitidas, o escopo das credenciais e a etapa de revisão antes de adicionar mais automação."
     },
     {
       "title": "OpenAI prompt-cache retention",
@@ -986,7 +1194,11 @@
       "published_date": "2026-06-27",
       "sanitized": true,
       "signal_score": 79,
-      "hype_score": 34
+      "hype_score": 34,
+      "title_pt": "Retenção de cache de prompts da OpenAI",
+      "summary_pt": "O changelog da plataforma da OpenAI lista um comportamento padrão de retenção de cache de prompts por 24 horas para organizações que não usam retenção zero de dados.",
+      "why_it_matters_pt": "As premissas de custo e latência dos agentes dependem cada vez mais do comportamento de cache, das ferramentas hospedadas e das configurações de retenção de dados, e não apenas do preço por token do modelo.",
+      "try_this_pt": "Antes de escalar uma tarefa de agente repetida, verifique se os prompts são cacheáveis, qual política de retenção se aplica e se o fluxo de trabalho exige uma configuração de dados mais rígida."
     },
     {
       "title": "OpenKnowledge",
@@ -1006,7 +1218,11 @@
       "published_date": "2026-06-27",
       "sanitized": true,
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "title_pt": "OpenKnowledge",
+      "summary_pt": "O OpenKnowledge é um workspace markdown de código aberto e nativo de IA que apresenta notas, docs e especificações locais como uma base de conhecimento legível por agentes.",
+      "why_it_matters_pt": "As ferramentas de agentes funcionam melhor quando o material de origem é estruturado, versionável e próximo do ambiente do assistente, em vez de preso em documentos espalhados.",
+      "try_this_pt": "Execute-o em uma pasta de exemplo copiada com notas markdown ou docs de projeto, depois teste se um agente consegue responder a perguntas fundamentadas na fonte com menos preparação manual de contexto."
     },
     {
       "title": "webclaw",
@@ -1026,7 +1242,11 @@
       "published_date": "2026-06-27",
       "sanitized": true,
       "signal_score": 88,
-      "hype_score": 22
+      "hype_score": 22,
+      "title_pt": "webclaw",
+      "summary_pt": "O webclaw é uma ferramenta de extração web local-first em Rust para transformar páginas em markdown, JSON ou contexto pronto para LLM, com pontos de entrada por CLI, API, SDK e MCP.",
+      "why_it_matters_pt": "Uma captura de fontes mais limpa pode melhorar agentes de pesquisa, ingestão de RAG e fluxos de monitoramento ao reduzir os elementos visuais ruidosos das páginas antes do processamento pelo modelo.",
+      "try_this_pt": "Compare sua saída em markdown com um método existente de captura web em três páginas de documentação ou changelog, depois verifique se as citações e a estrutura sobrevivem de forma limpa."
     }
   ]
 }

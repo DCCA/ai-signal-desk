@@ -57,7 +57,9 @@
       .filter(function (x) {
         if (state.filter !== 'all' && x.it.category !== state.filter) return false;
         if (q) {
-          var hay = (x.it.title + ' ' + x.it.summary + ' ' + x.it.category).toLowerCase();
+          var hay = (x.it.title + ' ' + x.it.summary + ' ' +
+            (x.it.title_pt || '') + ' ' + (x.it.summary_pt || '') + ' ' +
+            x.it.category).toLowerCase();
           if (hay.indexOf(q) === -1) return false;
         }
         return true;
@@ -81,8 +83,8 @@
     mount.textContent = '';
 
     if (!rows.length) {
-      mount.appendChild(SD.el('p', 'empty-note', 'No signals match this filter yet.'));
-      if (countEl) countEl.textContent = '0 results';
+      mount.appendChild(SD.el('p', 'empty-note', window.SD_T('noMatch')));
+      if (countEl) countEl.textContent = window.SD_LOCALE === 'pt' ? '0 resultados' : '0 results';
       return;
     }
 
@@ -92,7 +94,9 @@
       var head = SD.el('div', 'archive-week-head');
       head.appendChild(SD.el('h2', null, SD.weekLabel(week.rows[0].it.published_date)));
       head.appendChild(SD.el('span', 'archive-week-count',
-        week.rows.length + ' signal' + (week.rows.length === 1 ? '' : 's')));
+        week.rows.length + (window.SD_LOCALE === 'pt'
+          ? (week.rows.length === 1 ? ' sinal' : ' sinais')
+          : ' signal' + (week.rows.length === 1 ? '' : 's'))));
       section.appendChild(head);
 
       var grid = SD.el('div', 'cards-grid');
@@ -104,7 +108,9 @@
       mount.appendChild(section);
     });
 
-    if (countEl) countEl.textContent = rows.length + ' result' + (rows.length === 1 ? '' : 's');
+    if (countEl) countEl.textContent = window.SD_LOCALE === 'pt'
+      ? rows.length + (rows.length === 1 ? ' resultado' : ' resultados')
+      : rows.length + ' result' + (rows.length === 1 ? '' : 's');
   }
 
   function renderChips() {
@@ -113,7 +119,7 @@
     chipsEl.textContent = '';
     FILTER_DEFS.forEach(function (def) {
       var key = def[0];
-      var btn = SD.el('button', 'chip' + (state.filter === key ? ' is-active' : ''), def[1] + ' ' + c[key]);
+      var btn = SD.el('button', 'chip' + (state.filter === key ? ' is-active' : ''), window.SD_T('fl_' + key) + ' ' + c[key]);
       btn.setAttribute('type', 'button');
       btn.setAttribute('aria-pressed', state.filter === key ? 'true' : 'false');
       btn.addEventListener('click', function () {
@@ -142,6 +148,6 @@
     })
     .catch(function () {
       mount.textContent = '';
-      mount.appendChild(SD.el('p', 'empty-note', 'Could not load signals. Run a static server from the repo root.'));
+      mount.appendChild(SD.el('p', 'empty-note', window.SD_T('loadErr')));
     });
 })();

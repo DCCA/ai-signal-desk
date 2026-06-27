@@ -36,8 +36,8 @@
     a.appendChild(el('span', 'dot dot-' + cat));
 
     var main = el('div', 'wk-row-main');
-    main.appendChild(el('div', 'wk-row-title', it.title));
-    main.appendChild(el('div', 'wk-row-summary', it.summary));
+    main.appendChild(el('div', 'wk-row-title', window.SD_PICK(it, 'title')));
+    main.appendChild(el('div', 'wk-row-summary', window.SD_PICK(it, 'summary')));
     a.appendChild(main);
 
     var sScore = Number(it.signal_score) || 0;
@@ -71,8 +71,8 @@
 
       var head = el('div', 'wk-group-head');
       head.appendChild(el('span', 'dot dot-' + g.key));
-      head.appendChild(el('h2', null, g.label));
-      head.appendChild(el('span', 'wk-group-note', g.note));
+      head.appendChild(el('h2', null, window.SD_T('g_' + g.key)));
+      head.appendChild(el('span', 'wk-group-note', window.SD_T('g_' + g.key + '_note')));
       head.appendChild(el('span', 'wk-group-count', String(rows.length)));
       group.appendChild(head);
 
@@ -94,6 +94,6 @@
     })
     .catch(function () {
       groupsEl.textContent = '';
-      groupsEl.appendChild(el('p', 'empty-note', 'Could not load signals. Run a static server from the repo root.'));
+      groupsEl.appendChild(el('p', 'empty-note', window.SD_T('loadErr')));
     });
 })();
