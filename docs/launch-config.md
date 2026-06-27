@@ -8,7 +8,7 @@ Recommended setup:
 
 - Hosting: Cloudflare Pages free tier if the repo stays private, or GitHub Pages if the repo becomes public.
 - Signup: link-out to a free Kit (ConvertKit) landing page (double opt-in on). The repo holds only the public Kit URL — no form, no backend, no secret, strict CSP unchanged.
-- Analytics: Cloudflare Web Analytics.
+- Analytics: Cloudflare Web Analytics — cookieless beacon on every page (manual snippet, GitHub Pages stays as-is). Adds one bounded, test-enforced CSP exception (`static.cloudflareinsights.com` in `script-src`, `cloudflareinsights.com` in `connect-src`); the public beacon token is the only repo change. See `docs/superpowers/specs/2026-06-27-analytics-cloudflare-design.md`.
 - Email sending: Kit broadcasts from the dashboard (free plan). Automate sends from the editorial pipeline via the Kit API/MCP (paid plan) only once pull is proven.
 
 ## Signup URL

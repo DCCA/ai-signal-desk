@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; form-action 'self'; upgrade-insecure-requests" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       name="description"
@@ -41,6 +41,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="theme.js"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c1913e63455748c19b386242fbb3cfcf"}'></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -114,6 +115,16 @@
       <p>
         You can unsubscribe at any time using the unsubscribe link in any email
         from the field brief, or by contacting the address on the contact page.
+      </p>
+
+      <h2>Analytics</h2>
+      <p>
+        AI Signal Desk uses Cloudflare Web Analytics to see basic traffic, like
+        which pages are read most. It is privacy-first and
+        <strong>cookieless</strong>: no cookies are set, no personal data is
+        collected, and there is no cross-site tracking or advertising. See
+        <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener">Cloudflare Web Analytics</a>
+        for how it works.
       </p>
     </main>
 
