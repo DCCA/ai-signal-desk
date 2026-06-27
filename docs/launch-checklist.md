@@ -19,10 +19,11 @@ Use this before sharing the beta URL.
 
 ## Signup
 
-- [ ] Email waitlist link opens a prefilled message to `signals@aisignaldesk.example`
-- [ ] Test message is received
-- [ ] Optional Tally form is created only if structured intake is needed
-- [ ] Signup path works from homepage hero/briefing section
+- [ ] Kit landing page is published with double opt-in (opt-in confirmation) on
+- [ ] The real Kit URL is wired into the newsletter band (no `KIT-LANDING-URL-PENDING` placeholder; `check_site.py` is green)
+- [ ] "Subscribe free" button opens the Kit landing page in a new tab
+- [ ] A test signup receives the double opt-in email and, once confirmed, appears in Kit
+- [ ] Signup path works from the homepage hero (in-page scroll to the band) on every page
 
 ## Mobile
 

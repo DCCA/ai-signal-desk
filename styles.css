@@ -530,15 +530,7 @@ img { max-width: 100%; }
 }
 .news-panel h2 { margin: 0 0 14px; font-size: clamp(26px, 5vw, 36px); letter-spacing: -0.04em; font-weight: 700; color: var(--panel-fg); }
 .news-panel p { margin: 0; color: var(--panel-sub); font-size: 16px; line-height: 1.6; max-width: 420px; }
-.news-field {
-  display: flex; gap: 8px; background: var(--panel-field-bg);
-  border: 1px solid var(--panel-field-border); border-radius: 12px; padding: 7px 7px 7px 16px;
-}
-.news-field input {
-  flex: 1; min-width: 0; border: 0; outline: none; background: transparent;
-  font-family: inherit; font-size: 15px; color: var(--panel-field-fg);
-}
-.news-field .btn-accent { padding: 11px 20px; font-size: 14px; }
+.news-cta { padding: 13px 24px; font-size: 15px; }
 .news-trust {
   display: flex; align-items: center; gap: 16px; margin-top: 14px;
   font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--panel-sub);
