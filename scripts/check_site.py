@@ -45,6 +45,20 @@ CONFIDENCES = {"low", "medium", "high"}
 # the reserved, non-deliverable .example contact domain.
 REMOVED_REFS = ["posts/", "aisignaldesk.example"]
 
+# The one canonical CSP, byte-identical on every page. Asserting it verbatim
+# *bounds* the third-party exceptions: Google Fonts (style/font) and Cloudflare
+# Web Analytics (script/connect) are the ONLY carve-outs. Any extra host or drift
+# fails the build, so "strict CSP with documented exceptions" can't quietly
+# become a loose one.
+EXPECTED_CSP = (
+    "default-src 'self'; base-uri 'none'; object-src 'none'; "
+    "script-src 'self' https://static.cloudflareinsights.com; "
+    "style-src 'self' https://fonts.googleapis.com; "
+    "font-src 'self' https://fonts.gstatic.com; img-src 'self'; "
+    "connect-src 'self' https://cloudflareinsights.com; "
+    "form-action 'self'; upgrade-insecure-requests"
+)
+
 
 def read(path: str) -> str:
     return (ROOT / path).read_text(encoding="utf-8")
@@ -108,12 +122,32 @@ def assert_security_invariants() -> None:
         assert "object-src 'none'" in html, f"{page}: CSP should set object-src 'none'"
         assert "'unsafe-inline'" not in html, f"{page}: CSP must not allow 'unsafe-inline'"
         assert "'unsafe-eval'" not in html, f"{page}: CSP must not allow 'unsafe-eval'"
+        # Exact CSP — bounds the allowed third-party hosts to fonts + CF analytics.
+        assert EXPECTED_CSP in html, f"{page}: CSP must match the canonical policy exactly (no extra hosts / drift)"
     # No external links opening a new tab without noopener.
     for page in ALL_PAGES + ["signal.js"]:
         text = read(page)
         for m in re.finditer(r'target="_blank"', text):
             window = text[max(0, m.start() - 200): m.end() + 200]
             assert "noopener" in window, f"{page}: target=_blank without rel=noopener"
+
+
+def assert_analytics_contract() -> None:
+    """Cloudflare Web Analytics: one cookieless beacon on every page, the only
+    third-party script the CSP carve-out allows. See
+    docs/superpowers/specs/2026-06-27-analytics-cloudflare-design.md.
+    The 32-hex token regex doubles as the anti-stub guard — the pending
+    placeholder token does not match, so the build stays red until it's wired."""
+    beacon_re = re.compile(
+        r'<script defer src="https://static\.cloudflareinsights\.com/beacon\.min\.js" '
+        r"""data-cf-beacon='\{"token": "([0-9a-f]{32})"\}'></script>"""
+    )
+    for page in ALL_PAGES:
+        html = read(page)
+        assert beacon_re.search(html), (
+            f"{page}: missing the Cloudflare Web Analytics beacon with a real "
+            "32-hex token (replace the CF-BEACON-TOKEN-PENDING placeholder before launch)"
+        )
 
 
 def assert_newsletter_contract() -> None:
@@ -328,6 +362,7 @@ def main() -> None:
     assert_required_files()
     assert_shared_page_contract()
     assert_security_invariants()
+    assert_analytics_contract()
     assert_newsletter_contract()
     assert_no_removed_refs()
     assert_preview_pages()
