@@ -60,13 +60,13 @@
     var cat = catOf(it);
     var tag = el('span', 'cat-tag cat-' + cat);
     tag.appendChild(el('span', 'dot dot-' + cat));
-    tag.appendChild(document.createTextNode(cat));
+    tag.appendChild(document.createTextNode(window.SD_T('cat_' + cat)));
     return tag;
   }
 
   function bar(kind, score) {
     var row = el('div', 'bar-row');
-    row.appendChild(el('span', 'bar-label', kind === 'signal' ? 'Signal' : 'Hype'));
+    row.appendChild(el('span', 'bar-label', window.SD_T(kind === 'signal' ? 'sig' : 'hype')));
     var track = el('div', 'bar-track');
     var fill = el('div', 'bar-fill bar-fill-' + kind);
     var pct = clampScore(score);
@@ -88,11 +88,11 @@
     var a = el('a', 'related-card');
     a.setAttribute('href', 'signal.html?i=' + origIdx);
     a.appendChild(catTag(it));
-    a.appendChild(el('div', 'related-title', it.title));
+    a.appendChild(el('div', 'related-title', window.SD_PICK(it, 'title')));
     a.appendChild(el(
       'span',
       'related-score',
-      'Signal ' + clampScore(it.signal_score) + ' · Hype ' + clampScore(it.hype_score)
+      window.SD_T('sig') + ' ' + clampScore(it.signal_score) + ' · ' + window.SD_T('hype') + ' ' + clampScore(it.hype_score)
     ));
     return a;
   }
@@ -125,19 +125,19 @@
     root.textContent = '';
 
     // 1) back link
-    var back = el('a', 'back-link', '← Back to digest');
+    var back = el('a', 'back-link', window.SD_T('back'));
     back.setAttribute('href', 'index.html');
     root.appendChild(back);
 
     // 2) tag row: category + verdict
     var tagrow = el('div', 'article-tagrow');
     tagrow.appendChild(catTag(it));
-    tagrow.appendChild(el('span', 'verdict verdict-' + status, status.toUpperCase()));
+    tagrow.appendChild(el('span', 'verdict verdict-' + status, window.SD_T('st_' + status)));
     root.appendChild(tagrow);
 
     // 3) title + lead
-    root.appendChild(el('h1', 'article-h1', it.title));
-    root.appendChild(el('p', 'article-lead', it.summary));
+    root.appendChild(el('h1', 'article-h1', window.SD_PICK(it, 'title')));
+    root.appendChild(el('p', 'article-lead', window.SD_PICK(it, 'summary')));
 
     // 4) meta card
     var meta = el('div', 'meta-card');
@@ -149,19 +149,19 @@
     meta.appendChild(left);
 
     var right = el('div', 'meta-right');
-    right.appendChild(el('span', 'meta-conf-label', 'Confidence'));
-    right.appendChild(el('span', 'meta-conf-val', it.confidence || ''));
+    right.appendChild(el('span', 'meta-conf-label', window.SD_T('confidence')));
+    right.appendChild(el('span', 'meta-conf-val', it.confidence ? window.SD_T('conf_' + it.confidence) : ''));
     meta.appendChild(right);
     root.appendChild(meta);
 
     // 5) prose
     var prose = el('div', 'prose');
-    prose.appendChild(proseBlock('What it is', it.summary));
-    prose.appendChild(proseBlock('Why it matters', it.why_it_matters));
+    prose.appendChild(proseBlock(window.SD_T('whatItIs'), window.SD_PICK(it, 'summary')));
+    prose.appendChild(proseBlock(window.SD_T('whyItMatters'), window.SD_PICK(it, 'why_it_matters')));
 
     var tryPanel = el('div', 'try-panel');
-    tryPanel.appendChild(el('div', 'prose-kicker', 'Try this'));
-    tryPanel.appendChild(el('p', 'prose-body', it.try_this || ''));
+    tryPanel.appendChild(el('div', 'prose-kicker', window.SD_T('tryKicker')));
+    tryPanel.appendChild(el('p', 'prose-body', window.SD_PICK(it, 'try_this') || ''));
     prose.appendChild(tryPanel);
 
     // 6) source row (only when a safe source URL exists)
@@ -169,11 +169,14 @@
     if (sourceUrl) {
       var srcRow = el('div', 'source-row');
       var srcInfo = el('div');
-      srcInfo.appendChild(el('div', 'source-label-kicker', 'Source'));
+      srcInfo.appendChild(el('div', 'source-label-kicker', window.SD_T('source')));
       srcInfo.appendChild(el('div', 'source-label', it.source_label || ''));
+      // On the pt site, flag that the linked source is in English.
+      var srcLang = window.SD_T('srcLang');
+      if (srcLang) srcInfo.appendChild(el('span', 'source-lang-tag', srcLang));
       srcRow.appendChild(srcInfo);
 
-      var srcLink = el('a', 'btn-accent', 'View source →');
+      var srcLink = el('a', 'btn-accent', window.SD_T('viewSource'));
       srcLink.setAttribute('href', sourceUrl);
       srcLink.setAttribute('target', '_blank');
       srcLink.setAttribute('rel', 'noopener noreferrer');
@@ -184,7 +187,7 @@
 
     // 7) related signals
     var relWrap = el('div', 'related-wrap');
-    relWrap.appendChild(el('h3', null, 'Related signals'));
+    relWrap.appendChild(el('h3', null, window.SD_T('related')));
     var relGrid = el('div', 'related-grid');
     relatedFor(items, idx).forEach(function (r) {
       relGrid.appendChild(relatedCard(r.it, r.i));
@@ -192,7 +195,7 @@
     relWrap.appendChild(relGrid);
     root.appendChild(relWrap);
 
-    document.title = it.title + ' — AI Signal Desk';
+    document.title = window.SD_PICK(it, 'title') + ' — AI Signal Desk';
   }
 
   fetch('/content/digest.json')
@@ -201,7 +204,7 @@
       var items = (data && data.items) || [];
       if (!items.length) {
         root.textContent = '';
-        root.appendChild(el('p', 'empty-note', 'No signals available.'));
+        root.appendChild(el('p', 'empty-note', window.SD_T('noneAvail')));
         return;
       }
       var idx = readIndex(items.length);
@@ -209,6 +212,6 @@
     })
     .catch(function () {
       root.textContent = '';
-      root.appendChild(el('p', 'empty-note', 'Could not load this signal. Run a static server from the repo root.'));
+      root.appendChild(el('p', 'empty-note', window.SD_T('loadErr')));
     });
 })();

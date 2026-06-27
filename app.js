@@ -55,7 +55,9 @@
 
     grid.textContent = '';
     top.forEach(function (x) { grid.appendChild(SD.buildCard(x.it, x.i)); });
-    if (countEl) countEl.textContent = 'Top ' + top.length + ' signals';
+    if (countEl) countEl.textContent = window.SD_LOCALE === 'pt'
+      ? 'Top ' + top.length + ' sinais'
+      : 'Top ' + top.length + ' signals';
   }
 
   fetch('/content/digest.json')
@@ -69,6 +71,6 @@
     })
     .catch(function () {
       grid.textContent = '';
-      grid.appendChild(SD.el('p', 'empty-note', 'Could not load signals. Run a static server from the repo root.'));
+      grid.appendChild(SD.el('p', 'empty-note', window.SD_T('loadErr')));
     });
 })();

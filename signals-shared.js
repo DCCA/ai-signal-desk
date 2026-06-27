@@ -19,7 +19,7 @@
 
   function bar(kind, score) {
     var row = el('div', 'bar-row');
-    row.appendChild(el('span', 'bar-label', kind === 'signal' ? 'Signal' : 'Hype'));
+    row.appendChild(el('span', 'bar-label', window.SD_T(kind === 'signal' ? 'sig' : 'hype')));
     var track = el('div', 'bar-track');
     var fill = el('div', 'bar-fill bar-fill-' + kind);
     var pct = Math.max(0, Math.min(100, Number(score) || 0));
@@ -43,14 +43,14 @@
     var top = el('div', 'card-top');
     var tag = el('span', 'cat-tag cat-' + cat);
     tag.appendChild(el('span', 'dot dot-' + cat));
-    tag.appendChild(document.createTextNode(num + ' / ' + cat));
+    tag.appendChild(document.createTextNode(num + ' / ' + window.SD_T('cat_' + cat)));
     top.appendChild(tag);
-    top.appendChild(el('span', 'verdict verdict-' + status, status.toUpperCase()));
+    top.appendChild(el('span', 'verdict verdict-' + status, window.SD_T('st_' + status)));
     a.appendChild(top);
 
     var body = el('div');
-    body.appendChild(el('h3', 'card-title', it.title));
-    body.appendChild(el('p', 'card-summary', it.summary));
+    body.appendChild(el('h3', 'card-title', window.SD_PICK(it, 'title')));
+    body.appendChild(el('p', 'card-summary', window.SD_PICK(it, 'summary')));
     a.appendChild(body);
 
     var bars = el('div', 'bars');
@@ -60,12 +60,12 @@
 
     var tryRow = el('div', 'card-try');
     var p = el('p');
-    p.appendChild(el('b', null, 'Try this:'));
-    p.appendChild(document.createTextNode(' ' + (it.try_this || '')));
+    p.appendChild(el('b', null, window.SD_T('tryThis')));
+    p.appendChild(document.createTextNode(' ' + (window.SD_PICK(it, 'try_this') || '')));
     tryRow.appendChild(p);
     a.appendChild(tryRow);
 
-    a.appendChild(el('span', 'card-cta', 'Read full signal →'));
+    a.appendChild(el('span', 'card-cta', window.SD_T('readFull')));
     return a;
   }
 
@@ -89,7 +89,12 @@
   }
   function weekLabel(dateStr) {
     var d = weekStart(dateStr);
-    return 'Week of ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    var t = window.SD_T;
+    var months = (t && t('months')) || MONTHS;
+    if (window.SD_LOCALE === 'pt') {
+      return t('weekOf') + ' ' + d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear();
+    }
+    return (t ? t('weekOf') : 'Week of') + ' ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
   }
 
   window.SignalDesk = {
