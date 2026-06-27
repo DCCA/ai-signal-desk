@@ -575,3 +575,5 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .pulse { animation: none; }
 }
+
+.lang-switch { text-decoration: none; }

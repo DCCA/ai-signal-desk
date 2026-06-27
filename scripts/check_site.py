@@ -25,6 +25,17 @@ PAGES = [
 PREVIEW_PAGES = ["brand.html", "logo-exploration.html"]
 ALL_PAGES = PAGES + PREVIEW_PAGES
 
+# Portuguese (pt-BR) mirror of the public pages, served from the /pt/ subdirectory
+# (so they use absolute asset paths). Held to the same security + CSP + analytics
+# standards as the EN pages; the pt-specific shell is checked by assert_pt_contract.
+PT_PAGES = [
+    "pt/index.html", "pt/archive.html", "pt/signal.html", "pt/weekly.html",
+    "pt/about.html", "pt/privacy.html", "pt/contact.html",
+]
+# Pages that ship to the public web and must satisfy the security/CSP/analytics
+# invariants (EN + preview + pt).
+SECURED_PAGES = ALL_PAGES + PT_PAGES
+
 REQUIRED_FILES = PAGES + PREVIEW_PAGES + [
     "styles.css", "preview.css", "theme.js",
     "signals-shared.js", "app.js", "archive.js", "signal.js", "weekly.js",
@@ -106,7 +117,7 @@ def assert_shared_page_contract() -> None:
 
 def assert_security_invariants() -> None:
     """The hardening that lets the strict CSP stay strict."""
-    for page in ALL_PAGES:
+    for page in SECURED_PAGES:
         html = read(page)
         # No inline style attributes (style-src 'self' has no 'unsafe-inline').
         assert 'style="' not in html, f"{page}: inline style attribute breaks the strict CSP"
@@ -125,7 +136,7 @@ def assert_security_invariants() -> None:
         # Exact CSP — bounds the allowed third-party hosts to fonts + CF analytics.
         assert EXPECTED_CSP in html, f"{page}: CSP must match the canonical policy exactly (no extra hosts / drift)"
     # No external links opening a new tab without noopener.
-    for page in ALL_PAGES + ["signal.js"]:
+    for page in SECURED_PAGES + ["signal.js"]:
         text = read(page)
         for m in re.finditer(r'target="_blank"', text):
             window = text[max(0, m.start() - 200): m.end() + 200]
@@ -142,12 +153,36 @@ def assert_analytics_contract() -> None:
         r'<script defer src="https://static\.cloudflareinsights\.com/beacon\.min\.js" '
         r"""data-cf-beacon='\{"token": "([0-9a-f]{32})"\}'></script>"""
     )
-    for page in ALL_PAGES:
+    for page in SECURED_PAGES:
         html = read(page)
         assert beacon_re.search(html), (
             f"{page}: missing the Cloudflare Web Analytics beacon with a real "
             "32-hex token (replace the CF-BEACON-TOKEN-PENDING placeholder before launch)"
         )
+
+
+def assert_pt_contract() -> None:
+    """The Portuguese (pt-BR) mirror under /pt/. Same shared shell + a11y as the
+    EN pages, but served from a subdirectory: absolute asset paths, lang=pt-BR,
+    and hreflang alternates that link each page back to its EN counterpart.
+    (Security/CSP/analytics invariants are enforced for these via SECURED_PAGES.)"""
+    for page in PT_PAGES:
+        html = read(page)
+        assert 'lang="pt-BR"' in html, f"{page}: must declare <html lang=pt-BR>"
+        # Shared shell, but with absolute (subdirectory-safe) asset references.
+        assert 'href="/styles.css"' in html, f"{page}: must load /styles.css (absolute path)"
+        assert '<script src="/theme.js"></script>' in html, f"{page}: must load /theme.js (absolute path)"
+        assert 'class="skip-link" href="#main"' in html, f"{page}: missing skip link"
+        assert re.search(r'<main[^>]*id="main"[^>]*tabindex="-1"', html), f"{page}: <main id=main tabindex=-1> required"
+        assert 'class="site-header"' in html, f"{page}: missing shared header"
+        assert 'class="site-footer"' in html, f"{page}: missing shared footer"
+        assert 'id="newsletter"' in html, f"{page}: missing newsletter band"
+        assert "data-theme-toggle" in html, f"{page}: missing theme toggle"
+        # i18n wiring: canonical + the three hreflang alternates, and a link back to EN.
+        assert 'rel="canonical"' in html, f"{page}: missing canonical"
+        for hl in ['hreflang="en"', 'hreflang="pt-BR"', 'hreflang="x-default"']:
+            assert f'rel="alternate" {hl}' in html, f"{page}: missing {hl} alternate"
+        assert 'class="btn-toggle lang-switch"' in html, f"{page}: missing EN language switcher"
 
 
 def assert_newsletter_contract() -> None:
@@ -352,6 +387,10 @@ def assert_seo_files() -> None:
     sitemap = read("sitemap.xml")
     for page in ["archive.html", "weekly.html", "about.html", "privacy.html", "contact.html"]:
         assert page in sitemap, f"sitemap.xml missing {page}"
+    # The pt-BR mirror is indexable too.
+    for loc in ["pt/index.html", "pt/archive.html", "pt/weekly.html",
+                "pt/about.html", "pt/privacy.html", "pt/contact.html"]:
+        assert loc in sitemap, f"sitemap.xml missing {loc}"
     assert "aisignaldesk.ai" in sitemap, "sitemap should use the live domain"
     assert "posts/" not in sitemap, "sitemap must not reference removed posts/"
     robots = read("robots.txt")
@@ -363,6 +402,7 @@ def main() -> None:
     assert_shared_page_contract()
     assert_security_invariants()
     assert_analytics_contract()
+    assert_pt_contract()
     assert_newsletter_contract()
     assert_no_removed_refs()
     assert_preview_pages()

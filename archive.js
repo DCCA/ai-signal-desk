@@ -131,7 +131,7 @@
     if (state.query) searchEl.value = state.query;
   }
 
-  fetch('content/digest.json')
+  fetch('/content/digest.json')
     .then(function (r) { return r.json(); })
     .then(function (data) {
       items = (data && data.items) || [];

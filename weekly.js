@@ -81,7 +81,7 @@
     });
   }
 
-  fetch('content/digest.json')
+  fetch('/content/digest.json')
     .then(function (r) { return r.json(); })
     .then(function (data) {
       var items = (data && data.items) || [];

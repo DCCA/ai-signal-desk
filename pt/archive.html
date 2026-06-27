@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,10 +7,10 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       name="description"
-      content="The full AI Signal Desk archive: every classified signal card, grouped by week, searchable and filterable by category."
+      content="O arquivo completo de sinais do AI Signal Desk, da semana mais recente para a mais antiga. Filtre por categoria ou busque no acervo."
     />
-    <title>Signal archive — AI Signal Desk</title>
-    <link rel="canonical" href="https://aisignaldesk.ai/archive.html" />
+    <title>Arquivo — AI Signal Desk</title>
+    <link rel="canonical" href="https://aisignaldesk.ai/pt/archive.html" />
     <link rel="alternate" hreflang="en" href="https://aisignaldesk.ai/archive.html" />
     <link rel="alternate" hreflang="pt-BR" href="https://aisignaldesk.ai/pt/archive.html" />
     <link rel="alternate" hreflang="x-default" href="https://aisignaldesk.ai/archive.html" />
@@ -18,63 +18,57 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AI Signal Desk" />
-    <meta property="og:title" content="Signal archive — AI Signal Desk" />
-    <meta
-      property="og:description"
-      content="Every classified AI signal, grouped by week and searchable by category."
-    />
-    <meta property="og:url" content="https://aisignaldesk.ai/archive.html" />
+    <meta property="og:title" content="Arquivo — AI Signal Desk" />
+    <meta property="og:description" content="O arquivo completo de sinais classificados, da semana mais recente para a mais antiga." />
+    <meta property="og:url" content="https://aisignaldesk.ai/pt/archive.html" />
     <meta property="og:image" content="https://aisignaldesk.ai/assets/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="AI Signal Desk — AI signal, not AI noise." />
+    <meta property="og:image:alt" content="AI Signal Desk — sinal de IA, não ruído de IA." />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Signal archive — AI Signal Desk" />
-    <meta
-      name="twitter:description"
-      content="Every classified AI signal, grouped by week and searchable by category."
-    />
+    <meta name="twitter:title" content="Arquivo — AI Signal Desk" />
+    <meta name="twitter:description" content="O arquivo completo de sinais classificados, da semana mais recente para a mais antiga." />
     <meta name="twitter:image" content="https://aisignaldesk.ai/assets/og-image.png" />
 
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="theme.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/theme.js"></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c1913e63455748c19b386242fbb3cfcf"}'></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
     <!-- ============ SHARED HEADER ============ -->
     <header class="site-header">
       <div class="header-row">
-        <a class="brand" href="index.html" aria-label="AI Signal Desk home">
+        <a class="brand" href="index.html" aria-label="Início do AI Signal Desk">
           <span class="brand-mark" aria-hidden="true">SD</span>
           AI Signal Desk
         </a>
-        <nav class="site-nav no-scrollbar" aria-label="Primary">
-          <a href="archive.html?filter=concept">Concepts</a>
-          <a href="archive.html?filter=product">Products</a>
-          <a href="archive.html?filter=repo">Repos</a>
-          <a href="archive.html?filter=workflow">Workflows</a>
-          <a href="archive.html" aria-current="page">Archive</a>
-          <a href="weekly.html">Weekly</a>
-          <a href="about.html">About</a>
+        <nav class="site-nav no-scrollbar" aria-label="Principal">
+          <a href="archive.html?filter=concept">Conceitos</a>
+          <a href="archive.html?filter=product">Produtos</a>
+          <a href="archive.html?filter=repo">Repositórios</a>
+          <a href="archive.html?filter=workflow">Fluxos</a>
+          <a href="archive.html" aria-current="page">Arquivo</a>
+          <a href="weekly.html">Semanal</a>
+          <a href="about.html">Sobre</a>
         </nav>
         <div class="header-actions">
-          <a class="btn-toggle lang-switch" href="/pt/archive.html" hreflang="pt-BR" aria-label="Versão em português">PT</a>
-          <button class="btn-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+          <a class="btn-toggle lang-switch" href="/archive.html" hreflang="en" aria-label="English version">EN</a>
+          <button class="btn-toggle" type="button" data-theme-toggle aria-label="Alternar tema">
             <span data-theme-icon aria-hidden="true">☾</span>
-            <span data-theme-label>Dark</span>
+            <span data-theme-label>Escuro</span>
           </button>
-          <a class="btn-accent" href="#newsletter">Subscribe free</a>
+          <a class="btn-accent" href="#newsletter">Assine grátis</a>
         </div>
       </div>
     </header>
@@ -84,42 +78,42 @@
       <section class="digest" id="archive">
         <div class="digest-head">
           <div>
-            <h1>Signal archive</h1>
-            <p>Every classified signal, newest week first. Filter by category or search the back-catalog.</p>
+            <h1>Arquivo de sinais</h1>
+            <p>Todo sinal classificado, da semana mais recente para a mais antiga. Filtre por categoria ou busque no acervo.</p>
           </div>
-          <span class="results-count" data-results-count>All signals</span>
+          <span class="results-count" data-results-count>Todos os sinais</span>
         </div>
 
         <div class="toolbar">
-          <div class="chips" data-filters aria-label="Filter by category"></div>
+          <div class="chips" data-filters aria-label="Filtrar por categoria"></div>
           <div class="search-bar archive-search">
             <span class="search-glyph" aria-hidden="true">&#9906;</span>
             <input
               type="search"
               data-search
-              placeholder="Search the archive&hellip;"
-              aria-label="Search the archive"
+              placeholder="Buscar no arquivo&hellip;"
+              aria-label="Buscar no arquivo"
             />
           </div>
         </div>
 
         <div data-archive>
           <noscript>
-            <p class="empty-note">Enable JavaScript to view the signal archive.</p>
+            <p class="empty-note">Ative o JavaScript para ver o arquivo de sinais.</p>
           </noscript>
         </div>
       </section>
     </main>
 
     <!-- ============ SHARED NEWSLETTER ============ -->
-    <section class="news" id="newsletter" aria-label="Newsletter signup">
+    <section class="news" id="newsletter" aria-label="Assinatura da newsletter">
       <div class="news-panel">
         <div>
-          <h2>Get the field brief every week.</h2>
+          <h2>Receba o field brief toda semana.</h2>
           <p>
-            Five useful updates, three things to try, one concept to learn, one
-            thing to ignore. For people who want to know what matters and what to
-            do next.
+            Cinco atualizações úteis, três coisas para testar, um conceito para
+            aprender, uma para ignorar. Para quem quer saber o que importa e o que
+            fazer a seguir.
           </p>
         </div>
         <div>
@@ -128,10 +122,10 @@
             href="https://ai-signal-desk.kit.com/29d0ead2eb"
             target="_blank"
             rel="noopener"
-            >Subscribe free &rarr;</a
+            >Assine grátis &rarr;</a
           >
           <div class="news-trust">
-            <span>Free weekly</span><span>&middot;</span><span>No spam</span><span>&middot;</span><span>Unsubscribe anytime</span>
+            <span>Grátis toda semana</span><span>&middot;</span><span>Sem spam</span><span>&middot;</span><span>Cancele quando quiser</span>
           </div>
         </div>
       </div>
@@ -142,15 +136,15 @@
       <div class="footer-row">
         <span>AI Signal Desk</span>
         <div class="footer-links">
-          <a href="archive.html">Archive</a>
-          <a href="about.html">About</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="contact.html">Contact</a>
+          <a href="archive.html">Arquivo</a>
+          <a href="about.html">Sobre</a>
+          <a href="privacy.html">Privacidade</a>
+          <a href="contact.html">Contato</a>
         </div>
       </div>
     </footer>
 
-    <script src="signals-shared.js"></script>
-    <script src="archive.js"></script>
+    <script src="/signals-shared.js"></script>
+    <script src="/archive.js"></script>
   </body>
 </html>
