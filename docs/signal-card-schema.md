@@ -73,6 +73,6 @@ Draft cards in `content/drafts/` should include:
 Cards may appear in `content/digest.json` through either:
 
 1. manual human review with `human_reviewed: true`, or
-2. the automated Hermes reviewer/editor pipeline with `human_reviewed: false`, `automated_reviewed: true`, and `published: true`.
+2. the automated reviewer/editor pipeline with `human_reviewed: false`, `automated_reviewed: true`, and `published: true`.
 
 Deeper `posts/*.html` analysis pages and manually curated weekly issues still require human review.

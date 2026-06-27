@@ -120,4 +120,4 @@ redirect configured at the registrar/DNS (GitHub Pages serves only the single
 
 1. Convert existing AI Daily Digest entries into three long-form sample posts.
 2. Connect a newsletter provider or simple waitlist form.
-3. Add a Hermes workflow that turns daily digest notes into draft cards for review.
+3. Add an automated feeder workflow that turns daily digest notes into draft cards for review.

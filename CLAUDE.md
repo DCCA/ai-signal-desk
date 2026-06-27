@@ -68,10 +68,14 @@ existence — keep CSS and JS class names in sync.
   build nodes with `createElement` + `textContent`/`createTextNode`. Never `innerHTML =` or `insertAdjacentHTML`
   — digest fields are treated as untrusted. External source links go through `safeUrl` in
   `signal.js` and any `target="_blank"` needs `rel="noopener"`.
-- **Public/private separation.** This repo deploys its **entire root** to the public web.
-  Never commit anything web-private. `publish_signal_drafts.py` scrubs drafts against
-  `PRIVATE_PATTERNS` (e.g. local paths, internal tool names) and refuses to promote a card
-  that leaks them.
+- **Public/private separation.** This repo deploys its **entire root** to the public web
+  **and the repo itself is public** — never commit anything web-private. `publish_signal_drafts.py`
+  scrubs drafts against `PRIVATE_PATTERNS` and refuses to promote a card that leaks them. That
+  list is the union of generic in-source patterns (`DEFAULT_PRIVATE_PATTERNS`, e.g. local paths)
+  and account-specific terms loaded from `scripts/private_patterns.local.txt` — a **gitignored**
+  file (so the real handles/tool names never enter this public repo); copy `private_patterns.example.txt`
+  to seed it. CI only runs `check_site.py`, never the publish script, so the local file is needed
+  only on the editor's machine.
 
 ## Editorial pipeline
 

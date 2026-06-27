@@ -18,7 +18,7 @@ Verified on 2026-06-15:
 - Issue 001 exists at `weekly.html`
 - Three launch sample posts exist under `posts/`
 - Published signal cards include source links and confidence labels
-- Hermes editorial workflow docs exist for draft-to-human-review publishing
+- automated editorial workflow docs exist for draft-to-human-review publishing
 - No public deployment URL yet
 
 ## Launch thesis
@@ -34,7 +34,7 @@ The free testing version should prove:
 1. The positioning is clear in 5 seconds.
 2. A reader can subscribe or join the beta immediately.
 3. The content is differentiated enough that people trust the filter.
-4. A simple Hermes-assisted editorial workflow can produce useful issues consistently.
+4. A simple automation-assisted editorial workflow can produce useful issues consistently.
 
 ## Free testing stack
 
@@ -44,7 +44,7 @@ The free testing version should prove:
 | Signup capture | Tally free, Google Forms, or Formspree free | Tally free for best UX with minimal setup |
 | Subscriber storage | Tally dashboard / CSV export / Google Sheets | Enough for first 25–100 testers |
 | Analytics | Cloudflare Web Analytics | Free and privacy-friendly |
-| Content workflow | Static JSON + Markdown/HTML posts + Hermes drafts | Avoid CMS complexity |
+| Content workflow | Static JSON + Markdown/HTML posts + automated drafts | Avoid CMS complexity |
 | Email sending | Manual beta emails / BCC / personal outreach | Avoid paid newsletter tools until pull is proven |
 
 ## Beta success criteria
@@ -93,7 +93,7 @@ Tasks:
 
 1. Add `about.html` explaining the editorial standard.
 2. Add `privacy.html` explaining email capture and unsubscribe expectations.
-3. Add `contact.html` with the Hermes/contact route.
+3. Add `contact.html` with the contact route.
 4. Replace demo signup with a configurable free waitlist link or embed.
 5. Add SEO/OpenGraph/Twitter metadata.
 6. Add `robots.txt` and `sitemap.xml`.
@@ -147,16 +147,16 @@ Acceptance criteria:
 - Test submission is received.
 - Mobile layout is acceptable.
 
-### Phase 4 — Hermes editorial workflow
+### Phase 4 — Automated editorial workflow
 
-Goal: use Hermes to reduce manual curation work while keeping human review.
+Goal: use the automated feeder to reduce manual curation work while keeping human review.
 
 Workflow:
 
 ```text
 AI Daily Digest + newsletters at signals@aisignaldesk.example
-→ Hermes filters high-signal items
-→ Hermes drafts signal cards
+→ The feeder filters high-signal items
+→ The feeder drafts signal cards
 → human review
 → publish to content/digest.json, weekly issue, or post
 ```
@@ -171,7 +171,7 @@ Tasks:
 
 Acceptance criteria:
 
-- Hermes can draft content without publishing automatically.
+- The feeder can draft content without publishing automatically.
 - Published content is always human-reviewed.
 - Newsletter/email inputs can become candidate signal cards.
 

@@ -19,3 +19,7 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Account-specific private-context patterns (the scrubber's real blocklist);
+# the committed .example template documents the format.
+scripts/private_patterns.local.txt

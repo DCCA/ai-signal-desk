@@ -71,4 +71,4 @@ Secondary goal: collect signals about which categories readers care about most.
 
 ## Next build step
 
-Turn the static MVP into a small content engine that can ingest Hermes AI Digest notes and draft publishable cards/posts for human review.
+Turn the static MVP into a small content engine that can ingest AI digest notes and draft publishable cards/posts for human review.
