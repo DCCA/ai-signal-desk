@@ -31,15 +31,23 @@ extend `check_site.py` to assert it (the assertions ARE the spec).
 
 ## Architecture
 
-**Data flow.** `content/digest.json` (`{ publication, tagline, updated, items: Signal[] }`)
-is fetched at runtime and rendered by three independent scripts:
-- `app.js` → home grid (`index.html`): filter chips, segmented sort, live search, URL-param deep links (`?filter=`, `?q=`).
+**Data flow.** `content/digest.json` (`{ publication, tagline, updated, items: Signal[] }`,
+where each `Signal` carries a `published_date` — the date spine the archive groups weeks by)
+is fetched at runtime and rendered by per-page scripts:
+- `signals-shared.js` → `window.SignalDesk`: the shared `buildCard` (DOM-only signal-card
+  builder) plus week helpers (`weekKey`/`weekLabel`). Must load **before** its consumers
+  `app.js`/`archive.js` (enforced by `assert_archive_contract`).
+- `app.js` → home top-signals grid (`index.html`): top N by `signal_score` + wayfinding
+  counts, linking into the archive. No filter/sort/search of its own.
+- `archive.js` → full back-catalog (`archive.html`): grouped by calendar week (newest first),
+  category filter chips, live search, URL-param deep links (`?filter=`, `?q=`). Date is the
+  spine; there is deliberately no sort control.
 - `signal.js` → article deep-dive (`signal.html?i=N`, where `N` is the 1-based index into the unfiltered digest) + related signals.
 - `weekly.js` → weekly brief (`weekly.html`) grouped by verdict (learn/try/watch/ignore).
 
 `theme.js` is shared by every page (light/dark via localStorage + `prefers-color-scheme`).
 
-**Shared page shell.** All six public pages (`index/signal/weekly/about/privacy/contact`)
+**Shared page shell.** All seven public pages (`index/archive/signal/weekly/about/privacy/contact`)
 plus two preview pages (`brand.html`, `logo-exploration.html`) must carry an identical
 head/header/footer/newsletter shell, a11y landmarks (skip link, `<main id="main" tabindex="-1">`),
 and the same nav/footer links. `check_site.py::assert_shared_page_contract` enforces this —
@@ -56,8 +64,8 @@ existence — keep CSS and JS class names in sync.
 - **Strict CSP, no exceptions.** No inline `style="..."`, no `<style>` blocks, no inline
   `<script>` (every script is `src=`). No `'unsafe-inline'` / `'unsafe-eval'`. Dynamic bar
   widths are set via CSSOM (`el.style.setProperty('--w', ...)`), never inline markup.
-- **DOM API only in renderers.** `app.js`/`signal.js`/`weekly.js` build nodes with
-  `createElement` + `textContent`/`createTextNode`. Never `innerHTML =` or `insertAdjacentHTML`
+- **DOM API only in renderers.** `signals-shared.js`/`app.js`/`archive.js`/`signal.js`/`weekly.js`
+  build nodes with `createElement` + `textContent`/`createTextNode`. Never `innerHTML =` or `insertAdjacentHTML`
   — digest fields are treated as untrusted. External source links go through `safeUrl` in
   `signal.js` and any `target="_blank"` needs `rel="noopener"`.
 - **Public/private separation.** This repo deploys its **entire root** to the public web.
