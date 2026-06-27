@@ -116,6 +116,28 @@ def assert_security_invariants() -> None:
             assert "noopener" in window, f"{page}: target=_blank without rel=noopener"
 
 
+def assert_newsletter_contract() -> None:
+    """Signup is a link-out to a Kit-hosted landing page. Link-out is what lets
+    the strict CSP and no-backend invariants survive a real capture+send loop —
+    see docs/superpowers/specs/2026-06-27-newsletter-kit-linkout-design.md.
+    The Kit-host regex doubles as the anti-stub guard: the pending placeholder
+    URL does not match it, so the build stays red until the real URL is wired."""
+    kit_host = re.compile(r'href="https://[a-z0-9.-]+\.(?:kit\.com|ck\.page)/\S+"')
+    band_re = re.compile(r'<section class="news"[^>]*id="newsletter".*?</section>', re.S)
+    for page in ALL_PAGES:
+        html = read(page)
+        m = band_re.search(html)
+        assert m, f"{page}: newsletter band not found"
+        band = m.group(0)
+        # Honest link-out: no cosmetic email input, no mailto signup in the band.
+        assert "<input" not in band, f"{page}: newsletter band must not contain an email input (link-out, not a fake form)"
+        assert "mailto:" not in band, f"{page}: newsletter band must not use a mailto signup (link out to Kit instead)"
+        # One outbound CTA to the real Kit landing page, opened in a new tab.
+        assert kit_host.search(band), f"{page}: newsletter CTA must link to the Kit landing page (real https://<handle>.kit.com/<slug> URL — replace the placeholder before launch)"
+        assert 'target="_blank"' in band, f"{page}: newsletter CTA should open Kit in a new tab"
+        # rel=noopener on that _blank link is enforced globally by assert_security_invariants.
+
+
 def assert_no_removed_refs() -> None:
     for page in ALL_PAGES:
         html = read(page)
@@ -306,6 +328,7 @@ def main() -> None:
     assert_required_files()
     assert_shared_page_contract()
     assert_security_invariants()
+    assert_newsletter_contract()
     assert_no_removed_refs()
     assert_preview_pages()
     assert_design_system()

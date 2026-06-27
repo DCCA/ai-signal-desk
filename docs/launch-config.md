@@ -7,33 +7,26 @@ AI Signal Desk is staying free while testing demand.
 Recommended setup:
 
 - Hosting: Cloudflare Pages free tier if the repo stays private, or GitHub Pages if the repo becomes public.
-- Waitlist capture: email link now; Tally free when the beta needs structured intake.
+- Signup: link-out to a free Kit (ConvertKit) landing page (double opt-in on). The repo holds only the public Kit URL — no form, no backend, no secret, strict CSP unchanged.
 - Analytics: Cloudflare Web Analytics.
-- Email sending: manual beta email until the product proves enough pull for a newsletter provider.
+- Email sending: Kit broadcasts from the dashboard (free plan). Automate sends from the editorial pipeline via the Kit API/MCP (paid plan) only once pull is proven.
 
-## Waitlist URL
+## Signup URL
 
-Current free beta capture path:
-
-```text
-mailto:signals@aisignaldesk.example?subject=Join%20AI%20Signal%20Desk%20beta
-```
-
-This keeps testing free and does not require a new external form account.
-
-Optional upgrade after initial pull: create a free Tally form and replace the `mailto:` link in:
+The newsletter band on every page links out to a Kit-hosted landing page:
 
 ```text
-index.html
+https://<handle>.kit.com/<slug>
 ```
 
-Suggested Tally questions:
+Create the landing page in the Kit dashboard (Grow → Landing Pages & Forms),
+reuse the band copy, turn on opt-in confirmation, publish, and wire the public
+URL into the shared band. `scripts/check_site.py::assert_newsletter_contract`
+enforces that the band links to a real Kit host — the
+`https://KIT-LANDING-URL-PENDING` placeholder fails the build until swapped.
 
-1. Email address
-2. Role / context
-3. Which AI topics do you want filtered?
-4. Preferred cadence
-5. What do you usually ignore or find too noisy?
+See `docs/superpowers/specs/2026-06-27-newsletter-kit-linkout-design.md` for the
+full rationale (the link-out trilemma, why Kit, the security model).
 
 ## Deployment notes
 
