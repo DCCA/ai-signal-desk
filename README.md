@@ -4,21 +4,24 @@ Practical AI updates for people who want to understand concepts, products, repos
 
 ## What this is
 
-AI Signal Desk is a static MVP for a content product based on the AI Daily Digest idea.
-
-It is designed to become a public website/newsletter where each AI update answers:
+AI Signal Desk is a **live, zero-build static site** (GitHub Pages) for a curated
+AI-news product. Each update is a "signal card" that answers:
 
 - What is it?
 - Why does it matter?
 - What should I do next?
 - Should I learn, try, watch, or ignore it?
 
+The site is **bilingual** — English at `/` and Brazilian Portuguese at `/pt/` — with
+a curated weekly newsletter (signup via Kit) and privacy-first analytics (Cloudflare).
+
 ## Design
 
-The site uses the **"Daylight Desk"** design system: a light/dark editorial
-theme driven by a CSS custom-property token set. See `DESIGN.md` for the full
-token reference. It is a multi-page static site (no build step) with a shared
-header/footer/newsletter and a digest rendered from `content/digest.json`.
+The site uses the **"Daylight Desk"** design system: a light/dark editorial theme
+driven by a CSS custom-property token set (Space Grotesk + IBM Plex Mono). See
+`DESIGN.md` for the token reference. It is a multi-page static site (no build step,
+no framework) with a shared header/footer/newsletter shell; every view is rendered
+client-side from `content/digest.json` under a strict Content-Security-Policy.
 
 ## Site contents
 
@@ -33,14 +36,20 @@ header/footer/newsletter and a digest rendered from `content/digest.json`.
 - `about.html` — method (classify / score / action) and principles
 - `privacy.html` — email/privacy expectations
 - `contact.html` — contact route for signals and feedback
+- `pt/*.html` — the **Brazilian-Portuguese mirror** of the seven public pages
+  (`lang="pt-BR"`, translated shell, EN↔PT header switcher, `hreflang` alternates);
+  same renderers, served from the subdirectory with absolute asset paths
 - `styles.css` — the Daylight Desk token system + all component styles
-- `theme.js` — theme bootstrap (localStorage + `prefers-color-scheme`) and toggle
+- `theme.js` — shared bootstrap loaded first on every page: theme (localStorage +
+  `prefers-color-scheme`) **and** the i18n layer — `SD_LOCALE` (path-based: `/pt/*` is
+  Portuguese), `SD_T(key)` for UI labels, `SD_PICK(item, field)` for translated content
 - `signals-shared.js` — shared signal-card builder + week helpers (DOM API, no innerHTML)
 - `app.js` — home "top signals" grid (consumes `signals-shared.js`)
 - `archive.js` — archive: week grouping, category filter, search, deep links
 - `signal.js` / `weekly.js` — article and current-week rendering from the digest
-- `content/digest.json` — `{ publication, tagline, updated, items: Signal[] }`
-  where each item carries a `published_date` (the date spine the archive groups by)
+- `content/digest.json` — `{ publication, tagline, updated, items: Signal[] }` where each
+  item carries a `published_date` (the date spine the archive groups by) and **pt-BR
+  translations** (`title_pt`, `summary_pt`, `why_it_matters_pt`, `try_this_pt`)
 - `docs/*.md` — product brief, brand foundation, editorial workflow, launch notes
 - `robots.txt` / `sitemap.xml` — crawler metadata
 - `DESIGN.md` — design-token/spec reference
@@ -49,6 +58,21 @@ header/footer/newsletter and a digest rendered from `content/digest.json`.
 
 > The card index (`01`, `02`, …) is each item's stable 1-based position in the
 > full unfiltered digest; it does not change when you filter or sort.
+
+## Newsletter, analytics & content
+
+- **Newsletter** — the signup is a **link-out** to a Kit (ConvertKit) landing page
+  with double opt-in. The repo holds only the public URL — no form, no backend, no
+  secret — so the strict CSP and the "no third-party POST" posture are preserved.
+- **Analytics** — Cloudflare Web Analytics: a cookieless beacon on every page, with no
+  cookies or personal data. It is the only third-party script allowed, via a bounded,
+  test-enforced CSP exception (`static.cloudflareinsights.com` / `cloudflareinsights.com`).
+- **Bilingual content — translate before publishing.** Because of the `/pt/` mirror,
+  every signal card is bilingual: a draft MUST include `title_pt`, `summary_pt`,
+  `why_it_matters_pt`, `try_this_pt`. `scripts/publish_signal_drafts.py` rejects drafts
+  without them and `scripts/check_site.py` asserts all four on every digest item.
+  Renderers fall back to English per-field, but the build stays red until the digest is
+  fully translated. See `CLAUDE.md` and `docs/editorial-workflow.md`.
 
 ## Run locally
 
@@ -118,6 +142,7 @@ redirect configured at the registrar/DNS (GitHub Pages serves only the single
 
 ## Next steps
 
-1. Convert existing AI Daily Digest entries into three long-form sample posts.
-2. Connect a newsletter provider or simple waitlist form.
-3. Add an automated feeder workflow that turns daily digest notes into draft cards for review.
+1. Automate the pt-BR translation step in the editorial feeder so new cards ship
+   bilingual without manual work.
+2. Grow the curated back-catalog and keep the weekly brief flowing.
+3. Once there is proven pull, automate the weekly Kit send (paid plan + API/MCP).
