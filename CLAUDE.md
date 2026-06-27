@@ -45,7 +45,11 @@ is fetched at runtime and rendered by per-page scripts:
 - `signal.js` → article deep-dive (`signal.html?i=N`, where `N` is the 1-based index into the unfiltered digest) + related signals.
 - `weekly.js` → weekly brief (`weekly.html`) grouped by verdict (learn/try/watch/ignore).
 
-`theme.js` is shared by every page (light/dark via localStorage + `prefers-color-scheme`).
+`theme.js` is shared by every page (loaded first): it bootstraps the theme (light/dark via
+localStorage + `prefers-color-scheme`) **and** the i18n layer — `window.SD_LOCALE` (path-based:
+`/pt/*` is Portuguese), `SD_T(key)` for UI labels, and `SD_PICK(item, field)` which returns a
+card's `<field>_pt` value on pt pages (falling back to English). The renderers above use these so
+the same code drives both `/` and the `/pt/` mirror; `assert_i18n_contract` enforces the wiring.
 
 **Shared page shell.** All seven public pages (`index/archive/signal/weekly/about/privacy/contact`)
 plus two preview pages (`brand.html`, `logo-exploration.html`) must carry an identical
@@ -86,6 +90,15 @@ computes `signal_score`/`hype_score` if absent, and appends promoted items to
 `content/digest.json` (bumping `updated`). Allowed enums: category ∈ {concept, product,
 repo, workflow}, status ∈ {learn, try, watch, ignore}, confidence ∈ {high, medium, low}.
 See `docs/signal-card-schema.md` and `docs/editorial-workflow.md`.
+
+**Bilingual content — translate BEFORE adding a card.** The site has a Portuguese
+mirror at `/pt/`, so the digest is bilingual: every card MUST carry pt-BR translations
+`title_pt`, `summary_pt`, `why_it_matters_pt`, `try_this_pt` next to the English fields.
+`publish_signal_drafts.py` **rejects** any draft missing them and copies them into
+`content/digest.json`; `check_site.py` asserts all four on every item. Never publish an
+English-only card — translate first (an LLM translation step is the natural fit; keep
+product/proper names untranslated). Renderers fall back to English per-field if one is
+ever missing, but the gate stays red until the digest is fully translated.
 
 ## Deploy
 
