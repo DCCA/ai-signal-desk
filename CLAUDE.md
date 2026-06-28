@@ -18,6 +18,10 @@ python3 -m http.server 8080        # then open http://localhost:8080
 # Validate — the single source of truth for "is this correct?" (also runs in CI)
 python3 scripts/check_site.py      # expect: "OK: AI Signal Desk (Daylight Desk) passes site + security checks"
 
+# Create a draft card from a user-shared Discord/Telegram/manual link synthesis payload
+python3 scripts/create_link_signal_draft.py --source-platform discord --date YYYY-MM-DD --input payload.json
+python3 scripts/create_link_signal_draft.py --source-platform telegram --date YYYY-MM-DD --input payload.json
+
 # Promote reviewed draft cards into the public digest
 python3 scripts/publish_signal_drafts.py --date YYYY-MM-DD --dry-run   # preview
 python3 scripts/publish_signal_drafts.py --date YYYY-MM-DD             # apply

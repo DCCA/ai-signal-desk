@@ -68,6 +68,15 @@ Draft cards in `content/drafts/` should include:
 - `published: false`
 - optional `review_notes`
 
+For user-shared links from Discord or Telegram, create drafts through:
+
+```bash
+python3 scripts/create_link_signal_draft.py --source-platform discord --date YYYY-MM-DD --input payload.json
+python3 scripts/create_link_signal_draft.py --source-platform telegram --date YYYY-MM-DD --input payload.json
+```
+
+The script records the source platform in the draft filename and runs the same schema, private-context, source URL, and duplicate checks used by the publisher before writing to `content/drafts/`.
+
 ## Publication rule
 
 Cards may appear in `content/digest.json` through either:

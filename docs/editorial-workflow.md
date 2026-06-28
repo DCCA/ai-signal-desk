@@ -5,7 +5,8 @@
 Use the automated feeder to turn the AI Daily Digest and newsletters at `signals@aisignaldesk.example` into public signal cards while keeping the automation auditable and clearly labeled.
 
 ```text
-AI Daily Digest + newsletters at signals@aisignaldesk.example
+AI Daily Digest + newsletters at signals@aisignaldesk.example + user-shared links from Discord/Telegram
+→ The feeder or Hermes extracts public-source signal candidates
 → The feeder filters high-signal items
 → The feeder drafts signal cards in content/drafts/
 → automated reviewer/editor validation
@@ -20,7 +21,7 @@ Sources allowed for drafts:
 
 - AI Daily Digest notes already saved by the feeder
 - newsletters in the dedicated editorial email inbox
-- links manually sent by the user
+- links manually sent by the user from Discord or Telegram
 - public source pages for products, repos, papers, or docs
 
 ## Drafting rules
@@ -44,6 +45,49 @@ Drafts live under:
 ```text
 content/drafts/
 ```
+
+## Shared-link intake from Discord or Telegram
+
+When the user shares a link in Discord or Telegram and asks to use it for AI Signal Desk:
+
+1. Extract the public source and synthesize only public-facing signal candidates.
+2. Drop personal learning notes, Obsidian paths, local workflow details, private project references, and unsupported claims.
+3. Translate the four required public fields into pt-BR before draft creation.
+4. Create the draft with the deterministic intake script:
+
+```bash
+python3 scripts/create_link_signal_draft.py \
+  --source-platform discord \
+  --date YYYY-MM-DD \
+  --input payload.json
+
+python3 scripts/create_link_signal_draft.py \
+  --source-platform telegram \
+  --date YYYY-MM-DD \
+  --input payload.json
+```
+
+The payload must contain the same public fields required for a draft card:
+
+```json
+{
+  "title": "Implementation is cheap; taste is the bottleneck",
+  "category": "concept",
+  "status": "learn",
+  "summary": "...",
+  "why_it_matters": "...",
+  "try_this": "...",
+  "title_pt": "...",
+  "summary_pt": "...",
+  "why_it_matters_pt": "...",
+  "try_this_pt": "...",
+  "source_label": "Source name",
+  "source_url": "https://...",
+  "confidence": "medium"
+}
+```
+
+`create_link_signal_draft.py` validates the card against the same schema/private-pattern/source-link checks used by the publisher, records whether the link came from Discord or Telegram in the draft filename, and refuses duplicates already in `content/digest.json` or `content/drafts/` unless `--force` is used.
 
 ## Automated publication gate
 
