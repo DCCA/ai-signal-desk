@@ -1438,6 +1438,30 @@
       "sanitized": true,
       "signal_score": 88,
       "hype_score": 22
+    },
+    {
+      "title": "Agentic engineering cockpit",
+      "category": "workflow",
+      "summary": "A principal-engineer walkthrough of using terminal panes, memory files, skills, voice input, planning artifacts, validation, and parallel worktrees as one operating system for coding agents.",
+      "why_it_matters": "The practical lesson is that agent productivity comes from the surrounding workflow, not only from the model: persistent context, bounded scopes, verification, and clear human command intent make agent work safer and repeatable.",
+      "try_this": "Create one repo-level agent brief with allowed scope, required validation commands, handoff format, and what the agent must never do without approval.",
+      "title_pt": "Cockpit de engenharia agentica",
+      "summary_pt": "Um walkthrough de engenheiro principal sobre usar painéis de terminal, arquivos de memória, skills, entrada por voz, artefatos de planejamento, validação e worktrees paralelos como um sistema operacional para agentes de código.",
+      "why_it_matters_pt": "A lição prática é que a produtividade com agentes vem do fluxo ao redor do modelo, não só do modelo: contexto persistente, escopos limitados, verificação e intenção humana clara tornam o trabalho dos agentes mais seguro e repetível.",
+      "try_this_pt": "Crie um briefing de agente no nível do repositório com escopo permitido, comandos de validação obrigatórios, formato de handoff e o que o agente nunca deve fazer sem aprovação.",
+      "status": "learn",
+      "confidence": "medium",
+      "source_label": "Kun Chen — L8 Principal's Agentic Engineering Workflow",
+      "source_url": "https://www.youtube.com/watch?v=iQyg-KypKAA",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "review_notes": "Shared-link intake validated for public Signal Desk draft. Private-context scan and source URL validation run before draft creation. YouTube source with transcript-derived synthesis. Public-facing card avoids personal workflow details and frames the item as a general agentic-engineering workflow pattern.",
+      "source_digest_date": "2026-06-29",
+      "published_date": "2026-06-29",
+      "sanitized": true,
+      "signal_score": 87,
+      "hype_score": 18
     }
   ]
 }
