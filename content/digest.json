@@ -1462,6 +1462,30 @@
       "sanitized": true,
       "signal_score": 87,
       "hype_score": 18
+    },
+    {
+      "title": "Autonomous AI loops",
+      "category": "concept",
+      "summary": "An explanation of AI loops as a shift from manual prompt-response work to goal-driven systems that plan, execute, verify, fix, and repeat until they meet objective criteria or hit a hard stop.",
+      "why_it_matters": "The useful signal is the verifier-first framing: loops only become trustworthy when they have clear goals, state, stop conditions, and objective checks such as tests, rubrics, or measurable thresholds.",
+      "try_this": "Before automating a workflow, write its loop contract: goal, verifier, state to preserve, maximum iterations or budget, and the exact condition that means stop.",
+      "title_pt": "Loops autônomos de IA",
+      "summary_pt": "Uma explicação de loops de IA como mudança do trabalho manual de prompt-resposta para sistemas orientados por objetivos que planejam, executam, verificam, corrigem e repetem até cumprir critérios objetivos ou atingir um limite rígido.",
+      "why_it_matters_pt": "O sinal útil é o enquadramento centrado no verificador: loops só se tornam confiáveis quando têm objetivos claros, estado, condições de parada e verificações objetivas como testes, rubricas ou métricas mensuráveis.",
+      "try_this_pt": "Antes de automatizar um fluxo, escreva seu contrato de loop: objetivo, verificador, estado a preservar, máximo de iterações ou orçamento, e a condição exata que significa parar.",
+      "status": "learn",
+      "confidence": "medium",
+      "source_label": "Anatoli Kopadze — AI loops thread",
+      "source_url": "https://x.com/AnatoliKopadze/status/2068328135611822149",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "review_notes": "Shared-link intake validated for public Signal Desk draft. Private-context scan and source URL validation run before draft creation. X thread captured through x_search and existing Learning Skills KB note. Public-facing card focuses on the general loop-engineering concept and omits promotional/product-specific claims.",
+      "source_digest_date": "2026-06-29",
+      "published_date": "2026-06-29",
+      "sanitized": true,
+      "signal_score": 86,
+      "hype_score": 24
     }
   ]
 }
