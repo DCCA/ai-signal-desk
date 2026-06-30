@@ -1558,6 +1558,30 @@
       "sanitized": true,
       "signal_score": 90,
       "hype_score": 14
+    },
+    {
+      "title": "Skill checklists can prevent agent-skill sprawl",
+      "category": "workflow",
+      "summary": "Matt Pocock frames \"skill hell\" as a maintainability problem: agent skills need clear trigger rules, lean structure, deliberate steering language, and regular pruning.",
+      "why_it_matters": "As teams add more agent capabilities, bloated or ambiguous skills increase context load and make agents harder to predict. A simple checklist turns skill authoring into an operational discipline instead of ad hoc prompt accumulation.",
+      "try_this": "Audit one frequently used agent skill against four checks: trigger, structure, steering, and pruning. Move rarely needed detail into references, remove no-op instructions, and make the invocation mode explicit.",
+      "title_pt": "Checklists de skills podem evitar a bagunça em agentes",
+      "summary_pt": "Matt Pocock apresenta o \"skill hell\" como um problema de manutenção: skills de agentes precisam de regras claras de acionamento, estrutura enxuta, linguagem de direcionamento deliberada e poda regular.",
+      "why_it_matters_pt": "À medida que equipes adicionam mais capacidades a agentes, skills inchadas ou ambíguas aumentam o custo de contexto e tornam o comportamento menos previsível. Um checklist simples transforma a criação de skills em disciplina operacional, não em acúmulo improvisado de prompts.",
+      "try_this_pt": "Audite uma skill de agente usada com frequência com quatro critérios: acionamento, estrutura, direcionamento e poda. Mova detalhes raros para referências, remova instruções sem efeito e deixe explícito o modo de invocação.",
+      "status": "learn",
+      "confidence": "medium",
+      "source_label": "AI Engineer — Building Great Agent Skills: The Missing Manual",
+      "source_url": "https://www.youtube.com/watch?v=UNzCG3lw6O0",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "review_notes": "Shared-link intake validated for public Signal Desk draft. Private-context scan and source URL validation run before draft creation. Synthesized from public YouTube metadata, description/timestamps, and web extraction; not a verbatim transcript.",
+      "source_digest_date": "2026-06-30",
+      "published_date": "2026-06-30",
+      "sanitized": true,
+      "signal_score": 82,
+      "hype_score": 12
     }
   ]
 }
