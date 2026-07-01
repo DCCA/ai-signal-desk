@@ -1606,6 +1606,30 @@
       "sanitized": true,
       "signal_score": 86,
       "hype_score": 14
+    },
+    {
+      "title": "LLMs are becoming maintainers of structured knowledge bases",
+      "category": "workflow",
+      "summary": "Andrej Karpathy describes a workflow where raw sources are collected into folders, then an LLM compiles them into a Markdown wiki with summaries, backlinks, indexes, outputs, and maintenance passes.",
+      "why_it_matters": "This reframes LLM knowledge work as a compounding system instead of disposable chat. The model becomes a maintainer of an inspectable corpus: ingest raw sources, compile structured pages, answer questions from the wiki, generate artifacts, and lint the system over time.",
+      "try_this": "For one research topic, create raw, wiki, outputs, and indexes folders. Add 5-10 sources, ask an LLM to compile concept pages and indexes, then require each complex answer to be saved back as a Markdown artifact.",
+      "title_pt": "LLMs estão virando mantenedores de bases de conhecimento estruturadas",
+      "summary_pt": "Andrej Karpathy descreve um workflow em que fontes brutas são reunidas em pastas e depois um LLM as compila em uma wiki Markdown com resumos, backlinks, índices, outputs e ciclos de manutenção.",
+      "why_it_matters_pt": "Isso reposiciona o trabalho de conhecimento com LLMs como um sistema cumulativo, não como chat descartável. O modelo vira mantenedor de um corpus inspecionável: ingere fontes, compila páginas estruturadas, responde a partir da wiki, gera artefatos e faz linting do sistema ao longo do tempo.",
+      "try_this_pt": "Para um tema de pesquisa, crie pastas raw, wiki, outputs e indexes. Adicione 5-10 fontes, peça a um LLM para compilar páginas conceituais e índices, e exija que cada resposta complexa seja salva de volta como artefato Markdown.",
+      "status": "try",
+      "confidence": "medium",
+      "source_label": "Andrej Karpathy — LLM-maintained knowledge bases",
+      "source_url": "https://x.com/karpathy/status/2039805659525644595",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "review_notes": "Shared-link intake validated for public Signal Desk draft. Private-context scan and source URL validation run before draft creation. Public X post synthesized into a reusable workflow signal. The card focuses on the durable knowledge-base pattern rather than quoting the thread verbatim.",
+      "source_digest_date": "2026-07-01",
+      "published_date": "2026-07-01",
+      "sanitized": true,
+      "signal_score": 92,
+      "hype_score": 10
     }
   ]
 }
