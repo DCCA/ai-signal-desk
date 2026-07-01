@@ -1,7 +1,7 @@
 {
   "publication": "AI Signal Desk",
   "tagline": "AI signal, not AI noise.",
-  "updated": "2026-06-30",
+  "updated": "2026-07-01",
   "items": [
     {
       "title": "Agent loops",
@@ -1582,6 +1582,30 @@
       "sanitized": true,
       "signal_score": 82,
       "hype_score": 12
+    },
+    {
+      "title": "Product teams need a build-vs-power agent strategy",
+      "category": "workflow",
+      "summary": "Tanay Jaipuria frames a 2026 product strategy choice: either build the agent users open every day, or power the horizontal agents they already use through MCP, APIs, CLIs, and action surfaces.",
+      "why_it_matters": "AI products are becoming capabilities that agents can compose, not just standalone interfaces. Teams need to decide whether their moat is a full vertical workflow, or proprietary data and actions that should plug into Claude, Codex, Copilot, ChatGPT, and similar agents.",
+      "try_this": "Map one product against four questions: where customers already work, whether you own the full workflow or a slice, whether value is reasoning or data/actions, and whether the job needs high-control judgment or composable execution.",
+      "title_pt": "Times de produto precisam de uma estratégia de construir ou alimentar agentes",
+      "summary_pt": "Tanay Jaipuria apresenta uma escolha estratégica para produtos de IA em 2026: construir o agente que usuários abrem todos os dias ou alimentar os agentes horizontais que eles já usam por meio de MCP, APIs, CLIs e superfícies de ação.",
+      "why_it_matters_pt": "Produtos de IA estão virando capacidades que agentes podem compor, não apenas interfaces independentes. Times precisam decidir se seu diferencial é um workflow vertical completo ou dados e ações proprietárias que devem se conectar a Claude, Codex, Copilot, ChatGPT e agentes similares.",
+      "try_this_pt": "Mapeie um produto com quatro perguntas: onde os clientes já trabalham, se você possui o workflow completo ou só uma parte, se o valor está no raciocínio ou em dados/ações, e se o trabalho exige julgamento controlado ou execução componível.",
+      "status": "learn",
+      "confidence": "medium",
+      "source_label": "Tanay Jaipuria — Build vs. power the agent",
+      "source_url": "https://x.com/tanayj/status/2070315875182268871",
+      "human_reviewed": false,
+      "published": true,
+      "automated_reviewed": true,
+      "review_notes": "Shared-link intake validated for public Signal Desk draft. Private-context scan and source URL validation run before draft creation. Synthesized from a public X post into a product-strategy framework; source should be read as the supporting post, not a formal announcement.",
+      "source_digest_date": "2026-07-01",
+      "published_date": "2026-07-01",
+      "sanitized": true,
+      "signal_score": 86,
+      "hype_score": 14
     }
   ]
 }
